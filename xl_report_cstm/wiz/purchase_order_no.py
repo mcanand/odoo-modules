@@ -12,13 +12,15 @@ class PurchaseOrderNo(models.TransientModel):
     date_to = fields.Date('Date To', required=True)
     file_download = fields.Binary()
     file_name = fields.Char()
-
+    
+    #validation of dates
     @api.constrains('date_from', 'date_to')
     def _check_date(self):
         if self.date_to and self.date_from:
             if self.date_to < self.date_from:
                 raise ValidationError(_('Date From cannot be greater than Date To'))
-
+    
+    #create and download xl
     @api.multi
     def print_purchase_order_no(self):
         lines = self.env['account.invoice.line'].search([
