@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="purchase_receipt_view" model="ir.ui.view">
+        <field name="name">Print Reports</field>
+        <field name="model">purchase.receipt</field>
+        <field name="arch" type="xml">
+            <form>
+                <group col="4">
+                        <field name='date_from'/>
+                        <field name='date_to'/>
+                </group>
+                    <footer>
+                        <button name="print_purchase_receipts" string="Print Excel" type="object"
+                                context="{'report_type':'excel'}"
+                                class="oe_highlight"/>
+                        <button string="Cancel" class="btn btn-default" special="cancel"/>
+                    </footer>
+
+            </form>
+        </field>
+    </record>
+
+    <record id="purchase_receipt_action" model="ir.actions.act_window">
+        <field name="name">Purchase Receipt</field>
+        <field name="res_model">purchase.receipt</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="purchase_receipt_view"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="purchase_receipt" name="Purchase Receipt" parent="account.menu_finance_reports"
+              action="purchase_receipt_action"/>
+
+
+</odoo>

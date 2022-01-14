@@ -1,0 +1,20 @@
+{
+    'name': 'XL_REPORTS_CUSTOM',
+    'version': '12.0.0',
+    'author': 'SIGB',
+    'category': '',
+    'website': '',
+    'license': 'LGPL-3',
+    'sequence': 10,
+    'summary': "",
+    'description':"Sale_invoice,Purchase_receipts,Purchase_order_no reports",
+    'data': [
+        'wiz/tax_invoice.xml',
+        'wiz/purchase_reciepts.xml',
+        'wiz/purchase_order_no.xml',
+    ],
+    'qweb': [],
+    'demo': [],
+    'installable': True,
+    'application': True,
+}
