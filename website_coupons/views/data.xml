@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="available_channel_pickup" model="available.channels">
+            <field name="name">Pickup</field>
+            <field name="name_key">pickup</field>
+        </record>
+        <record id="available_channel_takeaway" model="available.channels">
+            <field name="name">Takeaway</field>
+            <field name="name_key">takeaway</field>
+        </record>
+        <record id="available_channel_kerb" model="available.channels">
+            <field name="name">Kerbside Pickup</field>
+            <field name="name_key">curb</field>
+        </record>
+        <record id="available_channel_delivery" model="available.channels">
+            <field name="name">Delivery</field>
+            <field name="name_key">delivery</field>
+        </record>
+        <record id="available_channel_dinein" model="available.channels">
+            <field name="name">Dine In</field>
+            <field name="name_key">dine_in</field>
+        </record>
+        <record id="available_channel_pos" model="available.channels">
+            <field name="name">Point Of Sale</field>
+            <field name="name_key">pos</field>
+        </record>
+    </data>
+</odoo>

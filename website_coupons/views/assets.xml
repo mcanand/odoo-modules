@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_frontend_coupons" name="Ecommerce Website" inherit_id="web.assets_frontend">
+                <xpath expr="." position="inside">
+                    <link rel="stylesheet" href="/website_coupons/static/src/css/website_coupons.css"/>
+                    <script type="text/javascript" src="/website_coupons/static/src/js/website_coupons.js"></script>
+                </xpath>
+        </template>
+    </data>
+</odoo>

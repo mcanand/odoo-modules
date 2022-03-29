@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <record id="promotional_programme_form_inherit_view" model="ir.ui.view">
+            <field name="name">promo.coupon.program.form</field>
+            <field name="model">coupon.program</field>
+            <field name="inherit_id" ref="coupon.coupon_program_view_promo_program_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group[@name='validity']" position="after">
+
+                     <group string="Available day's" >
+                            <field name="all_days"/>
+                            <field name="all_time"/>
+                     </group>
+                    <tr width="100%">
+                        <group>
+                                <td>
+                                    <td>
+                                    <group>
+                                        <field name="same_time"/>
+                                    </group>
+                                    </td>
+                                <td>
+                                    <group>
+                                        <field name="enter_time_from" widget="float_time" attrs="{'invisible': ['|', ('all_days', '=', False), ('same_time', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                <td>
+                                    <group>
+                                       <span attrs="{'invisible': ['|', ('all_days', '=', False), ('same_time', '=', False)]}"><strong>-</strong></span>
+                                    </group>
+                                </td>
+                                <td>
+                                    <group>
+                                       <field name="enter_time_to" widget="float_time" attrs="{'invisible': ['|', ('all_days', '=', False), ('same_time', '=', False)]}" nolabel="1" class="oe_inline text-left"/>
+                                    </group>
+                                </td>
+                                </td>
+                        </group>
+                    </tr>
+                    <tr width="100%">
+                        <group>
+                                <td>
+                                    <td>
+                                    <group>
+                                        <field name="sunday_available"/>
+                                    </group>
+                                    </td>
+                                <td>
+                                    <group>
+                                        <field name="sunday_available_time_from" widget="float_time" attrs="{'invisible': [('sunday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                <td>
+                                    <group>
+                                       <span attrs="{'invisible': [('sunday_available', '=', False)]}"><strong>-</strong></span>
+                                    </group>
+                                </td>
+                                <td>
+                                    <group>
+                                        <field name="sunday_available_time_to" widget="float_time" attrs="{'invisible': [('sunday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                </td>
+                        </group>
+                    </tr>
+                    <tr width="100%">
+                        <group>
+                                <td>
+                                    <td >
+                                    <group>
+                                        <field name="monday_available"/>
+                                    </group>
+                                    </td>
+                                <td>
+                                    <group>
+                                        <field name="monday_available_time_from" widget="float_time" attrs="{'invisible': [('monday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                <td>
+                                    <group>
+                                       <span attrs="{'invisible': [('monday_available', '=', False)]}"><strong>-</strong></span>
+                                    </group>
+                                </td>
+                                <td>
+                                    <group>
+                                        <field name="monday_available_time_to" widget="float_time" attrs="{'invisible': [('monday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                </td>
+                        </group>
+                    </tr>
+                    <tr width="100%">
+                        <group>
+                                <td>
+                                    <td>
+                                    <group>
+                                        <field name="tuesday_available"/>
+                                    </group>
+                                    </td>
+                                <td>
+                                    <group>
+                                        <field name="tuesday_available_time_from" widget="float_time" attrs="{'invisible': [('tuesday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                <td>
+                                    <group>
+                                       <span attrs="{'invisible': [('tuesday_available', '=', False)]}"><strong>-</strong></span>
+                                    </group>
+                                </td>
+                                <td>
+                                    <group>
+                                        <field name="tuesday_available_time_to" widget="float_time" attrs="{'invisible': [('tuesday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                </td>
+                        </group>
+                    </tr>
+                    <tr width="100%">
+                        <group>
+                                <td>
+                                    <td  width="5%">
+                                    <group>
+                                        <field name="wednesday_available"/>
+                                    </group>
+                                    </td>
+                                <td width="5%">
+                                    <group>
+                                        <field name="wednesday_available_time_from" widget="float_time" attrs="{'invisible': [('wednesday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                <td width="1%">
+                                    <group>
+                                       <span attrs="{'invisible': [('wednesday_available', '=', False)]}"><strong>-</strong></span>
+                                    </group>
+                                </td>
+                                <td width="5%">
+                                    <group>
+                                        <field name="wednesday_available_time_to" widget="float_time" attrs="{'invisible': [('wednesday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                </td>
+                        </group>
+                    </tr>
+                    <tr width="100%">
+                        <group>
+                                <td>
+                                    <td  width="5%">
+                                    <group>
+                                        <field name="thursday_available"/>
+                                    </group>
+                                    </td>
+                                <td width="5%">
+                                    <group>
+                                        <field name="thursday_available_time_from" widget="float_time" attrs="{'invisible': [('thursday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                <td width="1%">
+                                    <group>
+                                       <span attrs="{'invisible': [('thursday_available', '=', False)]}"><strong>-</strong></span>
+                                    </group>
+                                </td>
+                                <td width="5%">
+                                    <group>
+                                        <field name="thursday_available_time_to" widget="float_time" attrs="{'invisible': [('thursday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                </td>
+                        </group>
+                    </tr>
+                    <tr width="100%">
+                        <group>
+                                <td>
+                                    <td  width="5%">
+                                    <group>
+                                        <field name="friday_available"/>
+                                    </group>
+                                    </td>
+                                <td width="5%">
+                                    <group>
+                                        <field name="friday_available_time_from" widget="float_time" attrs="{'invisible': [('friday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                <td width="1%">
+                                    <group>
+                                       <span attrs="{'invisible': [('friday_available', '=', False)]}"><strong>-</strong></span>
+                                    </group>
+                                </td>
+                                <td width="5%">
+                                    <group>
+                                        <field name="friday_available_time_to" widget="float_time" attrs="{'invisible': [('friday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                </td>
+                        </group>
+                    </tr>
+                    <tr width="100%">
+                        <group>
+                                <td>
+                                    <td  width="5%">
+                                    <group>
+                                        <field name="saturday_available"/>
+                                    </group>
+                                    </td>
+                                <td width="5%">
+                                    <group>
+                                        <field name="saturday_available_time_from" widget="float_time" attrs="{'invisible': [('saturday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                <td width="1%">
+                                    <group>
+                                       <span attrs="{'invisible': [('saturday_available', '=', False)]}"><strong>-</strong></span>
+                                    </group>
+                                </td>
+                                <td width="5%">
+                                    <group>
+                                        <field name="saturday_available_time_to" widget="float_time" attrs="{'invisible': [('saturday_available', '=', False)]}" nolabel="1" class="oe_inline"/>
+                                    </group>
+                                </td>
+                                </td>
+                        </group>
+                        <tr width="100%">
+                            <group>
+                                 <field name="available_channels" widget="many2many_tags"
+                                    options="{'no_create': True, 'no_open': True}"/>
+                                 <field name="exclusive_coupon"/>
+                            </group>
+
+                            <group>
+                                 <field name="restricted_product_ids" widget="many2many_tags"
+                                    options="{'no_create': True, 'no_open': True}"/>
+                            </group>
+                        </tr>
+                    </tr>
+                </xpath>
+            </field>
+        </record>
+        <record id="promotional_programme_common_form_inherit_view" model="ir.ui.view">
+            <field name="name">promo.coupon.common.program.form</field>
+            <field name="model">coupon.program</field>
+            <field name="inherit_id" ref="coupon.coupon_program_view_form_common"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group[2]/group[2]/label[@for='reward_product_quantity']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[2]/group[2]/div[1]/field[@name='reward_product_quantity']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[2]/group[2]/div[1]/field[@name='reward_product_uom_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[2]/group[2]/div[4]" position="after">
+                    <label for="cheapest_product_select_category_ids"
+                           string="Product Category"
+                           attrs="{'invisible': ['|', ('discount_type', '!=', 'percentage'),('discount_apply_on', '!=', 'cheapest_product')],
+                                    'required': [('discount_apply_on', '=', 'cheapest_product')]}"/>
+                        <div attrs="{'invisible': ['|', ('discount_type', '!=', 'percentage'), ('discount_apply_on', '!=', 'cheapest_product')],
+                                    'required': [('discount_apply_on', '=', 'cheapest_product')]}">
+                            <field name="cheapest_product_select_category_ids"
+                                   class="oe_inline"
+                                   widget="many2many_tags"/>
+                        </div>
+                    <label for="cheapest_product_select_product_ids"
+                           string="Product" attrs="{'invisible': ['|', ('discount_type', '!=', 'percentage'), ('discount_apply_on', '!=', 'cheapest_product')]}"/>
+                        <div attrs="{'invisible': ['|', ('discount_type', '!=', 'percentage'), ('discount_apply_on', '!=', 'cheapest_product')]}">
+                            <field name="cheapest_product_select_product_ids"
+                                   class="oe_inline"
+                                   widget="many2many_tags"/>
+                        </div>
+                </xpath>
+            </field>
+        </record>
+<!--
+        <record id="promotional_programme_promo_code_form_inherit_view" model="ir.ui.view">
+            <field name="name">promo.coupon.code.form</field>
+            <field name="model">coupon.program</field>
+            <field name="inherit_id" ref="coupon.coupon_program_view_promo_program_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='promo_code_usage']" position="after">
+                    <field name="new_code" attrs="{'required': [('promo_code_usage', '=', 'code_needed')], 'invisible': [('promo_code_usage', '=', 'no_code_needed')]}" string="Promo Code"/>
+                </xpath>
+                <xpath expr="//field[@name='promo_code']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+            </field>
+        </record>
+-->
+    </data>
+</odoo>
