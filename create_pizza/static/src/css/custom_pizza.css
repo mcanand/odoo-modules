@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+.cppage h1{
+    font-size: 40px;
+    font-weight: bold;
+}
+.font_popins{
+     font-family: 'Poppins', sans-serif;
+}
+.f_s16{
+    font-size:16px;
+}
+.f_29{
+    font-size:29px;
+    line-height:30px;
+}
+.f_18{
+line-height: 22px;
+font-size: 18px;
+}
+
+.cppage .rw_100{
+    width:100%;
+}
+.cppage select{
+    width:100%;
+    padding:6px;
+    border-radius:6px;
+    border:1px solid #666;
+}
+.cppage select:focus{
+    border:1px solid black;
+    outline:none;
+}
+.cppage .col_pad{
+    padding-top:14px !important;
+}
+.cppage .dot_count{
+    background-color: red;
+    border-radius: 44px;
+    color: white;
+    width: 10px;
+    display: inline-block;
+    height: 10px;
+    text-align:center;
+    font-size:8px;
+}
+.cppage .drop_btn{
+    border:none;
+    background-color:inherit:
+    padding:10px;
+    outline:none;
+
+}
+.cppage .drop_btn:focus{
+    border:none;
+    outline:none;
+    background-color:none;
+}
+.cppage .drop_content{
+    display:none;
+}
+.cppage .drop_drop{
+    cursor:pointer;
+    font-size:17px;
+}
+.cppage .plus_minus input{
+    background-color: black;
+    border: none;
+    border-radius: 50px;
+    width: 18px;
+    padding: 3px;
+    height: 18px;
+    text-align: center;
+    color: white;
+    outline: none;
+
+}
+.cppage .plus_minus input:focus{
+    background-color:none;
+    outline:none;
+    borer:none;
+}
+.cppage .txt_bold{
+    font-weight:bold;
+}
+.cppage .plus_minus .input_txt{
+    width: 23px;
+    background: inherit;
+    text-align: center;
+    color:black;
+    height: 23px;
+}
+.cppage .l_b_input{
+    padding:1px !important;
+
+}
+.cppage .input_txt_cart{
+    color:black !important
+}
+.cppage .plus_minus .input_txt_cart{
+    width: 23px;
+    background: inherit;
+    text-align: center;
+    border: none;
+    height: 23px;
+}
+.cppage .selected {
+    background-color:#e5e5e5 !important;
+    border-radius:8px;
+}
+.cppage .pizza_png{
+    width:100%;
+}
+.cppage .line{
+     border: 1px dashed black;
+     padding:0.5px;
+     border-radius:5px;
+}
+.cppage .cart_btn{
+    border:none;
+    padding:13px;
+    background-color:red;
+    border-radius:7px;
+    width:85%;
+    color:white;
+}
+.cppage .product_apnd{
+    background:none;
+}
+.c_pizza_btn{
+    background-color: red;
+    width: 135px;
+    height: 38px;
+    text-align: center;
+    margin-top: 17px;
+    border-radius: 30px;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    z-index:100;
+}
+.c_pizza_btn:hover{
+    background-color:red !important;
+    text-decoration:none;
+    color:white;
+}
+@media only screen and (max-width: 700px) {
+    .c_pizza_btn{
+            width: 339px;
+            margin-left: 12px;
+    }
+}

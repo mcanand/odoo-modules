@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="create_pizza_tree_view" model="ir.ui.view">
+        <field name="name">create pizza tree</field>
+        <field name="model">pizza.create</field>
+        <field name="arch" type="xml">
+            <tree>
+
+                <field name="name" string="Name"/>
+                <field name="extras"/>
+            </tree>
+        </field>
+    </record>
+    <record id="create_pizza_form_view" model="ir.ui.view">
+        <field name="name">create pizza</field>
+        <field name="model">pizza.create</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div>
+                        <h2>Category Name</h2>
+                    </div>
+                    <field name="name"/>
+                    <div class="mt-4">
+                        <h2>Products</h2>
+                    </div>
+                    <field name="extras"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="create_pizza_action" model="ir.actions.act_window">
+        <field name="name">create_pizza</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">pizza.create</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">create custom pizza extras category</p>
+        </field>
+    </record>
+<!--    <menuitem id="pizza_create_menu" name="Create Pizza Extras" action="create_pizza_action"-->
+<!--              parent="stock.menu_stock_inventory_control" sequence="4"/>-->
+    <menuitem id="pizza_create_menu" name="Create Pizza Extras" action="contacts.action_contacts"
+              parent="website_sale.menu_catalog" sequence="4"/>
+
+</odoo>

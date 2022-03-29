@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!--    <template id="shop_page_inherit" inherit_id="website_rfg.nav_bars" name="inherit home">-->
+<!--        <xpath expr="//div[hasclass('cnavbar')]/ul[hasclass('nav')]/li[last()]" position="after">-->
+<!--            <a class="c_pizza_btn" href="/pizza/create">create a pizza</a>-->
+<!--        </xpath>-->
+<!--    </template>-->
+    <template id="create_pizza_custom" name="create custom pizza">
+        <t t-call="website.layout">
+            <form role="form" action="/create/pizza" method="post">
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <div class="container cppage" id="cp_page">
+                <div class="row pt-5 pb-5">
+                    <div class="col-md-4">
+                        <img class="pizza_png" src="/create_pizza/static/images/pizza.png"/>
+                    </div>
+                    <div class="col-md-8">
+                        <p class="font_popins f_29" ><b>Build Your Own Pizza</b></p>
+                        <p class="font_popins mt-5 f_18">Make your own delicious pizza, perfectly cooked with your selection of
+                            premium ingredients
+                        </p>
+                        <div class="row p-0 mt-5 rw_100 font_popins">
+                            <div class="col-7 p-0 col_pad font_popins" tabindex="0">Choose Your Size &amp; Dough Type</div>
+                            <div class="col p-0">
+                                <select class="size_dough font_popins" name="size_dough">
+                                    <t t-foreach="pr_size_dough" t-as="prs">
+
+                                        <option t-att-data-size-id="prs.id"
+                                               t-att-data-size-p-name="prs.name" t-att-value="prs.id"
+                                               t-att-data-size-p-price="prs.list_price">
+                                            <span t-esc="prs.name"/>
+
+
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row p-0 mt-5 rw_100 font_popins">
+                            <div class="col-7 p-0 col_pad font_popins">Choose Your Sauce</div>
+                            <div class="col p-0">
+                                <select class="sauce font_popins" name="sauce">
+                                    <t t-foreach="pr_sauce" t-as="p_sauce">
+                                        <option t-att-data-sauce-id="p_sauce.id" t-att-value="p_sauce.id"
+                                                t-att-data-sauce-p-name="p_sauce.name"
+                                                t-att-data-sauce-p-price="p_sauce.list_price">
+                                            <span t-esc="p_sauce.name"/>
+                                        </option>
+                                    </t>
+                                </select>
+                            </div>
+                        </div>
+                        <h4 class="font_popins mt-5 f_s16">Choose Your Ingredients(Choose up to <span class="choose">6</span>)</h4>
+                        <div class="row font_popins">
+                            <div class="extras row rw_100">
+                                <t t-foreach="extras" t-as="extras">
+                                    <div class="row pt-5 d-inline drop_down rw_100">
+                                        <div class="drop_btn">
+                                            <div class="dot_count"></div>
+                                            <span class="pt-1 drop_drop">&#160;&#160;<t t-esc="extras.name"/>
+                                            </span>
+                                            <t t-foreach="extras.extras" t-as="ex">
+                                                <div class="drop_content mt-1 pl-5">
+                                                    <div class="row p-2 mt-3 rw_100">
+                                                        <div class="col pl-0 pt-1 font_popins">
+                                                            <t t-esc="ex.name"/>
+                                                        </div>
+                                                        <div class="col-2 font_popins pt-1 pl-0">$&#160;<t t-esc="ex.list_price"/>
+                                                        </div>
+                                                        <div class="col p-0">
+                                                            <div class="plus_minus d-inline float-right">
+                                                               <input type='button' value='-' class='minuss '/>
+
+                                                                <input type='text'  size='1'
+                                                                       class='value input_txt product font_popins'
+                                                                       value='0' t-att-data-product-id="ex.id"
+                                                                       t-att-data-product-price="ex.list_price"
+                                                                       t-att-data-product-name="ex.name"
+                                                                       min="1" max="10"/>
+                                                                <input type='button' value='+' class='pluss '/>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </t>
+                                        </div>
+                                    </div>
+                                </t>
+                            </div>
+                        </div>
+                        <hr class="line mt-5"/>
+                        <div class="products_append"></div>
+
+                        <hr class="line"/>
+                        <div class="row mt-4 font_popins">
+                            <div class="col-5"></div>
+                            <div class="col p-0">
+                                <p class="font_popins">TOTAL</p>
+                            </div>
+                            <div class="col-2 p-0">
+                                <p class="float-right total_price font_popins">price</p><input type="hidden" class="total_price_input" value=""/>
+                            </div>
+                        </div>
+                        <hr class="line"/>
+                        <div class="row mt-5">
+                            <div class="col"></div>
+                            <div class="col-5">
+                                <div class="plus_minus mt-3 d-inline float-right">
+
+                                    <input type='button' value='-' class='minus l_b_input'/>
+                                    <input type='text' name="add_qty" size='1'
+                                           class='value input_txt_cart font_popins'
+                                           value='1'
+                                           min="1" max="10"/>
+                                    <input type='button' value='+' class='plus l_b_input'/>
+                                </div>
+                            </div>
+                            <t t-foreach="main_prod" t-as="main_prod">
+                                <input type="hidden" name="main_prod" t-att-value="main_prod.id"/>
+                            </t>
+                            <input type="hidden" name="redirect" value="/shop"/>
+                            <div class="col-5 p-0">
+                                <button type="submit" class=" float-right cart_btn font_popins">Add to Cart</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </form>
+        </t>
+    </template>
+</odoo>

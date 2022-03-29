@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="pizza_ingredient_product_template_inherited" model="ir.ui.view">
+        <field name="name">product.template.pizza.ingredient</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet/div/div/div[3]" position="after">
+                <div><p>Custom create pizza options</p></div>
+                <div class="row ml-1">
+                    <div >
+                        <field name="is_pizza_size_dough" string="custom pizza"/>
+                        <label for="is_pizza_size_dough"/>
+                    </div>
+                    <div >
+                        <field name="is_pizza_sauce" string="custom pizza"/>
+                        <label for="is_pizza_sauce"/>
+                    </div>
+                    <div >
+                        <field name="is_main_product" string="custom pizza"/>
+                        <label for="is_main_product"/>
+                    </div>
+                </div>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="website_new_pizza_assets" name="Pizza Assets" inherit_id="website.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/css" href="/create_pizza/static/src/css/custom_pizza.css"/>
+            <script type="text/javascript" src="/create_pizza/static/src/js/custom_pizza.js"/>
+        </xpath>
+    </template>
+</odoo>
