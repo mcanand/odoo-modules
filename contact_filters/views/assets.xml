@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="button_render_js" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script src="contact_filters/static/src/js/file.js" type="text/javascript"/>
+        </xpath>
+    </template>
+</odoo>
