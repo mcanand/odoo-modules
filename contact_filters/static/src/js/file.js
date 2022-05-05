@@ -5,6 +5,8 @@ var ListController = require('web.ListController');
 var rpc = require('web.rpc');
 var session = require('web.session');
 var _t = core._t;
+var Dialog = require('web.Dialog');
+
 ListController.include({
    renderButtons: function($node) {
        this._super.apply(this, arguments);
@@ -15,12 +17,19 @@ ListController.include({
    action_def: function () {
             var self =this
             var user = session.uid;
-            alert("x")
-//            rpc.query({
-//                model: ‘my.model',
-//                method: 'get_values',
-//                args: [[user],{'id':user}],
-//                });
+            var message ='Contacts Added To Marketing'
+            var options = ''
+
+            rpc.query({
+                model: 'res.partner',
+                method: 'click_btn_contact',
+                args: [{'id':user}],
+                }).then(function (result){
+                    if(result==true){
+                        Dialog.alert(this, message, options);
+                    }
+
+                });
             },
    });
 });

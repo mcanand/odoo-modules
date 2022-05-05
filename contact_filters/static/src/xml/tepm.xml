@@ -2,7 +2,7 @@
 <template xml:space="preserve">
     <t t-extend="ListView.buttons">
       <t t-jquery="button.o_list_button_add" t-operation="before">
-        <button t-if="widget.modelName == 'res.partner'" class="btn btn-primary oe_action_button" type="button" accesskey="f">New Button</button>
+        <button t-if="widget.modelName == 'res.partner'" class="btn btn-primary oe_action_button" type="button" accesskey="f">to mail</button>
       </t>
     </t>
 </template>

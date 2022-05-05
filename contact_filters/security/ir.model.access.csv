@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_loyalist_contacts,loyalist.contacts,model_loyalist_contacts,,1,0,0,0
+access_loyalist_contacts,loyalist_contacts,model_loyalist_contacts,,1,1,1,1
+access_guest_contacts,guest_contacts,model_guest_contacts,,1,1,1,1
+
 

@@ -20,7 +20,7 @@
                 <filter string="Orderd delivery only" name="order"
                         domain="['&amp;',('sale_order_ids.website_delivery_type','=','delivery'),('sale_order_ids.state','not in', ('draft','sent','cancel'))]"/>
                 <filter string="Used a voucher to purchase" name="order"
-                        domain="[('sale_order_ids.applied_coupon_ids.partner_id','in','sale_order_ids.applied_coupon_ids')]"/>
+                        domain="[('sale_order_ids.applied_coupon_ids','ilike','')]"/>
                 <field name="name" string="Pos order product name"
                        filter_domain="[('pos_order_ids.lines.product_id.name','ilike',self)]"/>
                 <!--                <field name="name" string="guest"-->
@@ -42,44 +42,6 @@
     </record>
 
 
-<!--  <record id="res_partner_views_inherit_click" model="ir.ui.view">-->
-<!--            <field name="name">res.partner.view.inherit.click</field>-->
-<!--            <field name="model">res.partner</field>-->
-<!--            <field name="inherit_id" ref="base.view_partner_form"/>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <xpath expr="//form//sheet" position="before">-->
-<!--                    <header>-->
-<!--                        <button name="click_btn_contact" type="object" string="click_cont"/>-->
-<!--                    </header>-->
-<!--                </xpath>-->
-<!--            </field>-->
-<!--        </record>-->
-<!--     <record id="res_partner_views_kan_inherit_click" model="ir.ui.view">-->
-<!--            <field name="name">res.partner.view.kan.inherit.click</field>-->
-<!--            <field name="model">res.partner</field>-->
-<!--            <field name="inherit_id" ref="base.res_partner_kanban_view"/>-->
-<!--            <field name="arch" type="xml">-->
-<!--                <xpath expr="//t[@t-name='kanban-box']" position="before">-->
-<!--                    <t t-name="resbutton">-->
-<!--                        <button>clickck</button>-->
 
-<!--                    </t>-->
-<!--&lt;!&ndash;                    <header>&ndash;&gt;-->
-<!--&lt;!&ndash;                        <button name="click_btn_contact" type="object" string="click_cont"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                    </header>&ndash;&gt;-->
-<!--                </xpath>-->
-<!--            </field>-->
-<!--        </record>-->
-    <record id="res_partner_viewtree_inherit" model="ir.ui.view">
-            <field name="name">res.partner.viewtree.inherit</field>
-            <field name="model">res.partner</field>
-            <field name="inherit_id" ref="base.view_partner_tree"/>
-            <field name="arch" type="xml">
-                <xpath expr="//tree" position="inside">
-                    <header>
-                        <button name="click_btn_contact" string="clickk" type="object"/>
-                    </header>
-                </xpath>
-            </field>
-        </record>
+
 </odoo>
