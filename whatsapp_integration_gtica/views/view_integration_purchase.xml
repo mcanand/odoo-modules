@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_purchase_form_extend" model="ir.ui.view">
+        <field name="name">purchase.order.form.extend</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//header" position="inside">
+                <field name="send_whatsapp" invisible="1"/>
+                <button name="send_whatsapp_step" groups="whatsapp_integration_gtica.group_whatsapp_template_user" class="btn btn-primary" string="Send Whatsapp"
+                        attrs="{'invisible' : ['|', ('state', '=', 'cancel'), ('send_whatsapp', '!=', 'without_sending')]}" type="object"/>
+               <button name="send_whatsapp_step" groups="whatsapp_integration_gtica.group_whatsapp_template_user" class="btn btn-success" string="Bill sent" icon="fa-whatsapp"
+                       attrs="{'invisible' : ['|', ('state', '=', 'cancel'), ('send_whatsapp', '!=', 'sent')]}"
+                       type="object"/>
+               <button name="send_whatsapp_step" groups="whatsapp_integration_gtica.group_whatsapp_template_user"  class="btn" string="Bill not sent" icon="fa-whatsapp"
+                       attrs="{'invisible' : ['|', ('state', '=', 'cancel'), ('send_whatsapp', '!=', 'not_sent')]}"
+                       type="object"/>
+           </xpath>
+        </field>
+    </record>
+</odoo>

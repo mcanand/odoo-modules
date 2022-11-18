@@ -1,0 +1,25 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_whatsapp_template_manager, Model admin access,model_whatsapp_template,whatsapp_integration_gtica.group_whatsapp_template_manager,1,1,1,1
+access_whatsapp_template_user, Model user access,model_whatsapp_template,whatsapp_integration_gtica.group_whatsapp_template_user,1,0,0,0
+access_whatsapp_template_base, Model base access,model_whatsapp_template,base.group_user,1,0,0,0
+
+access_send_whatsapp_invoice, Model send whatsapp invoices,model_send_whatsapp_invoice,whatsapp_integration_gtica.group_whatsapp_template_manager,1,1,1,1
+access_send_whatsapp_invoice_user, Model send whatsapp invoices user,model_send_whatsapp_invoice,whatsapp_integration_gtica.group_whatsapp_template_user,1,0,0,0
+
+access_send_whatsapp_partner, Model send whatsapp partner,model_send_whatsapp_partner,whatsapp_integration_gtica.group_whatsapp_template_manager,1,1,1,1
+access_send_whatsapp_partner_user, Model send whatsapp partner user,model_send_whatsapp_partner,whatsapp_integration_gtica.group_whatsapp_template_user,1,0,0,0
+
+access_send_whatsapp_sale, Model send whatsapp sale,model_send_whatsapp_sale,whatsapp_integration_gtica.group_whatsapp_template_manager,1,1,1,1
+access_send_whatsapp_sale_user, Model send whatsapp sale user,model_send_whatsapp_sale,whatsapp_integration_gtica.group_whatsapp_template_user,1,0,0,0
+
+access_send_whatsapp_purchase, Model send whatsapp purchase,model_send_whatsapp_purchase,whatsapp_integration_gtica.group_whatsapp_template_manager,1,1,1,1
+access_send_whatsapp_purchase_user, Model send whatsapp purchase user,model_send_whatsapp_purchase,whatsapp_integration_gtica.group_whatsapp_template_user,1,0,0,0
+
+access_send_whatsapp_payment, Model send whatsapp payment,model_send_whatsapp_payment,whatsapp_integration_gtica.group_whatsapp_template_manager,1,1,1,1
+access_send_whatsapp_payment_user, Model send whatsapp payment user,model_send_whatsapp_payment,whatsapp_integration_gtica.group_whatsapp_template_user,1,0,0,0
+
+access_send_whatsapp_delivery, Model send whatsapp delivery,model_send_whatsapp_stock,whatsapp_integration_gtica.group_whatsapp_template_manager,1,1,1,1
+access_send_whatsapp_delivery_user, Model send whatsapp delivery user,model_send_whatsapp_stock,whatsapp_integration_gtica.group_whatsapp_template_user,1,0,0,0
+
+access_send_whatsapp_crm, Model send whatsapp crm,model_send_whatsapp_crm,whatsapp_integration_gtica.group_whatsapp_template_manager,1,1,1,1
+access_send_whatsapp_crm_user, Model send whatsapp crm user,model_send_whatsapp_crm,whatsapp_integration_gtica.group_whatsapp_template_user,1,0,0,0

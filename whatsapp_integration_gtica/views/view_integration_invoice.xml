@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="invoice_form_extend" model="ir.ui.view">
+        <field name="name">account.move.form.extend</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//header" position="inside">
+               <field name="send_whatsapp" invisible="1"/>
+                <button name="send_whatsapp_step" groups="whatsapp_integration_gtica.group_whatsapp_template_user" class="btn btn-primary" string="Send Whatsapp"
+                        attrs="{'invisible' : ['|', '|', ('state', '!=', 'posted'), ('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')), ('send_whatsapp', '!=', 'without_sending')]}"
+                        type="object"/>
+               <button name="send_whatsapp_step" groups="whatsapp_integration_gtica.group_whatsapp_template_user" class="btn btn-success" string="Invoice sent" icon="fa-whatsapp"
+                       attrs="{'invisible' : ['|', '|', ('state', '!=', 'posted'), ('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')), ('send_whatsapp', '!=', 'sent')]}"
+                       type="object"/>
+               <button name="send_whatsapp_step" groups="whatsapp_integration_gtica.group_whatsapp_template_user"  class="btn" string="Invoice not sent" icon="fa-whatsapp"
+                       attrs="{'invisible' : ['|', '|', ('state', '!=', 'posted'), ('move_type', 'not in', ('out_invoice', 'out_refund', 'in_invoice', 'in_refund')), ('send_whatsapp', '!=', 'not_sent')]}"
+                       type="object"/>
+           </xpath>
+        </field>
+    </record>
+</odoo>

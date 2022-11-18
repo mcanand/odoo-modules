@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_crm_lead_extend" model="ir.ui.view">
+        <field name="name">crm.lead.form.extend</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+           <xpath expr="//header/button[@name='action_set_lost']" position="after">
+                <field name="send_whatsapp" invisible="1"/>
+                <button name="send_whatsapp_step" groups="whatsapp_integration_gtica.group_whatsapp_template_user" class="btn btn-primary" string="Send Whatsapp"
+                        attrs="{'invisible' : [('send_whatsapp', '!=', 'without_sending')]}" type="object"/>
+               <button name="send_whatsapp_step" groups="whatsapp_integration_gtica.group_whatsapp_template_user" class="btn btn-success" string="Offer sent" icon="fa-whatsapp"
+                       attrs="{'invisible' : [('send_whatsapp', '!=', 'sent')]}"
+                       type="object"/>
+               <button name="send_whatsapp_step" groups="whatsapp_integration_gtica.group_whatsapp_template_user"  class="btn" string="Offer not sent" icon="fa-whatsapp"
+                       attrs="{'invisible' : [('send_whatsapp', '!=', 'not_sent')]}"
+                       type="object"/>
+           </xpath>
+        </field>
+    </record>
+</odoo>
