@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="obst_mailing_contact_inherit" model="ir.ui.view">
+        <field name="name">mailing.contact.inherit.form.obst</field>
+        <field name="model">mailing.contact</field>
+        <field name="inherit_id" ref="mass_mailing.mailing_contact_view_form"/>
+        <field name="arch" type="xml">
+            <field name="country_id" position="after">
+                <field name="cargo_bike"/>
+                <field name="performance"/>
+            </field>
+        </field>
+    </record>
+</odoo>

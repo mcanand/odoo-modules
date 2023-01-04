@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<data>
+    .o_list_button:hover {
+    color: black;
+    box-shadow: 0 5px 15px black;
+
+}
+
+
+.nav-tabs:hover{
+     color: black;
+     box-shadow: 0 5px 15px black;
+
+
+}
+    <record id="social_media_types_view_kanban" model="ir.ui.view">
+        <field name="name">social.media.type.view.kanban</field>
+        <field name="model">social.media.types</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="social_media_types"/>
+                <field name="can_link_accounts"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_color_5">
+                            <div class="o_kanban_image"><button class="o_list_button:" style="background-color: white; border: 2px white;" type="object"  help="your help message" name="action_get_accounts">
+                                <img type="open" t-att-src="kanban_image('social.media.types', 'image', record.id.raw_value)" alt="Social Media"/></button>
+                            </div>
+                            <div>
+                                <h3 class="mt4"><t t-esc="record.name.value"/></h3>
+                                <t t-if="record.description.raw_value" t-raw="record.description.raw_value"/>
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+        <record id="action_social_media_types" model="ir.actions.act_window">
+        <field name="name">Social Media</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">social.media.types</field>
+        <field name="view_mode">kanban,form</field>
+    </record>
+
+            <menuitem
+            id="social_media_type_menu"
+            name="Social Medias"
+            parent="social_media_base.social_media_main_menu"
+            action="action_social_media_types"
+            sequence="35"/>
+</data>
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="social_media_linkedin" model="social.media.types">
+            <field name="name">LinkedIn</field>
+            <field name="social_media_types">linkedin</field>
+            <field name="description" type="html"><p>Link your LinkedIn To Odoo</p></field>
+            <field name="image" type="base64" file="social_media_linkedin/static/src/img/icons8-linkedin.svg"/>
+        </record>
+    </data>
+</odoo>

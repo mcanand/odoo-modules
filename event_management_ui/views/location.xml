@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="event_management_location" name="event management location">
+        <t t-call="website.layout">
+            <div class="container location_delivery">
+                <t t-set="loc" t-value="location_vals"/>
+                <div class="row">
+                    <div class="col-md-12 text-center pt-5 pb-5">
+                        <i class="fa fa-clock-o d-block"/>
+                        <h2>What time would you like your order?</h2>
+                    </div>
+                    <div class="col-md-12">
+                        <span><t t-esc="company.name"/>,<t t-esc="company.street"/>,<t t-esc="company.street2"/>,<t
+                                t-esc="company.city"/>,
+                            <t t-esc="company.zip"/>
+                        </span>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="row pb-5 pt-5">
+                            <div class="col-md-12 pt-2 pb-2">
+                                Shop opened From
+                                <span class="time_from">
+                                    <t t-esc="time_from"/>
+                                </span>
+                                To
+                                <span class="time_to">
+                                    <t t-esc="time_to"/>
+                                </span>
+                            </div>
+                            <div class="col">
+                                <input type="date" class="ev_pickup_input ev_delivery_date_js w-100" t-att-min="today"
+                                       t-att-max="tomorrow"/>
+                            </div>
+                            <div class="col">
+                                <input type="time" class="ev_pickup_input ev_delivery_time_js w-100"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                    <span class="float-right">Night Mode</span>
+                    </div>
+                    <div class="col-md-12">
+
+                    <label class="map_night_switch float-right">
+                        <input type="checkbox" class="map_night_switch_check_js"/>
+                        <span class="map_night_slider round"/>
+                    </label>
+                    </div>
+                    <div class="col-md-12 pt-1 pb-5">
+                        <div id="map"/>
+                    </div>
+                    <input type="hidden" class="ev_company_location"/>
+                    <div class="col-md-12 pt-1 pb-5">
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="ev_pickup_input w-100" placeholder="Street"/>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="ev_pickup_input w-100" placeholder="Street2"/>
+                            </div>
+                        </div>
+                        <div class="row mt-4">
+                            <div class="col">
+                                <input type="text" class="ev_pickup_input w-100" placeholder="city"/>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="ev_pickup_input w-100" placeholder="Zip"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+</odoo>

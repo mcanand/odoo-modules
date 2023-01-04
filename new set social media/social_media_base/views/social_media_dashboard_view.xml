@@ -1,0 +1,145 @@
+<odoo>
+    <record id="social_media_dashboard_kanban_view" model="ir.ui.view">
+        <field name="name">social.media.dashboard.kanban</field>
+        <field name="model">social.media.dashboard</field>
+        <field name="arch" type="xml">
+            <kanban create="0" class="oe_background_grey o_kanban_dashboard">
+                <field name="all_account_count" />
+                <field name="facebook_account_count" />
+                <field name="instagram_account_count" />
+                <field name="linkedin_account_count" />
+                <field name="twitter_account_count" />
+                <templates>
+                    <t t-name="kanban-box">
+<!--                        <div name="social_media">-->
+<!--                            <div t-attf-class="oe_kanban_content oe_kanban_global_click">-->
+<!--                                <div class="o_kanban_card_header_title">-->
+<!--                                    <div class="o_primary">-->
+<!--                                        <a name="social_media_accounts">-->
+<!--                                            Link Accounts-->
+<!--                                        </a>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            <div class="container o_kanban_card_content">-->
+<!--                                <div class="row text-center">-->
+<!--                                    <div class="col-3">-->
+<!--                                        <button class="btn btn-primary" name="link_facebook_account" type="object" >-->
+<!--                                            <span> Facebook </span>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-3 ">-->
+<!--                                        <button class="btn btn-primary" name="link_instagram_account" type="object">-->
+<!--                                            <span> Instagram </span>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-3  ">-->
+<!--                                        <button class="btn btn-primary" name="link_linkedin_account" type="object">-->
+<!--                                            <span> LinkedIn </span>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                    <div class="col-3 o_kanban_primary_bottom bottom_block ">-->
+<!--                                        <button class="btn btn-primary" name="link_linkedin_account" type="object">-->
+<!--                                            <span> Twitter</span>-->
+<!--                                        </button>-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+
+
+                        <div name="social_media01">
+                            <div t-attf-class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                        <a name="social_media_account">
+                                            Social Media Account Details
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="container o_kanban_card_content">
+                                <div class="row">
+                                    <div class="col-12 o_kanban_primary_left">
+                                        <u><a name="all_accounts" type="object" >
+                                            <span style="font-size:15px;">
+                                                <t t-esc="record.all_account_count.value" /><b> - All Accounts</b></span>
+                                        </a></u>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 o_kanban_primary_left">
+                                        <u><a name="facebook_accounts" type="object">
+                                            <span style="font-size:15px;"><t t-esc="record.facebook_account_count.value" /><b> - Facebook</b></span>
+                                        </a></u>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 o_kanban_primary_left">
+                                        <u><a name="instagram_accounts" type="object" >
+                                            <span style="font-size:15px;"><t t-esc="record.instagram_account_count.value" /><b> - Instagram</b></span>
+                                        </a></u>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 o_kanban_primary_left">
+                                        <u><a name="linkedin_accounts" type="object">
+                                            <span style="font-size:15px;"><t t-esc="record.linkedin_account_count.value" /><b> - LinkedIn</b></span>
+                                        </a></u>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 o_kanban_primary_left">
+                                        <u><a name="twitter_accounts" type="object">
+                                            <span style="font-size:15px;"><t t-esc="record.twitter_account_count.value" /><b> - Twitter</b></span>
+                                        </a></u>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="social_media_form" model="ir.ui.view">
+        <field name="name">social.media.form</field>
+        <field name="model">social.media.dashboard</field>
+        <field name="arch" type="xml">
+            <form create="0">
+                <sheet>
+                    <group>
+                        <field name="all_account_count" />
+                        <field name="facebook_account_count" />
+                        <field name="instagram_account_count" />
+                        <field name="linkedin_account_count" />
+                        <field name="twitter_account_count" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_social_media_dashboard" model="ir.actions.act_window">
+        <field name="name">Social Media Dashboard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">social.media.dashboard</field>
+        <!--        <field name="view_type">form</field>-->
+        <field name="view_mode">kanban</field>
+    </record>
+
+    <record id="social_media_data" model="social.media.dashboard">
+        <field name="name">Details</field>
+        <field name="color">2</field>
+    </record>
+
+    <menuitem
+            id="social_media_dashboard_menu"
+            name="Social Media Dashboard"
+            parent="social_media_base.social_media_main_menu"
+            action="action_social_media_dashboard"
+            sequence="30"/>
+
+</odoo>

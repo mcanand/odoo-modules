@@ -1,0 +1,18 @@
+.o_main_navbar{
+    background-color:#ed2c2d;
+    border-bottom:0px solid;
+}
+#oe_main_menu_navbar .o_menu_systray > li > a[data-action="edit"], #oe_main_menu_navbar .o_menu_systray > li > a[data-action="translate"], #oe_main_menu_navbar .o_menu_systray > li > a.css_edit_dynamic, #oe_main_menu_navbar .o_menu_systray > div > a[data-action="edit"], #oe_main_menu_navbar .o_menu_systray > div > a[data-action="translate"], #oe_main_menu_navbar .o_menu_systray > div > a.css_edit_dynamic {
+	background-color: #ed2c2d !important;
+	border-color: #ed2c2d !important;
+}
+/*
+.btn-primary {
+    color: #FFFFFF;
+    background-color: #ed2c2d !important;
+    border-color: #ed2c2d !important;
+    color: white;
+}*/
+tr#order_total_taxes {
+    display: none;
+}

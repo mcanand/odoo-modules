@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <data>
+        <menuitem
+            id="social_media_main_menu"
+            name="Social Media"
+            sequence="10"/>
+<!--        <menuitem-->
+<!--            id="social_media_configuration_menu"-->
+<!--            name="Social Media Configration"-->
+<!--            parent="social_media_main_menu"-->
+<!--            sequence="100"/>-->
+    </data>
+</odoo>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="website.company_description_google_map" inherit_id="website.company_description" name="Google map"
+                  customize_show="True">
+            <xpath expr="//address" position="after">
+                <a t-att-href="res_company.google_map_link()" target="_BLANK">
+                </a>
+                <iframe
+                        width="400"
+                        height="300"
+                        style="border:0"
+                        loading="lazy"
+                        allowfullscreen="allowfullscreen"
+                        t-att-src="res_company.google_map_dynamic_link()">
+                </iframe>
+            </xpath>
+        </template>
+    </data>
+</odoo>

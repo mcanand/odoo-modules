@@ -1,0 +1,119 @@
+/* address page*/
+@media (max-width: 412px) {
+        .address_banner {
+            position: relative;
+        }
+        .address_banner h1 {
+            font-size: 1em !important;
+            color: white !important;
+            font-weight: 600;
+        }
+}
+@media (min-width: 413px) {
+        .address_banner {
+            position: relative;
+        }
+        .address_banner h1 {
+            font-size: 1.6rem !important;
+            color: white !important;
+            font-weight: 600;
+        }
+}
+
+@media (max-width:179px) {
+        .res-767 {
+            padding: 1em 2.8rem !important;
+            height: 450px;
+        }
+        .res-750 {
+            margin: -8px -30px;
+            padding: 0 !important;
+        }
+        .res-750 .p-0{
+            font-size: 8pt;
+        }
+        .res-750 .company-section {
+            padding: 0px !important;
+        }
+        .res-750 .company-address {
+            font-size: 8pt;
+            width: 60vw;
+            text-align: justify;
+        }
+}
+
+@media (min-width:180px) and (max-width:279px) {
+        .res-767 {
+            padding: 0 3em !important;
+            height: 260px;
+        }
+        .res-750 {
+            margin: -8px -30px;
+            padding: 0 !important;
+        }
+        .res-750 .p-0{
+            font-size: 8pt;
+        }
+        .res-750 .company-section {
+            padding: 0px !important;
+        }
+        .res-750 .company-address {
+            font-size: 8pt;
+            max-height: -143%;
+            margin-bottom: 0px;
+            width: 70vw;
+        }
+}
+
+@media (min-width:280px) and (max-width: 767px) {
+        .res-767 {
+            padding: 1rem 3rem !important;
+            height: 260px;
+        }
+        .res-750 {
+            margin: -8px -30px;
+            padding: 0 !important;
+        }
+        .res-750 .p-0{
+            font-size: 10pt;
+        }
+        .res-750 .company-section {
+            padding: 0px !important;
+        }
+        .res-750 .company-address {
+            font-size: 10pt;
+            max-height: -143%;
+            margin-bottom: 0px;
+            width: 70vw;
+        }
+}
+
+@media (min-width: 768px) {
+        .res-750 .company-section {
+            padding-left: 0px !important;
+        }
+}
+
+/* order location page*/
+@media (max-width: 412px) {
+        .location-banner {
+            position: relative;
+        }
+        .location-banner h1 {
+            font-size: 1rem !important;
+            color: white !important;
+            font-weight: 600;
+            top: 50% !important;
+        }
+}
+@media (min-width: 413px) {
+        .location-banner {
+            position: relative;
+        }
+        .location-banner h1 {
+            font-size: 1.6rem !important;
+            color: white !important;
+            font-weight: 600;
+            top: 50% !important;
+        }
+}

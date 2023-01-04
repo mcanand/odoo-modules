@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="obst_footer_custom" inherit_id="website.layout">
+        <xpath expr="//footer" position="replace">
+            <div class="row m-0 p-4 bg-white">
+                <div class="col-lg-5 col-8 p-0">
+                    <t t-call="website.placeholder_header_brand">
+                        <t t-set="_link_class" t-valuef="mr-lg-auto mr-0 ob_nav_logo_mob"/>
+                    </t>
+                </div>
+                <div class="col-lg-5 text-black d-inline-flex footer_address">
+                    <div class="row w-100 p-1">
+                        <div class="col p-0">
+                            <a class="nav-link">&amp;copy;
+                                <span t-field="res_company.copyright_year" class="GT_Pressura_Pro_Mono"/>
+                            </a>
+                        </div>
+                        <div class="col p-0">
+                            <a href="/impressum" class="nav-link GT_Pressura_Pro_Mono text-dark">
+                                <span>Imprint</span>
+                            </a>
+                        </div>
+                        <div class="col p-0">
+                            <a href="#" class="nav-link GT_Pressura_Pro_Mono text-dark">
+                                <span>Privacy</span>
+                            </a>
+                        </div>
+                        <div class="col p-0">
+                            <a href="#" class="nav-link GT_Pressura_Pro_Mono text-dark">
+                                <span>Conditions</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-1 col-2 p-2">
+                    <img class="ob_icon " src="/gio_obstgemuese_theme/static/src/svg/55-share2.svg"/>
+                </div>
+                <div class="col-lg-1 col-2 p-2">
+                    <img src="/gio_obstgemuese_theme/static/src/svg/72-arrow-up.svg" class="ob_icon scroll_to_top"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

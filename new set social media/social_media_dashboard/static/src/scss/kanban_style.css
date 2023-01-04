@@ -1,0 +1,122 @@
+.sm_dash_box .sm_dash_round {
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-bottom: 4px;
+    padding-top: 6px;
+    width: fit-content;
+    height: 24px;
+    border-radius: 33px;
+    color: white;
+    background-color: #3072b5;
+}
+.sm_dash_box{
+    height:4vw;
+    background-color:inherit;
+    border:none;
+    text-align:left;
+}
+
+
+
+
+/* Style the tab */
+.sm_dash_tab .tab {
+float: left;
+border: none;
+background-color:inherit;
+width: 10%;
+height: auto;
+}
+
+/* Style the buttons inside the tab */
+.sm_dash_tab .tab button {
+display: block;
+background-color: inherit;
+color: black;
+padding: 10px;
+width: 110%;
+border: none;
+outline: none;
+text-align: left;
+cursor: pointer;
+transition: 0.3s;
+font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.sm_dash_tab .tab button:hover {
+background-color: #ddd;
+}
+
+/* Create an active/current "tab button" class */
+.sm_dash_tab .tab button.active {
+    background-color: #fff;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 31px;
+    width: 112%;
+/*    box-shadow: 0px 4px 3px -2px #999;*/
+}
+
+/* Style the tab content */
+.sm_dash_tab .tabcontent {
+    float: left;
+    padding: 0px 12px;
+    width: 90%;
+    background-color:inherit;
+    border-left: none;
+    height: auto;
+}
+.sm_dash_tab .line_chart{
+      box-shadow: 2px 2px 5px 2px #999;
+      border-radius:0px;
+
+}
+.sm_dash_tab .see_result {
+    width: 97.4%;
+    height: 3vw;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    background-color: #e9e7e7;
+    border-radius: 0px;
+    border: none;
+}
+.sm_dash_tab .post_box{
+    width:9vw;
+    height:5vw;
+    background-color:red;
+}
+.sm_dash_box {
+    width: 100%;
+    height:7vw;
+    background-color: inherit;
+    border-radius: 0px;
+    box-shadow: 3px 3px 8px 0px #999;
+}
+.sm_dash_post_img{
+    border-radius:0px;
+    width:42%;
+}
+.content_txts_over{
+    line-height:10px;
+    left:-80px;
+}
+.male_count {
+    padding: 0px 9px 0px 9px;
+    border-radius: 0px;
+    background-color: rgb(65, 155, 215);
+}
+.female_count{
+    padding: 0px 9px 0px 9px;
+    border-radius: 0px;
+    background-color: rgb(240, 95, 105);
+}
+.see_result.contents{
+    width:95% !important;
+}
+.social_media_select {
+    height: 2.5vw;
+    width: 15vw;
+    font-size: 16px;
+}

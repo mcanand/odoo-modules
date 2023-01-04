@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--    <template id="checkout_obst" inherit_id="website_sale.address">
+            <xpath expr="//t" position="replace">
+                <div class="col-12 col-xl order-xl-1 oe_cart oe_website_sale">
+                    <t t-if="mode == ('edit', 'billing')">
+                        <h2 class="o_page_header mt8">Your Address</h2>
+                    </t>
+                    <t t-if="mode[1] == 'shipping'">
+                        <h2 class="o_page_header mt8 GT_Pressura_Pro_Mono">Order
+                        </h2>
+                    </t>
+                    <t t-if="partner_id == website_sale_order.partner_shipping_id.id == website_sale_order.partner_invoice_id.id">
+                        <div class="alert alert-warning" role="alert"
+                             t-if="not only_services">
+                            <h4 class="alert-heading">Be aware!</h4>
+                            <p groups="sale.group_delivery_invoice_address">
+                                You are editing your <b>billing and shipping</b> addresses
+                                at the same time!
+                                <br/>
+                                If you want to modify your shipping address, create
+                                a <a href='/shop/address'>new address</a>.
+                            </p>
+                        </div>
+                    </t>
+                    <t t-if="error" t-foreach="error.get('error_message', [])"
+                       t-as="err">
+                        <h5 class="text-danger" t-esc="err"/>
+                    </t>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2 class="GT_Pressura_Pro_Mono mt-2">As Customer</h2>
+                            <form class="mt-5" role="form"
+                                  t-attf-action="/web/login" method="post"
+                                  onsubmit="this.action = '/web/login' + location.hash">
+                                <input type="hidden" name="csrf_token"
+                                       t-att-value="request.csrf_token()"/>
+
+                                <div class="form-group field-db"
+                                     t-if="databases and len(databases) &gt; 1">
+                                    <label for="db" class="col-form-label">
+                                        Database
+                                    </label>
+                                    <div t-attf-class="input-group {{'input-group-sm' if form_small else ''}}">
+                                        <input type="text" name="db"
+                                               t-att-value="request.db" id="db"
+                                               t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                                               required="required"
+                                               readonly="readonly"/>
+                                        <span class="input-group-append">
+                                            <a role="button"
+                                               href="/web/database/selector"
+                                               class="btn btn-secondary">Select
+                                                <i class="fa fa-database" role="img"
+                                                   aria-label="Database"
+                                                   title="Database"></i>
+                                            </a>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="form-group field-login">
+                                    <label class="log_reg_label GT_Pressura_Pro_Mono"
+                                           for="login">Your e-mail address
+                                    </label>
+                                    <input type="text" placeholder="Email"
+                                           name="login" t-att-value="login"
+                                           id="login"
+                                           t-attf-class="form-control login_input log_reg_input GT_Pressura_Pro_Mono"
+                                           required="required"
+                                           autocapitalize="off">
+                                        <img class="input_close"
+                                             src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"/>
+                                        <img class="input_tick"
+                                             src="/gio_obstgemuese_theme/static/src/svg/64-check.svg"/>
+                                    </input>
+                                    <div class="validation_error_email GT_Pressura_Pro_Mono"></div>
+                                </div>
+
+                                <div class="form-group field-password">
+                                    <label class="log_reg_label GT_Pressura_Pro_Mono"
+                                           for="password">Your password
+                                    </label>
+                                    <input type="password" placeholder="Password"
+                                           name="password" id="password"
+                                           t-attf-class="form-control login_input log_reg_input GT_Pressura_Pro_Mono"
+                                           required="required"
+                                           autocomplete="current-password"
+                                           t-att-autofocus="'autofocus' if login else None"
+                                           maxlength="4096">
+                                        <img class="input_close"
+                                             src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"/>
+                                        <img class="input_tick"
+                                             src="/gio_obstgemuese_theme/static/src/svg/64-check.svg"/>
+
+                                    </input>
+                                    <div class="validation_error_password"></div>
+                                </div>
+
+                                <p class="alert alert-danger" t-if="error"
+                                   role="alert">
+                                    <t t-esc="error"/>
+                                </p>
+                                <p class="alert alert-success" t-if="message"
+                                   role="status">
+                                    <t t-esc="message"/>
+                                </p>
+                                <div class="row">
+                                    <div class="col">
+                                        <label class="del_add_checkbox GT_Pressura_Pro_Mono font-weight-normal">
+                                            Remember me
+                                            <input type="checkbox"
+                                                   class="rem_me_checkbox"/>
+                                            <span class='check_cover'></span>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="col text-right">
+                                        <a href="/web/reset_password"
+                                           class="GT_Pressura_Pro_Mono forgot_password">
+                                            Forgot
+                                            Password
+                                        </a>
+                                    </div>
+                                </div>
+                                <div t-attf-class="clearfix oe_login_buttons text-center mb-1 {{'pt-2' if form_small else 'pt-3'}}">
+                                    <button type="submit"
+                                            class="log_reg_btn btn-block GT_Pressura_Pro_Mono">
+                                        Register
+                                    </button>
+                                    &lt;!&ndash;                                <t t-if="debug">&ndash;&gt;
+                                    &lt;!&ndash;                                    <button type="submit" name="redirect" value="/web/become"&ndash;&gt;
+                                    &lt;!&ndash;                                            class="GT_Pressura_Pro_Mono btn btn-link btn-sm btn-block">&ndash;&gt;
+                                    &lt;!&ndash;                                        Log in as superuser&ndash;&gt;
+                                    &lt;!&ndash;                                    </button>&ndash;&gt;
+                                    &lt;!&ndash;                                </t>&ndash;&gt;
+                                    <div class="o_login_auth"/>
+                                </div>
+
+                                <input type="hidden" name="redirect"
+                                       t-att-value="redirect"/>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <h2 class="GT_Pressura_Pro_Mono mt-2">As Guest
+
+                            </h2>
+                            <form action="/shop/address" method="post"
+                                  class="checkout_autoformat mt-3 pt-3">
+                                <div class="form-row">
+                                    <div t-attf-class="form-group #{error.get('name') and 'o_has_error' or ''} col-lg-12 div_name">
+                                        <label class="col-form-label log_reg_label GT_Pressura_Pro_Mono"
+                                               for="name">
+                                            Name
+                                        </label>
+                                        <input type="text" name="name"
+                                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control #{error.get('name') and 'is-invalid' or ''}"
+                                               t-att-value="'name' in checkout and checkout['name']"/>
+                                    </div>
+                                    <div class="w-100"/>
+                                    <div t-attf-class="form-group #{error.get('email') and 'o_has_error' or ''} col-lg-6"
+                                         id="div_email">
+                                        <label t-attf-class="log_reg_label GT_Pressura_Pro_Mono col-form-label #{mode[1] == 'shipping' and 'label-optional' or ''}"
+                                               for="email">Email
+                                        </label>
+                                        <input type="email" name="email"
+                                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control #{error.get('email') and 'is-invalid' or ''}"
+                                               t-att-value="'email' in checkout and checkout['email']"/>
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('phone') and 'o_has_error' or ''} col-lg-6"
+                                         id="div_phone">
+                                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"
+                                               for="phone">
+                                            Phone
+                                        </label>
+                                        <input type="tel" name="phone"
+                                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control #{error.get('phone') and 'is-invalid' or ''}"
+                                               t-att-value="'phone' in checkout and checkout['phone']"/>
+                                    </div>
+                                    <div class="w-100"/>
+                                    <div t-attf-class="form-group #{error.get('street') and 'o_has_error' or ''} col-lg-12 div_street">
+                                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"
+                                               for="street">
+                                            Street
+                                            <span class="d-none d-md-inline">and
+                                                Number
+                                            </span>
+                                        </label>
+                                        <input type="text" name="street"
+                                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control #{error.get('street') and 'is-invalid' or ''}"
+                                               t-att-value="'street' in checkout and checkout['street']"/>
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('street2') and 'o_has_error' or ''} col-lg-12 div_street2">
+                                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label label-optional"
+                                               for="street2">Street 2
+                                        </label>
+                                        <input type="text" name="street2"
+                                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control #{error.get('street2') and 'is-invalid' or ''}"
+                                               t-att-value="'street2' in checkout and checkout['street2']"/>
+                                    </div>
+                                    <div class="w-100"/>
+                                    <t t-set='zip_city'
+                                       t-value='country and [x for x in country.get_address_fields() if x in ["zip", "city"]] or ["city", "zip"]'/>
+                                    <t t-if="'zip' in zip_city and zip_city.index('zip') &lt; zip_city.index('city')">
+                                        <div t-attf-class="form-group #{error.get('zip') and 'o_has_error' or ''} col-md-4 div_zip">
+                                            <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label label-optional"
+                                                   for="zip">Zip Code
+                                            </label>
+                                            <input type="text" name="zip"
+                                                   t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control #{error.get('zip') and 'is-invalid' or ''}"
+                                                   t-att-value="'zip' in checkout and checkout['zip']"/>
+                                        </div>
+                                    </t>
+                                    <div t-attf-class="form-group #{error.get('city') and 'o_has_error' or ''} col-md-8 div_city">
+                                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"
+                                               for="city">
+                                            City
+                                        </label>
+                                        <input type="text" name="city"
+                                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control #{error.get('city') and 'is-invalid' or ''}"
+                                               t-att-value="'city' in checkout and checkout['city']"/>
+                                    </div>
+                                    <t t-if="'zip' in zip_city and zip_city.index('zip') &gt; zip_city.index('city')">
+                                        <div t-attf-class="form-group #{error.get('zip') and 'o_has_error' or ''} col-md-4 div_zip">
+                                            <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label label-optional"
+                                                   for="zip">Zip Code
+                                            </label>
+                                            <input type="text" name="zip"
+                                                   t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control #{error.get('zip') and 'is-invalid' or ''}"
+                                                   t-att-value="'zip' in checkout and checkout['zip']"/>
+                                        </div>
+                                    </t>
+                                    <div class="w-100"/>
+                                    <div t-attf-class="form-group #{error.get('country_id') and 'o_has_error' or ''} col-lg-6 div_country">
+                                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"
+                                               for="country_id">Country
+                                        </label>
+                                        <select id="country_id" name="country_id"
+                                                t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control #{error.get('country_id') and 'is-invalid' or ''}"
+                                                t-att-mode="mode[1]">
+                                            <option value="">Country...</option>
+                                            <t t-foreach="countries" t-as="c">
+                                                <option t-att-value="c.id"
+                                                        t-att-selected="c.id == (country and country.id or -1)">
+                                                    <t t-esc="c.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div t-attf-class="form-group #{error.get('state_id') and 'o_has_error' or ''} col-lg-6 div_state"
+                                         t-att-style="(not country or not country.state_ids) and 'display: none'">
+                                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"
+                                               for="state_id">State / Province
+                                        </label>
+                                        <select name="state_id"
+                                                t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control #{error.get('state_id') and 'is-invalid' or ''}"
+                                                data-init="1">
+                                            <option value="">State / Province...
+                                            </option>
+                                            <t t-foreach="country_states" t-as="s">
+                                                <option t-att-value="s.id"
+                                                        t-att-selected="s.id == ('state_id' in checkout and country and checkout['state_id'] != '' and int(checkout['state_id']))">
+                                                    <t t-esc="s.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </div>
+                                    <div class="w-100"/>
+                                    <t t-if="mode == ('new', 'billing') and not only_services">
+                                        <div class="col-lg-12">
+                                            <div class="checkbox">
+                                                &lt;!&ndash;                                            <label>&ndash;&gt;
+                                                &lt;!&ndash;                                                <input type="checkbox"&ndash;&gt;
+                                                &lt;!&ndash;                                                       id='shipping_use_same'&ndash;&gt;
+                                                &lt;!&ndash;                                                       class="mr8 log_reg_input GT_Pressura_Pro_Mono"&ndash;&gt;
+                                                &lt;!&ndash;                                                       name='use_same' value="1"&ndash;&gt;
+                                                &lt;!&ndash;                                                       checked='checked'/>Ship&ndash;&gt;
+                                                &lt;!&ndash;                                                to the same address&ndash;&gt;
+                                                &lt;!&ndash;                                                <span class='ship_to_other text-muted GT_Pressura_Pro_Mono'&ndash;&gt;
+                                                &lt;!&ndash;                                                      style="display: none">&ndash;&gt;
+                                                &lt;!&ndash;                                                    &amp;nbsp;(&ndash;&gt;
+                                                &lt;!&ndash;                                                    <i>Your shipping address&ndash;&gt;
+                                                &lt;!&ndash;                                                        will be requested later)&ndash;&gt;
+                                                &lt;!&ndash;                                                    </i>&ndash;&gt;
+                                                &lt;!&ndash;                                                </span>&ndash;&gt;
+                                                &lt;!&ndash;                                            </label>&ndash;&gt;
+                                                <label class="del_add_checkbox GT_Pressura_Pro_Mono font-weight-normal">
+                                                    Ship
+                                                    to the same address
+                                                    <input type="checkbox"
+                                                           id='shipping_use_same'
+                                                           checked='checked'
+                                                           name='use_same'
+                                                           class="rem_me_checkbox"/>
+                                                    <span class='check_cover'></span>
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+
+                                <input type="hidden" name="csrf_token"
+                                       t-att-value="request.csrf_token()"/>
+                                <input type="hidden" name="submitted" value="1"/>
+                                <input type="hidden" name="partner_id"
+                                       t-att-value="partner_id or '0'"/>
+                                <input type="hidden" name="callback"
+                                       t-att-value="callback"/>
+                                &lt;!&ndash; Example &ndash;&gt;
+                                <input type="hidden" name="field_required"
+                                       t-att-value="'phone,name'"/>
+
+                                <div class="d-flex justify-content-between">
+                                    &lt;!&ndash;                                <a role="button"&ndash;&gt;
+                                    &lt;!&ndash;                                   t-att-href="mode == ('new', 'billing') and '/shop/cart' or '/shop/checkout'"&ndash;&gt;
+                                    &lt;!&ndash;                                   class="btn btn-secondary mb32 log_reg_btn GT_Pressura_Pro_Mono">&ndash;&gt;
+                                    &lt;!&ndash;                                    <i class="fa fa-chevron-left"/>&ndash;&gt;
+                                    &lt;!&ndash;                                    <span>Back</span>&ndash;&gt;
+                                    &lt;!&ndash;                                </a>&ndash;&gt;
+                                    <a role="button" href="#"
+                                       class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 a-submit a-submit-disable a-submit-loading">
+                                        <span>Continue</span>
+                                        <i class="fa fa-chevron-right"/>
+                                    </a>
+                                </div>
+                            </form>
+                            <style>
+                                .card-body{
+                                background-color:whitesmoke !important;
+                                font-family: "GT Pressura Pro Mono" !important;
+                                }
+                                .card{
+                                border:0px solid;
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>-->
+    <template id="obst_address">
+        <div class="row ">
+            <div class="col-md-6">
+                <h2 class="GT_Pressura_Pro_Mono mt-2">As Customer</h2>
+                <form class="mt-5" role="form"
+                      t-attf-action="/web/login" method="post"
+                      onsubmit="this.action = '/web/login' + location.hash">
+                    <input type="hidden" name="csrf_token"
+                           t-att-value="request.csrf_token()"/>
+
+                    <div class="form-group field-db"
+                         t-if="databases and len(databases) &gt; 1">
+                        <label for="db" class="col-form-label">
+                            Database
+                        </label>
+                        <div t-attf-class="input-group {{'input-group-sm' if form_small else ''}}">
+                            <input type="text" name="db"
+                                   t-att-value="request.db" id="db"
+                                   t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                                   required="required"
+                                   readonly="readonly"/>
+                            <span class="input-group-append">
+                                <a role="button"
+                                   href="/web/database/selector"
+                                   class="btn btn-secondary">Select
+                                    <i class="fa fa-database" role="img"
+                                       aria-label="Database"
+                                       title="Database"></i>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group field-login">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="login">Your e-mail address
+                        </label>
+                        <input type="text" placeholder="Email"
+                               name="login" t-att-value="login"
+                               id="login"
+                               t-attf-class="form-control login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               autocapitalize="off">
+                            <img class="input_close"
+                                 src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"/>
+                            <img class="input_tick"
+                                 src="/gio_obstgemuese_theme/static/src/svg/64-check.svg"/>
+                        </input>
+                        <div class="validation_error_email GT_Pressura_Pro_Mono"></div>
+                    </div>
+
+                    <div class="form-group field-password">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="password">Your password
+                        </label>
+                        <input type="password" placeholder="Password"
+                               name="password" id="password"
+                               t-attf-class="form-control login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               autocomplete="current-password"
+                               t-att-autofocus="'autofocus' if login else None"
+                               maxlength="4096">
+                            <img class="input_close"
+                                 src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"/>
+                            <img class="input_tick"
+                                 src="/gio_obstgemuese_theme/static/src/svg/64-check.svg"/>
+
+                        </input>
+                        <div class="validation_error_password"></div>
+                    </div>
+
+                    <p class="alert alert-danger" t-if="error"
+                       role="alert">
+                        <t t-esc="error"/>
+                    </p>
+                    <p class="alert alert-success" t-if="message"
+                       role="status">
+                        <t t-esc="message"/>
+                    </p>
+                    <div class="row">
+                        <div class="col">
+                            <label class="del_add_checkbox GT_Pressura_Pro_Mono font-weight-normal">
+                                Remember me
+                                <input type="checkbox"
+                                       class="rem_me_checkbox"/>
+                                <span class='check_cover'></span>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <div class="col text-right">
+                            <a href="/web/reset_password"
+                               class="GT_Pressura_Pro_Mono forgot_password">
+                                Forgot
+                                Password
+                            </a>
+                        </div>
+                    </div>
+                    <div t-attf-class="clearfix oe_login_buttons text-center mb-1 {{'pt-2' if form_small else 'pt-3'}}">
+                        <button type="submit"
+                                class="log_reg_btn btn-block GT_Pressura_Pro_Mono">
+                            Register
+                        </button>
+                        <!--                                <t t-if="debug">-->
+                        <!--                                    <button type="submit" name="redirect" value="/web/become"-->
+                        <!--                                            class="GT_Pressura_Pro_Mono btn btn-link btn-sm btn-block">-->
+                        <!--                                        Log in as superuser-->
+                        <!--                                    </button>-->
+                        <!--                                </t>-->
+                        <div class="o_login_auth"/>
+                    </div>
+
+                    <input type="hidden" name="redirect"
+                           t-att-value="redirect"/>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2 class="GT_Pressura_Pro_Mono mt-2">As Guest
+
+                </h2>
+                <!--                <form action="/shop/address" method="post"-->
+                <!--                      class="checkout_autoformat mt-3 pt-3">-->
+                <div class="form-row">
+                    <div t-attf-class="form-group  col-lg-12 div_name">
+                        <label class="col-form-label log_reg_label GT_Pressura_Pro_Mono"
+                               for="name">
+                            Name
+                        </label>
+                        <input type="text" name="name"
+                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "
+                        />
+                    </div>
+                    <div class="w-100"/>
+                    <div t-attf-class="form-group  col-lg-6"
+                         id="div_email">
+                        <label t-attf-class="log_reg_label GT_Pressura_Pro_Mono col-form-label "
+                               for="email">Email
+                        </label>
+                        <input type="email" name="email"
+                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "
+                        />
+                    </div>
+                    <div t-attf-class="form-group col-lg-6"
+                         id="div_phone">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"
+                               for="phone">
+                            Phone
+                        </label>
+                        <input type="tel" name="phone"
+                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "
+                        />
+                    </div>
+                    <div class="w-100"/>
+                    <div t-attf-class="form-group  col-lg-12 div_street">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"
+                               for="street">
+                            Street
+                            <span class="d-none d-md-inline">and
+                                Number
+                            </span>
+                        </label>
+                        <input type="text" name="street"
+                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "
+                        />
+                    </div>
+                    <div t-attf-class="form-group  col-lg-12 div_street2">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label label-optional"
+                               for="street2">Street 2
+                        </label>
+                        <input type="text" name="street2"
+                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "
+                        />
+                    </div>
+                    <div class="w-100"/>
+
+
+                    <div t-attf-class="form-group col-md-4 div_zip">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label label-optional"
+                               for="zip">Zip Code
+                        </label>
+                        <input type="text" name="zip"
+                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control"
+                        />
+                    </div>
+
+                    <div t-attf-class="form-group  col-md-8 div_city">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"
+                               for="city">
+                            City
+                        </label>
+                        <input type="text" name="city"
+                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "
+                        />
+                    </div>
+
+                    <div t-attf-class="form-group  col-md-4 div_zip">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label label-optional"
+                               for="zip">Zip Code
+                        </label>
+                        <input type="text" name="zip"
+                               t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "
+                        />
+                    </div>
+
+                    <div class="w-100"/>
+                    <div t-attf-class="form-group col-lg-6 div_country">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"
+                               for="country_id">Country
+                        </label>
+                        <select id="country_id" name="country_id"
+                                t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "
+                        >
+                            <option value="">Country...</option>
+
+                            <option>
+
+                            </option>
+
+                        </select>
+                    </div>
+                    <div t-attf-class="form-group  col-lg-6 div_state"
+                    >
+                        <label class="log_reg_label GT_Pressura_Pro_Mono col-form-label"
+                               for="state_id">State / Province
+                        </label>
+                        <select name="state_id"
+                                t-attf-class="GT_Pressura_Pro_Mono log_reg_input form-control "
+                                data-init="1">
+                            <option value="">State / Province...
+                            </option>
+                            <t t-foreach="country_states" t-as="s">
+                                <option
+                                >
+
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="w-100"/>
+
+                    <div class="col-lg-12">
+                        <div class="checkbox">
+                            <!--                                            <label>-->
+                            <!--                                                <input type="checkbox"-->
+                            <!--                                                       id='shipping_use_same'-->
+                            <!--                                                       class="mr8 log_reg_input GT_Pressura_Pro_Mono"-->
+                            <!--                                                       name='use_same' value="1"-->
+                            <!--                                                       checked='checked'/>Ship-->
+                            <!--                                                to the same address-->
+                            <!--                                                <span class='ship_to_other text-muted GT_Pressura_Pro_Mono'-->
+                            <!--                                                      style="display: none">-->
+                            <!--                                                    &amp;nbsp;(-->
+                            <!--                                                    <i>Your shipping address-->
+                            <!--                                                        will be requested later)-->
+                            <!--                                                    </i>-->
+                            <!--                                                </span>-->
+                            <!--                                            </label>-->
+                            <label class="del_add_checkbox GT_Pressura_Pro_Mono font-weight-normal">
+                                Ship
+                                to the same address
+                                <input type="checkbox"
+                                       id='shipping_use_same'
+                                       checked='checked'
+                                       name='use_same'
+                                       class="rem_me_checkbox"/>
+                                <span class='check_cover'></span>
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <input type="hidden" name="csrf_token"
+                       t-att-value="request.csrf_token()"/>
+                <input type="hidden" name="submitted" value="1"/>
+                <!--                            <input type="hidden" name="partner_id"-->
+                <!--                                   t-att-value="partner_id or '0'"/>-->
+                <!--                            <input type="hidden" name="callback"-->
+                <!--                                   t-att-value="callback"/>-->
+                <!-- Example -->
+                <!--                            <input type="hidden" name="field_required"-->
+                <!--                                   t-att-value="'phone,name'"/>-->
+
+                <div class="d-flex justify-content-between">
+                    <!--                                <a role="button"-->
+                    <!--                                   t-att-href="mode == ('new', 'billing') and '/shop/cart' or '/shop/checkout'"-->
+                    <!--                                   class="btn btn-secondary mb32 log_reg_btn GT_Pressura_Pro_Mono">-->
+                    <!--                                    <i class="fa fa-chevron-left"/>-->
+                    <!--                                    <span>Back</span>-->
+                    <!--                                </a>-->
+                    <a role="button" href="#"
+                       class="btn log_reg_btn GT_Pressura_Pro_Mono mb32 a-submit a-submit-disable a-submit-loading">
+                        <span>Continue</span>
+                        <i class="fa fa-chevron-right"/>
+                    </a>
+                </div>
+                <!--                </form>-->
+                <style>
+                    .card-body{
+                    background-color:whitesmoke !important;
+                    font-family: "GT Pressura Pro Mono" !important;
+                    }
+                    .card{
+                    border:0px solid;
+                    }
+                </style>
+            </div>
+        </div>
+    </template>
+    <template id="custom_checkout_obst">
+        <t t-call="website.layout">
+            <section class="step-container mt-5 pt-5">
+                <div class="">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-md-8">
+                            <div class="wizard">
+                                <div class="wizard-inner">
+                                    <div class="connecting-line"></div>
+                                    <ul class="nav nav-tabs" role="tablist">
+                                        <li role="presentation" class="active">
+                                            <a href="#step1" data-toggle="tab"
+                                               aria-controls="step1" role="tab"
+                                               aria-expanded="true">
+                                                <span class="round-tab">1</span>
+                                                <i>registration</i>
+                                            </a>
+                                        </li>
+                                        <li role="presentation"
+                                            class="disabled">
+                                            <a href="#step2" data-toggle="tab"
+                                               aria-controls="step2" role="tab"
+                                               aria-expanded="false">
+                                                <span class="round-tab">2</span>
+                                                <i>Shipping method</i>
+                                            </a>
+                                        </li>
+                                        <li role="presentation"
+                                            class="disabled">
+                                            <a href="#step3" data-toggle="tab"
+                                               aria-controls="step3" role="tab">
+                                                <span class="round-tab">3</span>
+                                                <i>Payment method</i>
+                                            </a>
+                                        </li>
+                                        <li role="presentation"
+                                            class="disabled">
+                                            <a href="#step4" data-toggle="tab"
+                                               aria-controls="step4" role="tab">
+                                                <span class="round-tab">4</span>
+                                                <i>Confirmation</i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div action="index.html"
+                                     class="login-box">
+                                    <div class="tab-content" id="main_form">
+                                        <div class="tab-pane active"
+                                             role="tabpanel" id="step1">
+                                            <h3 class="text-left GT_Pressura_Pro_Mono">
+                                                Order
+                                            </h3>
+                                            <div id="registration">
+                                                <t t-if="user_partner_id ==  order_partner_id">
+                                                    <t t-call="gio_obstgemuese_theme.obst_address"/>
+                                                </t>
+                                                <t t-else="">
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <h4 class="pb-2 GT_Pressura_Pro_Mono">
+                                                                Billing Address
+                                                            </h4>
+                                                            <t t-call="website_sale.address_kanban">
+                                                                <t t-set='contact'
+                                                                   t-value="order.partner_id"/>
+                                                                <t t-set='selected'
+                                                                   t-value="1"/>
+                                                                <t t-set='readonly'
+                                                                   t-value="1"/>
+                                                                <!--                                                                <t t-set='allow_edit'-->
+                                                                <!--                                                                   t-value="1"/>-->
+                                                            </t>
+                                                        </div>
+                                                        <div class="col-md-6 ">
+                                                            <h4 class="pb-2 GT_Pressura_Pro_Mono">
+                                                                Shipping Address
+                                                            </h4>
+                                                            <div class="row">
+                                                                <t t-foreach="shippings"
+                                                                   t-as="ship">
+
+                                                                    <div class="col-md-12 mt-1 shipping_select"
+                                                                         t-att-value="ship.id">
+                                                                        <input type="hidden"
+                                                                               class="ship_id"
+                                                                               t-att-value="ship.id">
+                                                                            <t t-call="website_sale.address_kanban">
+                                                                                <t t-set='contact'
+                                                                                   t-value="ship"/>
+                                                                                <t t-set='selected'
+                                                                                   t-value="order.partner_shipping_id==ship"/>
+                                                                                <!--                                                                    <t t-set='readonly'-->
+                                                                                <!--                                                                       t-value="bool(len(shippings)==1)"/>-->
+                                                                                <!--                                                                    <t t-set='edit_billing'-->
+                                                                                <!--                                                                       t-value="bool(ship==order.partner_id)"/>-->
+                                                                                <!--                                                                    <t t-set="allow_edit"-->
+                                                                                <!--                                                                       t-value="not order.partner_id or (ship.id in order.partner_id.child_ids.ids)"/>-->
+                                                                            </t>
+                                                                        </input>
+                                                                    </div>
+                                                                </t>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </t>
+                                            </div>
+                                            <ul class="list-inline pull-right">
+                                                <li>
+                                                    <button type="button"
+                                                            class="log_reg_btn next-step">
+                                                        Continue
+                                                    </button>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tab-pane" role="tabpanel"
+                                             id="step2">
+                                            <h3 class="text-left GT_Pressura_Pro_Mono">
+                                                Shipping Methode
+                                            </h3>
+                                            <div class="row mt-5 GT_Pressura_Pro_Mono">
+                                                <div class="col-12">
+                                                    <input type="radio" id="shipping_methode_radio" name="shipping_methode" value="standard"/>
+                                                    <label>Standard</label>
+                                                    <p>
+                                                        It's important to have a
+                                                        good customer service, a
+                                                        customer service
+                                                        provider. Aenean's good
+                                                        fortune needs pain.
+                                                        Jasmine mass Together
+                                                        with their companions,
+                                                        the mountains will give
+                                                        birth to feathers and
+                                                        great thrusts, and a
+                                                        ridiculous mouse will be
+                                                        born. Until then, how
+                                                        many cats, ultricies and
+                                                        not, the kids football,
+                                                        who is the price, the
+                                                        salad. There is no mass
+                                                        effect for anyone.
+                                                    </p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button type="button"
+                                                            class="log_reg_btn next-step">
+                                                        Continue
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="row mt-5 GT_Pressura_Pro_Mono">
+                                                <div class="col-12">
+                                                    <input type="radio" id="shipping_methode_radio" name="shipping_methode" value="express"/>
+                                                    <label>Express</label>
+                                                    <p>
+                                                        Expresszuschlag costs
+                                                        CHF 7.85
+                                                        Jasmine mass.<br/> Together
+                                                        with their companions,
+                                                        the mountains will give
+                                                        birth to feathers and
+                                                        great thrusts, and a
+                                                        ridiculous mouse will be
+                                                        born. Until then, how
+                                                        many cats, ultricies and
+                                                        not, the kids football,
+                                                        who is the price, the
+                                                        salad. There is no mass
+                                                        effect for anyone.
+                                                    </p>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button type="button"
+                                                            class="log_reg_btn next-step">
+                                                        Continue
+                                                    </button>
+                                                </div>
+                                            </div>
+
+<!--                                            <ul class="list-inline pull-right">-->
+<!--                                                <li>-->
+<!--                                                    <button type="button"-->
+<!--                                                            class="default-btn prev-step">-->
+<!--                                                        Back-->
+<!--                                                    </button>-->
+<!--                                                </li>-->
+<!--                                                <li>-->
+<!--                                                    <button type="button"-->
+<!--                                                            class="log_reg_btn next-step">-->
+<!--                                                        Continue-->
+<!--                                                    </button>-->
+<!--                                                </li>-->
+<!--                                            </ul>-->
+                                        </div>
+                                        <div class="tab-pane" role="tabpanel"
+                                             id="step3">
+                                            <h4 class="text-center">Step 3</h4>
+                                                <t t-call="payment.checkout">
+                                                    <t t-set="footer_template_id" t-value="'website_sale.payment_footer'"/>
+                                                    <t t-set="submit_button_label">Pay Now</t>
+                                                </t>
+
+                                        </div>
+                                        <div class="tab-pane" role="tabpanel"
+                                             id="step4">
+                                            <h4 class="text-left">Confirmation</h4>
+
+
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </t>
+    </template>
+    <template id="address_kanban_inherit"
+              inherit_id="website_sale.address_kanban">
+        <xpath expr="//div[hasclass('card-footer')]" position="replace">
+
+        </xpath>
+    </template>
+</odoo>

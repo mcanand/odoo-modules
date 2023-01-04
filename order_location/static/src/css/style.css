@@ -1,0 +1,287 @@
+.panel {
+    -webkit-box-shadow: 0 0px 0px rgb(0 0 0 / 5%)!important;
+    box-shadow: 0 0px 1px rgb(0 0 0 / 5%)!important;
+
+    margin-bottom: 0px!important;
+}
+
+.list-group-item{
+		cursor: pointer;
+    padding: 1rem;
+    position: relative;
+    border-radius: 5px!important;
+
+	}
+	.ho1{
+
+    font-family: math;
+    font-weight: bold;
+    letter-spacing: 1px;
+    font-size: 15px;
+    margin: 0px;
+    line-height: 23px;
+
+	}
+.ho2{
+margin-top: 14px;
+    font-size: 19px;
+    /* float: right!important; */
+    position: absolute;
+    right: 22px;
+top: 0px;
+}
+.ho3{
+       margin-top: 10px;
+    font-family: monospace;
+    font-size: 19px;
+    font-weight: 900;
+    margin-bottom: 0px;
+}
+.ho4{
+    font-family: monospace;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 0px;
+    margin-top: 7px;
+}
+.ho5{
+    font-family: auto;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 0px;
+    margin-top: 7px;
+    color: #848181;
+}
+.ho6{
+    border-radius: 100px;
+    position: absolute;
+    top: 0.5rem;
+    right: 2.5rem;
+    background-color: #0a8020;
+    border: 1px solid #0a8020;
+    color: #fff;
+    font-weight: 600;
+    padding: 7px 15px 9px;
+    font-size: 12px;
+}
+.ho7{
+font-size: 19px;
+    text-align: center;
+    color: #291dff;
+    letter-spacing: 1px;
+    font-weight: 800;
+}
+.ho8{
+	background: #0a8020;
+    padding: 14px 30px 15px;
+    text-align: center;
+}
+.ho9{
+	color: white;
+    font-weight: 700;
+}
+.ho9:hover{
+color: white!important;
+}
+.ho10{
+	position: absolute;
+    right: 50px;
+}
+.ho11{
+float: right;
+    margin-top: 15px;
+    color: #291dff;
+    font-weight: 600;
+    margin-right: 50px;
+}
+.ho12{
+	color: black;
+    font-weight: 400;
+    margin-left: 15px;
+}
+.panel-default {
+    border-color: #ddd0!important;
+}
+.cpart{
+    margin-bottom: 15px;
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 800;
+    line-height: 20px;
+	}
+	.cpart1{
+    padding: 8px 17px;
+    border: 1.5px solid #eee6e6;
+    border-radius: 5px;
+}
+.cpart2{
+float: left;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: system-ui;
+	}
+	.cpart3{
+	border-bottom: 2px solid;
+	font-weight: 700;
+	}
+	.cpart4{
+	float: right;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: system-ui;
+	}
+	.cpart5{
+
+    border-bottom: 1.5px solid #eee6e6;
+	}
+	.cpart6{
+	margin-bottom: 9px;
+    margin-top: 9px;
+    padding: 23px 2px;
+	}
+	.cpart7{
+	font-size: 20px;
+    font-family: system-ui;
+    font-weight: 700;
+    margin-top: 10px;
+	}
+	.cpart8{
+	font-size: 16px;
+    font-family: initial;
+    color: grey;
+	}
+	.cpart9{
+	width: 90%;
+    line-height: 30px;
+    border-radius: 5px;
+    border-color: #3bb54a;
+	}
+	.cpart10{
+	width: 22px;
+    margin-right: 20px;
+    position: absolute;
+    right: 50px;
+    top: 35px;
+	}
+	.cpart11{
+		    font-size: 15px;
+    font-family: system-ui;
+    font-weight: 500;
+    color: grey;
+	}
+	.cpart12{
+	    margin-top: 6px;
+    font-size: 15px;
+    font-family: system-ui;
+    font-weight: 700;
+    color: grey;
+	}
+	.containerzz {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 0px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.containerzz input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.containerzz:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.containerzz input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.containerzz input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.containerzz .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+.cpart13{
+    width: 100%;
+    line-height: 30px;
+    border-radius: 5px;
+    border-color: #d8d6d6;
+	}
+	.cpart14{
+	    text-align: center;
+    margin-top: 14px;
+    font-size: 15px;
+    font-family: system-ui;
+    font-weight: 700;
+	}
+.crust_checkout_child{
+    padding: 0px 157px;
+    padding:0px;
+}
+#crust_checkout{
+    padding: 0px 157px !important;
+    padding:0px;
+    margin-top: 65px;
+}
+
+@media only screen and (max-width: 600px) {
+    .crust_checkout_child{ padding: 0px 0px; margin-top: 10px; }
+    .cpart10 {
+        width: 22px;
+        margin-right: 8px;
+        position: absolute;
+        right: 50px;
+        top: 35px;
+	}
+	.cpart1 {
+        padding: 8px 8px;
+        border: 1.5px solid #eee6e6;
+        border-radius: 5px;
+    }
+}
+
+.about_img{
+    width:100%;
+    height:50vw;
+    margin-top:-25vw;
+}
+#save_delivery_type{
+                    background: #be9c79 !important;
+                }

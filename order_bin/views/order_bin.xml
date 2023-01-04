@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_order_bin_form" model="ir.ui.view">
+        <field name="name">order.bin.form.view</field>
+        <field name="model">order.bin</field>
+        <field name="arch" type="xml">
+            <form string="Order Bin">
+                <header></header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" required="1" readonly="1"/>
+                            <field name="sale_order"/>
+                            <field name="total_qty"/>
+                        </group>
+                        <group>
+                            <field name="ware_house_qty" string="Cabinet State"/>
+                            <field name="state" string="Order Status"/>
+                            <field name="assigned" string="assigned"/>
+                        </group>
+                    </group>
+                    <!--                    <notebook>-->
+                    <!--                        <page string="Cabinet Details" name="cabinet_line_ids">-->
+                    <!--                            <field name="cabinet_line_ids" string="Cabinet Details">-->
+                    <!--                                <form>-->
+                    <!--                                    <group>-->
+                    <!--                                        <group>-->
+                    <!--                                            <field name="cabinet_id" invisible="1"/>-->
+                    <!--                                            <field name="product_id"/>-->
+                    <!--                                            <field name="order_qty"/>-->
+                    <!--                                            <field name="reserved_qty"/>-->
+                    <!--                                            <field name="sale_order_line_id" invisible="1"/>-->
+                    <!--                                        </group>-->
+                    <!--                                    </group>-->
+                    <!--                                </form>-->
+                    <!--                                <tree>-->
+                    <!--                                    <field name="cabinet_id" invisible="1"/>-->
+                    <!--                                    <field name="product_id"/>-->
+                    <!--                                    <field name="order_qty"/>-->
+                    <!--                                    <field name="reserved_qty"/>-->
+                    <!--                                    <field name="sale_order_line_id" invisible="1"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                        </page>-->
+                    <!--                        <page string="Cabinet Tracking" name="cabinet_tracking_ids">-->
+                    <!--                            <field name="cabinet_tracking_ids" string="Cabinet Tracking">-->
+                    <!--                                <form>-->
+                    <!--                                    <group>-->
+                    <!--                                        <group>-->
+                    <!--                                            <field name="cabinet_id" invisible="1"/>-->
+                    <!--                                            <field name="sale_order"/>-->
+                    <!--                                            <field name="product_id"/>-->
+                    <!--                                        </group>-->
+                    <!--                                        <group>-->
+                    <!--                                            <field name="order_qty"/>-->
+                    <!--                                            <field name="sale_order_status" string="Order Status"/>-->
+                    <!--                                            <field name="reserved_qty" invisible="1"/>-->
+                    <!--                                            <field name="sale_order_line_id" invisible="1"/>-->
+                    <!--                                        </group>-->
+                    <!--                                    </group>-->
+                    <!--                                </form>-->
+                    <!--                                <tree>-->
+                    <!--                                    <field name="cabinet_id" invisible="1"/>-->
+                    <!--                                    <field name="sale_order"/>-->
+                    <!--                                    <field name="product_id"/>-->
+                    <!--                                    <field name="order_qty"/>-->
+                    <!--                                    <field name="sale_order_status" string="Order Status"/>-->
+                    <!--                                    <field name="reserved_qty" invisible="1"/>-->
+                    <!--                                    <field name="sale_order_line_id" invisible="1"/>-->
+                    <!--                                </tree>-->
+                    <!--                            </field>-->
+                    <!--                        </page>-->
+                    <!--                    </notebook>-->
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="view_order_bin_kanban" model="ir.ui.view">
+        <field name="name">order_bin_kanban</field>
+        <field name="model">order.bin</field>
+        <field name="priority">10</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile">
+                <field name="name"/>
+                <field name="sale_order"/>
+                <field name="state"/>
+                <field name="total_qty"/>
+                <field name="ware_house_qty"/>
+                <field name="color"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <style style="display:none">
+                            .o_kanban_view .o_kanban_record::after {
+                            content: "";
+                            position: absolute;
+                            top: -2px;
+                            left: 90%;
+                            bottom: 0;
+                            right: auto;
+                            width: 20px;
+                            height: 32px;
+                            }
+                        </style>
+                        <div t-attf-class="oe_kanban_global_click oe_kanban_color_#{kanban_getcolor(record.color.raw_value)} shadow-sm o_kanban_cst border-0
+                        o_kanban_record_has_image_fill o_hr_kanban_record">
+                            <div class="oe_kanban_details p-2">
+                                <div class="row">
+                                    <div class="col-12 text-left">
+                                        <h2>
+                                            <field name="name"/>
+                                        </h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-10 pr-0">
+                                        <div class="row mt-2">
+                                            <div class="col">
+                                                <h6>Order Number</h6>
+                                            </div>
+                                            <div class="col-1">
+                                                <h6>:</h6>
+                                            </div>
+                                            <div class="col text-right">
+                                                <h6>
+                                                    <field name="sale_order"/>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">Info</div>
+                                            <div class="col-1">:</div>
+                                            <div class="col text-right">
+                                                <field name="ware_house_qty"/>
+                                                of
+                                                <field name="total_qty"/>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">Status</div>
+                                            <div class="col-1">:</div>
+                                            <div class="col text-right">
+                                                <field name="state"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-2 align-self-end">
+                                        <button type="object" name="go_to_delivery" class="btn mt-auto mb-0 text-dark h-100">
+                                            <i class="fa fa-arrow-right"/>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_order_bin_tree" model="ir.ui.view">
+        <field name="name">order.bin.tree.view</field>
+        <field name="model">order.bin</field>
+        <field name="arch" type="xml">
+            <tree string="Cabinet Management">
+                <field name="name"/>
+                <field name="sale_order"/>
+                <field name="state" decoration-danger="state == 'in_progress'"
+                       decoration-success="state == 'done'"
+                       decoration-primary="state == 'empty'"/>
+                <field name="total_qty"/>
+                <field name="ware_house_qty"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_management" model="ir.actions.act_window">
+        <field name="name">Order Bin</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">order.bin</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <!--        <field name="view_type">kanban</field>-->
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create !
+            </p>
+        </field>
+    </record>
+
+    <record id="action_view_order_bin_kanban" model="ir.actions.act_window.view">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="order_bin.view_order_bin_kanban"/>
+        <field name="act_window_id" ref="action_management"/>
+    </record>
+
+    <menuitem id="menu_Order_bin_config" name="Order Bin" parent="stock.menu_stock_config_settings" sequence="10"/>
+    <menuitem action="action_management" id="menu_order_bin_management" name="Order bin" parent="menu_Order_bin_config"
+              sequence="10"/>
+
+
+</odoo>

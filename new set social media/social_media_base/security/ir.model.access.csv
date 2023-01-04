@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_social_media_types,social.media.types,model_social_media_types,,1,0,0,0
+access_social_media_accounts,social.media.accounts,model_social_media_accounts,,1,0,0,0
+access_social_media_accounts,social.media.accounts,model_social_media_accounts,,1,0,0,0
+access_social_media_dashboard,social.media.dashboard,model_social_media_dashboard,,1,1,1,1
+access_social_media_post,social.media.post,model_social_media_post,,1,1,1,1
+access_social_media_post_lines,social.media.post.lines,model_social_media_post_lines,,1,1,1,1

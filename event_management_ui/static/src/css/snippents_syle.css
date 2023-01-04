@@ -1,0 +1,92 @@
+/*four column image round*/
+.card-img-top{
+    width:100%;
+
+}
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+    .card-img-top{
+        height:330px;
+    }
+}
+@media only screen and (max-width: 375px) {
+    .card-img-top{
+        height:73%;
+    }
+}
+/*parallax image logo*/
+.ev_logo_right img{
+    margin-right:20vw;
+}
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+
+}
+@media only screen and (max-width: 375px) {
+    .ev_logo_right img{
+        float:none !important;
+        margin-right:0px;
+    }
+
+}
+/*product show*/
+.product_show:hover{
+    transform: scale(1.1);
+}
+.sale-image a{
+    overflow: hidden;
+    position:relative;
+    display: inline-block;
+}
+.product_show{
+    /*transform: scale(1.1);
+    transition:opacity 1s ease 0s,transform 1s ease 0s;*/
+    -webkit-transition: opacity 1s ease 0s,transform 1s ease 0s;
+    transition: opacity 1s ease 0s,transform 1s ease 0s;
+}
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+
+}
+@media only screen and (max-width: 375px) {
+
+}
+/*event_management_delivery*/
+.ev_pickup_container{
+    display:none;
+}
+.ev_pickup_button{
+    border:none;
+    border-radius:0px;
+    background-color:black;
+    outline:none;
+}
+.ev_pickup_button:hover{
+    background-color:#333;
+}
+.ev_pickup_button:focus{
+    box-shadow:none;
+}
+.ev_pickup_input{
+    padding:5px;
+    border-radius:0px;
+    outline:none;
+    border-top:0px;
+    border-left:0px;
+    border-top:0px;
+    border-right:0px;
+    border-bottom:1px solid #333;
+}
+.pick_up_address{
+    padding:10px;
+    width:100%;
+    background-color:white;
+    z-index:1000000;
+}
+.pick_up_address a{
+    font-size:14px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+
+}
+@media only screen and (max-width: 375px) {
+
+}

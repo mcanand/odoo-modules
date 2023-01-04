@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="event_management_ui__snippets" inherit_id="website.snippets">
+        <xpath expr="//div[@id='snippet_mega_menu']" position="after">
+			<div id="snippet_menu" class="o_panel">
+				<div class="o_panel_header">
+					Event snippets
+				</div>
+                <div class="o_panel_body">
+                    <t t-snippet="event_management_ui.event_management_home_landing"
+						t-thumbnail="/event_management_ui/static/src/images/home-icon.png" />
+                </div>
+                <div class="o_panel_header">
+					Columns
+				</div>
+                <div class="o_panel_body">
+                    <t t-snippet="event_management_ui.event_management_four_column"
+						t-thumbnail="/event_management_ui/static/src/images/home-icon.png" />
+                    <t t-snippet="event_management_ui.event_management_four_column_image_round"
+						t-thumbnail="/event_management_ui/static/src/images/home-icon.png" />
+                </div>
+                <div class="o_panel_header">
+					Parallax
+				</div>
+                <div class="o_panel_body">
+                    <t t-snippet="event_management_ui.event_management_parallax_logo_center"
+						t-thumbnail="/event_management_ui/static/src/images/home-icon.png" />
+                    <t t-snippet="event_management_ui.event_management_parallax_logo_right"
+						t-thumbnail="/event_management_ui/static/src/images/home-icon.png" />
+                </div>
+                <div class="o_panel_header">
+					Product show
+				</div>
+                <div class="o_panel_body">
+                    <t t-snippet="event_management_ui.event_management_product_show"
+						t-thumbnail="/event_management_ui/static/src/images/home-icon.png"/>
+                </div>
+                <div class="o_panel_header">
+                    Gallery
+                </div>
+                <div class="o_panel_body">
+                        <t t-snippet="event_management_ui.event_management_gallery"
+						t-thumbnail="/event_management_ui/static/src/images/home-icon.png"/>
+                </div>
+                <div class="o_panel_header">
+                    Brands Show
+                </div>
+                <div class="o_panel_body">
+                        <t t-snippet="event_management_ui.event_management_brands_show"
+						t-thumbnail="/event_management_ui/static/src/images/home-icon.png"/>
+                    <t t-snippet="event_management_ui.event_management_pickup"
+						t-thumbnail="/event_management_ui/static/src/images/home-icon.png"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

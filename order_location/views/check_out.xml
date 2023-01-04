@@ -1,0 +1,908 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <template id="address_custom" name="Custom Address" inherit_id="website_sale.checkout" priority="200">
+            <xpath expr="//div[hasclass('oe_website_sale')]" position="replace">
+                <!--<div class="">
+                    <img class="about_img checkout_" src="/crust_website/static/src/images/contact/b6.jpg"/>
+                    <h1 class="text-light marcellus fz_35" style="position: absolute; top: 27%; left: 50%;transform: translate(-50%, -50%);">CHECKOUT
+                    </h1>
+                </div>-->
+                <section class="parall_banner s_parallax parallax s_parallax_is_fixed bg-black-50 o_half_screen_height" data-scroll-background-ratio="1">
+                    <span class="s_parallax_bg oe_img_bg" style="background-image: url('/crust_website/static/src/images/contact/b6.jpg'); background-position: 50% 260%;"/>
+                    <div class="o_we_bg_filter bg-black-50"/>
+                    <div class="oe_structure oe_empty text-center f_3vw marcellus">CHECKOUT</div>
+                </section>
+                <div class="container oe_website_sale py-2">
+                    <t t-set="same_shipping"
+                       t-value="bool(order.partner_shipping_id==order.partner_id or only_services)"/>
+                    <input style="display:none;" id="order_id" t-att-value="website_sale_order.id" type="text"
+                           name="name"/>
+                    <input style="display:none;" id="order_name" t-att-value="website_sale_order.name" type="text"
+                           name="name"/>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                         style="background-repeat: no-repeat;background-size: cover;padding:1em 0 0 0;">
+                        <p class="cpart" style=""><img src="/order_location/static/src/images/lock.png" alt=""
+                                                       style="width: 16px;margin-right: 8px;"/>SECURE CHECKOUT
+                        </p>
+                    </div>
+
+
+                    <div id="crust_checkout" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                         style="padding:0 0 3em 0;margin-top: 65px;">
+                        <div class="container" style="">
+                            <div class="col-md-12 cpart1" style="">
+                                <div class="col-md-12 cpart5 cpart6 res-750">
+                                    <p class="cpart2"><img src="/order_location/static/src/images/maps.png" alt=""
+                                                           style="width: 18px;margin-right: 8px;"/>Ordering for
+                                        <span class="cpart3">
+                                            <a href="/">
+                                                <t t-esc="website_sale_order.website_delivery_type"/>
+                                            </a>
+                                        </span>
+                                        from
+                                        <span class="cpart3">
+                                            <a href="/">
+                                                <t t-esc="website_sale_order.company_id.name"/>
+                                            </a>
+                                        </span>
+                                    </p>
+                                    <!--                                    <p class="cpart3 cpart4">-->
+                                    <!--                                        <a href="/">Changes</a>-->
+                                    <!--                                    </p>-->
+                                </div>
+                                <div class="col-md-12 cpart5 cpart6 res-750">
+                                    <t t-set="date_today" t-value="datetime.datetime.now().strftime('%H:%M %p')"/>
+                                    <p class="cpart2">
+                                        <img src="/order_location/static/src/images/clock.png" alt=""
+                                             style="width: 18px;margin-right: 8px;"/>
+                                        <t t-if="time_custom &lt; 12">
+                                            <span class="cpart3">Today Morning at
+                                                <t t-esc="timezone"/>
+                                            </span>
+                                        </t>
+                                        <t t-if="time_custom &gt; 12">
+                                            <span class="cpart3">Today Evening at
+                                                <t t-esc="timezone"/>
+                                            </span>
+                                        </t>
+                                    </p>
+                                    <p class="cpart3 cpart4">Changes</p>
+                                </div>
+                                <div class="col-md-12 cpart6 res-750">
+                                    <p class="cpart2">
+                                        <img src="/order_location/static/src/images/hut.png" alt=""
+                                             style="width: 18px;margin-right: 8px;"/>
+                                        <t t-esc="website_sale_order.company_id.name"/>
+                                        <t t-esc="website_sale_order.company_id.street"/>
+                                        <t t-esc="website_sale_order.company_id.city"/>
+                                    </p>
+
+                                </div>
+                                <div class="col-md-12 cpart5 cpart6 res-750">
+                                    <t t-set="date_today" t-value="datetime.datetime.now().strftime('%H:%M %p')"/>
+                                    <p class="cpart2">
+                                        <img src="/order_location/static/src/images/clock.png" alt=""
+                                             style="width: 18px;margin-right: 8px;"/>
+                                        <span class="cpart3">Delivery information
+                                            <span id="autofill_user_details"></span>
+                                        </span>
+                                    </p>
+                                    <p class="cpart3 cpart4">
+                                        <a href="/shop/address">Changes</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 cpart1" style="    margin-top: 30px;">
+                                <p class="cpart7">Who's the Order for?</p>
+                            </div>
+                            <div class=" cpart1">
+                                <div class="row">
+                                    <div class="col-md-6" id="cpart10_img">
+                                        <label for="fname" class="cpart8">First name*</label>
+                                        <div>
+                                            <input type="text" class="cpart9"/>
+                                            <img src="/order_location/static/src/images/check.png" alt=""
+                                                 class="cpart10 cpart10_img"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" id="cpart11_img">
+                                        <label for="fname" class="cpart8">Last name*</label>
+                                        <div>
+                                            <input type="text" class="cpart9"/>
+                                            <img src="/order_location/static/src/images/check.png" alt=""
+                                                 class="cpart10 cpart11_img"/>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row" style="">
+                                    <div class="col-md-6" id="cpart12_img">
+                                        <label for="fname" class="cpart8">Mobile Number*</label>
+                                        <div>
+                                            <input type="text" class="cpart9"/>
+                                            <img src="/order_location/static/src/images/check.png" alt=""
+                                                 class="cpart10 cpart12_img"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" id="cpart13_img">
+                                        <label for="fname" class="cpart8">Email*</label>
+                                        <div>
+                                            <input type="text" class="cpart9"/>
+                                            <img src="/order_location/static/src/images/check.png" alt=""
+                                                 class="cpart10 cpart13_img"/>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!--                                website delivery type delivery-->
+
+                                <t t-if="website_sale_order.website_delivery_type == 'delivery'">
+                                    <div class="row w-100" style="">
+                                        <div class="col-md-6" id="cpart14_img">
+                                            <label for="fname" class="cpart8">Street*</label>
+                                            <div>
+                                                <input type="text" class="cpart9"/>
+                                                <img src="/order_location/static/src/images/check.png" alt=""
+                                                     class="cpart10 cpart14_img"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="cpart15_img">
+                                            <label for="fname" class="cpart8">Street2*</label>
+                                            <div>
+                                                <input type="text" class="cpart9"/>
+                                                <img src="/order_location/static/src/images/check.png" alt=""
+                                                     class="cpart10 cpart15_img"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row" style="">
+                                        <div class="col-md-6" id="cpart16_img">
+                                            <label for="fname" class="cpart8">City</label>
+                                            <div>
+                                                <input type="text" class="cpart9"/>
+                                                <img src="/order_location/static/src/images/check.png" alt=""
+                                                     class="cpart10 cpart16_img"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="cpart17_img">
+                                            <label for="fname" class="cpart8">Country*</label>
+                                            <div>
+                                                <input type="text" class="cpart9"/>
+                                                <img src="/order_location/static/src/images/check.png" alt=""
+                                                     class="cpart10 cpart17_img"/>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row" style="margin-top: 18px;padding: 0px;margin-bottom: 17px;">
+                                        <div class="col-md-6" id="cpart18_img">
+                                            <label for="fname" class="cpart8">Zip*</label>
+                                            <div>
+                                                <input type="text" class="cpart9"/>
+                                                <img src="/order_location/static/src/images/check.png" alt=""
+                                                     class="cpart10 cpart18_img"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+
+                                <!--                                website delivery type delivery ends-->
+
+
+                                <div>
+                                    <div class="col-md-12">
+                                        <p class="cpart11">Yes! I want to keep up to date with all the latest deals and
+                                            specials. &#128512;
+                                        </p>
+                                    </div>
+                                    <div class="col-md-6 row">
+                                        <input type="checkbox"
+                                               style="width: 24px;height: 24px;float: left;margin-right: 10px;"
+                                               id="email_confirmation"/>
+                                        <p class="cpart12">Email</p>
+                                    </div>
+                                    <div class="col-md-6 row">
+                                        <input type="checkbox"
+                                               style="width: 24px;height: 24px;float: left;margin-right: 10px;"
+                                               id="sms_confirmation"/>
+                                        <p class="cpart12">SMS</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 cpart1" style="    margin-top: 30px;">
+                                <p class="cpart7">Contact less Pickup (cashless)</p>
+                            </div>
+                            <div class="col-md-12 cpart1" style="">
+                                <div class="col-md-12">
+                                    <input type="checkbox"
+                                           style="width: 24px;height: 24px;float: left;margin-right: 10px;"
+                                           id="contactless_confirmation"/>
+                                    <p class="cpart12" style="color:black;">I Would like to opt-in to contact less
+                                        pick-up
+                                    </p>
+                                    <ul>
+                                        <li style="padding-bottom:10px;padding-top:5px;">Cash payments are NOT avaliable
+                                            for Contact less Pickup
+                                        </li>
+                                        <li>Untick this option if want you pay cash</li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-12 cpart1" style="">
+                                <div class="col-md-12">
+                                    <button id="proceed_payment" style="" class="tablinks">Proceed to payment</button>
+                                </div>
+                            </div>
+                            <br></br>
+                            <br></br>
+                            <br></br>
+
+                        </div>
+                    </div>
+
+                    <!--new ensd-->
+
+
+                    <div class="row" style="display: none !important;">
+                        <div class="col-12">
+                            <t t-call="website_sale.wizard_checkout">
+                                <t t-set="step" t-value="20"/>
+                            </t>
+                        </div>
+                        <div class="col-12 col-xl-auto order-xl-2 d-none d-xl-block">
+                            <t t-call="website_sale.cart_summary">
+                                <t t-set="redirect" t-valuef="/shop/checkout"/>
+                            </t>
+                        </div>
+
+
+                        <div class="col-12 col-xl order-xl-1 oe_cart">
+                            <div class="row">
+                                <div class="delivery_type">
+                                    <h3>Delivery Method fffff</h3>
+                                    <label>Please select a delivery method</label>
+                                    <div id="curb_enabled">
+                                        <div class="tab">
+                                            <button id="pro_pickup"
+                                                    style="border:1px solid #866f6a;background-color:#0c06063b;"
+                                                    class="tablinks">Pickup
+                                            </button>
+                                            <button id="curb_side_pickup"
+                                                    style="border:1px solid #866f6a;background-color:#0c06063b;"
+                                                    class="tablinks">Kerbside Pickup
+                                            </button>
+                                            <button id="pro_delivery"
+                                                    style="border:1px solid #866f6a;background-color:#0c06063b;"
+                                                    class="tablinks">Delivery
+                                            </button>
+
+                                        </div>
+
+                                    </div>
+                                    <div id="curb_disabled">
+                                        <div class="tab">
+                                            <button id="pro_pickup_dis"
+                                                    style="width:100% !important;border:1px solid #866f6a;background-color:#0c06063b;"
+                                                    class="tablinks">Pickup
+                                            </button>
+                                            <button id="pro_delivery_dis"
+                                                    style="width:50% !important;border:1px solid #866f6a;background-color:#0c06063b;"
+                                                    class="tablinks">Delivery
+                                            </button>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <br/>
+                                <input style="display:none;" id="order_id" t-att-value="order.id" type="text"
+                                       name="name"/>
+                                <input style="display:none;" id="order_name" t-att-value="order.name" type="text"
+                                       name="name"/>
+
+                                <div id="pickup" class="col-lg-12" style="display:none">
+                                    <div class="col-lg-12">
+                                        <h4>Pickup From</h4>
+                                        <br/>
+                                        <h4>4 Wongabel St, Kenmore, 4069</h4>
+                                        <br/>
+                                        <label>Pickup Time</label>
+                                        <div class="date_field">
+                                            <input id="pickup_date" type="text" value="Today"></input>
+                                            <!--                                            <input id="pickup_time" class="timepicker" type="time"/>-->
+                                            <select id="pickup_time"></select>
+                                            <label id="invalid_time"
+                                                   style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 50%;">
+                                                Enter a valid time
+                                            </label>
+                                            <label id="less_time"
+                                                   style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 48%;font-size: 14px;">
+                                                Minimum Cooking time is
+                                                <label id="min_hr"></label>
+                                                <span>hour</span>
+                                                <label id="min_time"></label>
+                                                <span>minutes.</span>
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div class="">
+                                            <input id="partner_name" type="text" placeholder="Enter Your Name"/>
+                                            <label id="invalid_name" style="display:none;color:red">Enter a valid name
+                                            </label>
+                                            <br/>
+                                            <br/>
+                                            <input id="partner_phone" type="tel" placeholder="Enter Phone Number"/>
+                                            <label id="invalid_phone" style="display:none;color:red">Invalid Phone
+                                                number
+                                            </label>
+                                            <br/>
+                                            <br/>
+                                            <input id="partner_email" type="email" placeholder="Enter Your Email id"/>
+                                            <label id="invalid_email" style="display:none;color:red">Invalid Email Id
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div id="invalid_time_range" style="">
+                                            <div class="alert alert-danger">
+                                                <strong>Warning!</strong>
+                                                Sorry the restaurant is available for pickup orders from:
+                                                <span id="open_day" style="color:#4b0000"/>
+                                                at
+                                                <span id="opening_time" style="color:#4b0000"/>
+                                            </div>
+                                        </div>
+                                        <div id="invalid_products" style="">
+                                            <div class="alert alert-danger">
+                                                <strong>Warning!</strong>
+                                                Some of the products in the cart are only eligible for Dine In. Please
+                                                remove it and try again
+                                            </div>
+                                        </div>
+                                        <div id="invalid_picking_time" style="">
+                                            <div class="alert alert-danger">
+                                                <span id="invalid_pick">
+
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div id="continue_div">
+                                            <button id="continue_button" style="" class="tablinks">Continue</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="curb_order" class="col-lg-12" style="display:none">
+                                    <div class="col-lg-12">
+                                        <h4>Deliver To My Parked Car</h4>
+                                        <br/>
+                                        <h4>4 Wongabel St, Kenmore, 4069</h4>
+                                        <br/>
+                                        <label>Pickup Time</label>
+                                        <div class="date_field">
+                                            <input id="pickup_date_curb" type="text" value="Today"></input>
+                                            <!--                                            <input id="pickup_time_curb" class="timepicker" type="time"/>-->
+                                            <select id="pickup_time_curb"></select>
+
+                                            <label id="invalid_time_curb"
+                                                   style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 50%;">
+                                                Enter a valid time
+                                            </label>
+                                            <label id="less_time_curb"
+                                                   style="display:none;color:red;margin-top: 8%;position: absolute;margin-left: 48%;font-size: 14px;">
+                                                Minimum Cooking time is:
+                                                <label id="min_hr_curb"></label>
+                                                <span>hour</span>
+                                                <label id="min_time_curb"></label>
+                                                <span>minutes.</span>
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div class="">
+                                            <input id="partner_name_curb" type="text" placeholder="Enter Your Name"/>
+                                            <label id="invalid_name_curb" style="display:none;color:red">Enter a valid
+                                                name
+                                            </label>
+                                            <br/>
+                                            <br/>
+                                            <input id="partner_phone_curb" type="tel" placeholder="Enter Phone Number"/>
+                                            <label id="invalid_phone_curb" style="display:none;color:red">Invalid Phone
+                                                number
+                                            </label>
+                                            <br/>
+                                            <br/>
+                                            <input id="partner_email_curb" type="email"
+                                                   placeholder="Enter Your Email id"/>
+                                            <label id="invalid_email_curb" style="display:none;color:red">Invalid Email
+                                                Id
+                                            </label>
+                                        </div>
+                                        <br/>
+                                        <div id="vehicle_details">
+                                            <div style="display: flex;">
+                                                <select style="margin-right: 15px;" class="curb_select"
+                                                        name="vehicle_type_ids" id="vehicle_type_ids">
+                                                </select>
+                                                <select class="curb_select" name="vehicle_make_ids"
+                                                        id="vehicle_make_ids">
+                                                </select>
+                                            </div>
+                                            <br/>
+                                            <div style="display: flex;">
+                                                <input id="v_colour" type="text" placeholder="Vehicle Color"/>
+                                                <input id="license_plate_no" type="text"
+                                                       placeholder="License Plate Number"/>
+                                            </div>
+                                            <div style="display: flex;">
+                                                <label id="invalid_vehicle_color_curb" style="display:none;color:red">
+                                                    Enter a valid color
+                                                </label>
+                                                <label class="vehicle_details_padding"></label>
+                                                <label id="invalid_license_plate_no_curb"
+                                                       style="display:none;color:red">Enter the license no
+                                                </label>
+                                            </div>
+
+                                            <br/>
+                                            <div>
+                                                <!--                                                <select class="curb_select_loc" name="vehicle_location_ids"-->
+                                                <!--                                                        id="vehicle_location_ids">-->
+                                                <!--                                                </select>-->
+                                                <!--                                                <br/>-->
+                                                <!--                                                <br/>-->
+                                                <textarea rows="6" name="location_note" id="location_note"
+                                                          placeholder="Location Note..." class="form-control"/>
+
+                                                <h3 style="width: 100%;">
+                                                    <center>Please let us know when you arrive</center>
+                                                </h3>
+                                                <br/>
+                                                <br/>
+
+                                                <div>
+                                                    <h4 style="width: 100%;">These are the available parking options
+                                                    </h4>
+                                                    <br/>
+                                                    <t t-foreach="order.approximate_location_ids" t-as="i">
+                                                        ➮
+                                                        <span t-esc="i.location_name"/>
+                                                        <br/>
+                                                        <br/>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div id="invalid_time_range_curb" style="">
+                                            <div class="alert alert-danger">
+                                                <strong>Warning!</strong>
+                                                Sorry the restaurant is available for kerbside orders from:
+                                                <span id="open_day_curb" style="color:#4b0000"/>
+                                                at
+                                                <span id="opening_time_curb" style="color:#4b0000"/>
+                                            </div>
+                                        </div>
+                                        <div id="invalid_products_curb" style="">
+                                            <div class="alert alert-danger">
+                                                <strong>Warning!</strong>
+                                                Some of the products in the cart are only eligible for Dine In. Please
+                                                remove it and try again
+                                            </div>
+                                        </div>
+
+                                        <div id="invalid_picking_time_curb" style="">
+                                            <div class="alert alert-danger">
+                                                <span id="invalid_pick_curb">
+
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div id="continue_div_curb">
+                                            <button id="continue_button_curb" style="" class="tablinks">Continue
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="order_delivery" style="display:none;">
+                                    <div style="display:none;" class="col-lg-12">
+                                        <h3 class="o_page_header mt8">Billing Address</h3>
+                                    </div>
+
+                                    <div style="display:none;" class="col-lg-6 one_kanban">
+                                        <t t-call="website_sale.address_kanban">
+                                            <t t-set='contact' t-value="order.partner_id"/>
+                                            <t t-set='selected' t-value="1"/>
+                                            <t t-set='readonly' t-value="1"/>
+                                        </t>
+                                    </div>
+
+                                    <t t-if="not only_services" groups="sale.group_delivery_invoice_address">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <h3 class="o_page_header mt16 mb4">Delivery Address</h3>
+                                            </div>
+                                        </div>
+                                        <t t-if="not order.valid_address">
+                                            <div id="invalid_location" class="alert alert-danger ">
+                                                <strong>Warning!</strong>
+                                                No delivery to the selected location. Please update your location.
+                                            </div>
+                                        </t>
+                                        <div id="valid_time_delivery_mode">
+                                            <div class="alert alert-danger">
+                                                <span id="open_time"></span>
+                                            </div>
+                                        </div>
+                                        <div class="row all_shipping">
+                                            <div class="col-lg-12">
+                                                <div class="row mt8">
+                                                    <div class="col-md-12 col-lg-12 one_kanban">
+                                                        <form action="/shop/address" method="post" class=''>
+                                                            <input type="hidden" name="csrf_token"
+                                                                   t-att-value="request.csrf_token()"/>
+                                                            <a role="button" href="#"
+                                                               class='a-submit btn btn-secondary mb16 btn-block'>
+                                                                <i class="fa fa-plus-square"/>
+                                                                <span>Add an address</span>
+                                                            </a>
+                                                        </form>
+                                                    </div>
+                                                    <t t-foreach="shippings" t-as="ship">
+                                                        <div class="col-md-12 col-lg-6 one_kanban">
+                                                            <t t-call="website_sale.address_kanban">
+                                                                <t t-set="actual_partner" t-value="order.partner_id"/>
+                                                                <t t-set='contact' t-value="ship"/>
+                                                                <t t-set='selected'
+                                                                   t-value="order.partner_shipping_id==ship"/>
+                                                                <t t-set='readonly' t-value="bool(len(shippings)==1)"/>
+                                                                <t t-set='edit_billing'
+                                                                   t-value="bool(ship==order.partner_id)"/>
+                                                            </t>
+                                                        </div>
+                                                    </t>
+                                                    <input style="display:none;" class="form-control" id="delivery_type"
+                                                           type="text" name="delivery_type"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                            <div id="checkout_footer" style="display: none;">
+                                <div class="d-flex justify-content-between mt-3">
+                                    <a role="button" href="/shop/cart" class="btn btn-secondary mb32">
+                                        <i class="fa fa-chevron-left"/>
+                                        <span>Return to Cart</span>
+                                    </a>
+                                    <a id="address_confirm" role="button" href="/shop/confirm_order"
+                                       class="btn btn-primary mb32">
+                                        <span>Confirm</span>
+                                        <i class="fa fa-chevron-right"/>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    .oe_website_sale {
+                    border-top: none;
+                    }
+                    main {
+                    background: white;
+                    }
+
+                    .oe_website_sale{
+                    border-top: 1px solid;
+                    padding-top: 15px;
+                    }
+                    #proceed_payment{
+                    width: 100%;
+                    height: 38px;
+                    font-family: system-ui;
+                    font-size: 16px;
+                    background-color: #d02413;
+                    color: white;
+                    font-weight: 700;
+                    }
+                    #proceed_payment {
+                    background-color: #be9c79 !important;
+                    border: none;
+                    }
+                    .panel {
+                    -webkit-box-shadow: 0 0px 0px rgb(0 0 0 / 5%)!important;
+                    box-shadow: 0 0px 1px rgb(0 0 0 / 5%)!important;
+
+                    margin-bottom: 0px!important;
+                    }
+                    .list-group-item{
+                    cursor: pointer;
+                    padding: 1rem;
+                    position: relative;
+                    border-radius: 5px!important;
+
+                    }
+                    .ho1{
+
+                    font-family: math;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                    font-size: 15px;
+                    margin: 0px;
+                    line-height: 23px;
+
+                    }
+                    .ho2{
+                    margin-top: 14px;
+                    font-size: 19px;
+                    /* float: right!important; */
+                    position: absolute;
+                    right: 22px;
+                    top: 0px;
+                    }
+                    .ho3{
+                    margin-top: 10px;
+                    font-family: monospace;
+                    font-size: 19px;
+                    font-weight: 900;
+                    margin-bottom: 0px;
+                    }
+                    .ho4{
+                    font-family: monospace;
+                    font-size: 14px;
+                    font-weight: 600;
+                    margin-bottom: 0px;
+                    margin-top: 7px;
+                    }
+                    .ho5{
+                    font-family: auto;
+                    font-size: 14px;
+                    font-weight: 500;
+                    margin-bottom: 0px;
+                    margin-top: 7px;
+                    color: #848181;
+                    }
+                    .ho6{
+                    border-radius: 100px;
+                    position: absolute;
+                    top: 0.5rem;
+                    right: 2.5rem;
+                    background-color: #0a8020;
+                    border: 1px solid #0a8020;
+                    color: #fff;
+                    font-weight: 600;
+                    padding: 7px 15px 9px;
+                    font-size: 12px;
+                    }
+                    .ho7{
+                    font-size: 19px;
+                    text-align: center;
+                    color: #291dff;
+                    letter-spacing: 1px;
+                    font-weight: 800;
+                    }
+                    .ho8{
+                    background: #0a8020;
+                    padding: 14px 30px 15px;
+                    text-align: center;
+                    }
+                    .ho9{
+                    color: white;
+                    font-weight: 700;
+                    }
+                    .ho9:hover{
+                    color: white!important;
+                    }
+                    .ho10{
+                    position: absolute;
+                    right: 50px;
+                    }
+                    .ho11{
+                    float: right;
+                    margin-top: 15px;
+                    color: #291dff;
+                    font-weight: 600;
+                    margin-right: 50px;
+                    }
+                    .ho12{
+                    color: black;
+                    font-weight: 400;
+                    margin-left: 15px;
+                    }
+                    .panel-default {
+                    border-color: #ddd0!important;
+                    }
+                    .cpart{
+                    margin-bottom: 15px;
+                    text-align: center;
+                    margin-top: 15px;
+                    font-weight: 800;
+                    line-height: 20px;
+                    }
+                    .cpart1{
+                    padding: 8px 17px;
+                    border: 1.5px solid #eee6e6;
+                    border-radius: 5px;
+                    }
+                    .cpart2{
+                    float: left;
+                    font-size: 15px;
+                    font-weight: 500;
+                    font-family: system-ui;
+                    }
+                    .cpart3{
+                    border-bottom: 2px solid;
+                    font-weight: 700;
+                    }
+                    .cpart4{
+                    float: right;
+                    font-size: 15px;
+                    font-weight: 500;
+                    font-family: system-ui;
+                    }
+                    .cpart4 a {
+                    color: #353535;
+                    }
+                    .cpart5{
+
+                    border-bottom: 1.5px solid #eee6e6;
+                    }
+                    .cpart6{
+                    margin-bottom: 9px;
+                    margin-top: 9px;
+                    }
+                    .cpart7{
+                    font-size: 20px;
+                    font-family: system-ui;
+                    font-weight: 700;
+                    margin-top: 10px;
+                    }
+                    .cpart8{
+                    font-size: 16px;
+                    font-family: system-ui;
+                    color: grey;
+                    }
+                    .cpart9{
+                    width: 90%;
+                    line-height: 30px;
+                    border-radius: 5px;
+                    border-color: #161716;
+                    padding: 10px 15px;
+                    }
+                    .cpart10{
+                    width: 22px;
+                    margin-right: 25px;
+                    position: absolute;
+                    right: 50px;
+                    top: 35px;
+                    }
+                    .cpart11{
+                    font-size: 15px;
+                    font-family: system-ui;
+                    font-weight: 500;
+                    color: grey;
+                    }
+                    .cpart12{
+                    margin-top: 6px;
+                    font-size: 15px;
+                    font-family: system-ui;
+                    font-weight: 700;
+                    color: grey;
+                    }
+                    .containerzz {
+                    display: block;
+                    position: relative;
+                    padding-left: 35px;
+                    margin-bottom: 0px;
+                    cursor: pointer;
+                    font-size: 18px;
+                    -webkit-user-select: none;
+                    -moz-user-select: none;
+                    -ms-user-select: none;
+                    user-select: none;
+                    }
+
+                    /* Hide the browser's default radio button */
+                    .containerzz input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    }
+
+                    /* Create a custom radio button */
+                    .checkmark {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 25px;
+                    width: 25px;
+                    background-color: #eee;
+                    border-radius: 50%;
+                    }
+
+                    /* On mouse-over, add a grey background color */
+                    .containerzz:hover input ~ .checkmark {
+                    background-color: #ccc;
+                    }
+
+                    /* When the radio button is checked, add a blue background */
+                    .containerzz input:checked ~ .checkmark {
+                    background-color: #2196F3;
+                    }
+
+                    /* Create the indicator (the dot/circle - hidden when not checked) */
+                    .checkmark:after {
+                    content: "";
+                    position: absolute;
+                    display: none;
+                    }
+
+                    /* Show the indicator (dot/circle) when checked */
+                    .containerzz input:checked ~ .checkmark:after {
+                    display: block;
+                    }
+
+                    /* Style the indicator (dot/circle) */
+                    .containerzz .checkmark:after {
+                    top: 9px;
+                    left: 9px;
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background: white;
+                    }
+                    .cpart13{
+                    width: 100%;
+                    line-height: 30px;
+                    border-radius: 5px;
+                    border-color: #d8d6d6;
+                    }
+                    .cpart14{
+                    text-align: center;
+                    margin-top: 14px;
+                    font-size: 15px;
+                    font-family: system-ui;
+                    font-weight: 700;
+                    }
+                    @media only screen and (max-width: 600px) {
+                    .crust_checkout_child{ padding: 0px 0px; margin-top: 10px; }
+                    .cpart10 {
+                    width: 22px;
+                    margin-right: 8px;
+                    position: absolute;
+                    right: 50px;
+                    top: 45px;
+                    }
+                    .cpart1 {
+                    padding: 8px 8px;
+                    border: 1.5px solid #eee6e6;
+                    border-radius: 5px;
+                    }
+                    .cpart6{
+                    margin-bottom: 9px;
+                    margin-top: 9px;
+                    padding: 23px 2px;
+                    }
+                    .cpart8 {
+                    font-size: 16px;
+                    font-family: system-ui;
+                    color: grey;
+                    padding-top:3mm;
+                    }
+                    }
+                    .res-750 {
+                    padding: 2rem;
+                    }
+                </style>
+
+
+            </xpath>
+        </template>
+    </data>
+</odoo>

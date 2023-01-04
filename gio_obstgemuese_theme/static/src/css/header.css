@@ -1,0 +1,180 @@
+.ob_nav_logo{
+    width:40%;
+}
+body{
+    overflow-x:hidden;
+}
+nav.navbar.navbar-light.o_colored_level.o_cc{
+    padding:26px;
+}
+@font-face {
+    font-family: "GT Pressura Pro Mono";
+    src: url("/gio_obstgemuese_theme/static/src/fonts/GT-Pressura-Mono.otf") format("opentype");
+}
+.GT_Pressura_Pro_Mono{
+    font-family: "GT Pressura Pro Mono";
+}
+.nav-item a span{
+    font-family: "GT Pressura Pro Mono";
+
+}
+.nav_logo_mob_header{
+    width:50%;
+}
+.navbar{
+    z-index:10;
+    width:100%;
+    position:fixed;
+    background-color:transparent;
+}
+html {
+  scroll-behavior: smooth;
+}
+ul#top_menu {
+    display: contents;
+}
+.ob_top_menu_collapse{
+    position: fixed;
+    background-color: white;
+    width: 0%;
+    top: auto;
+    height: 100%;
+    z-index: 10;
+    left:0;
+}
+.ob_top_menu_collapse ul li{
+    text-align:center;
+}
+.close_icon{
+    font-size:50px;
+    cursor:pointer;
+}
+.ob_menu_list{
+    overflow-y:scroll;
+    height:26vw;
+}
+.ob_menu_list::-webkit-scrollbar {
+    width: 5px;
+}
+.ob_menu_list::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius:10px;
+}
+.ob_menu_list::-webkit-scrollbar-thumb:hover {
+    background: #b30000;
+}
+
+.overlay {
+    width: 0%;
+    height: 100vh;
+    top: 0;
+    position: absolute;
+    background-color: #ffffff8f;
+    z-index:1;
+    left:0;
+    display:none;
+}
+.ob_nav_img{
+    width:30px;
+    cursor:pointer;
+}
+.navbar-light .navbar-toggler-icon{
+    background-image:url('/gio_obstgemuese_theme/static/src/images/menu_icon.png');
+    box-shadow:none;
+    outline:none !important;
+}
+.navbar-light .navbar-toggler-icon:focus{
+    box-shadow:none;
+    outline:none !important;
+    border:none !important;
+    border-radius:0px;
+}
+.ob_search_overlay{
+    height: 100vh !important;
+    width: 100%;
+    top: 0;
+    position: absolute;
+    background-color: #ffffff;
+    z-index:1;
+    left:0;
+    display:none;
+}
+.ob_search_input {
+    width: 50%;
+    outline: none;
+    border-left: 1px solid;
+    border-bottom: none;
+    border-top: none;
+    border-right: none;
+    padding: 1vw;
+    font-size: 45px;
+}
+.search_box{
+    height:100vh;
+}
+.search_box_input{
+    margin-top:16%;
+}
+.search_product_show{
+    overflow-y: scroll;
+    height: 35vw;
+}
+.ob_product_image{
+    width:100%;
+    height:270px;
+}
+.ob_nav_logo_mob{
+    width:50%;
+}
+.ob_icon{
+    width:30px;
+    color:black;
+}
+.ob_icon:hover{
+    cursor:pointer;
+}
+.ob_menu_list .nav-item .nav-link span{
+    font-size:24px;
+}
+.nav-link span:hover{
+
+    cursor:pointer;
+}
+.scroll_to_top{
+    cursor:pointer;
+}
+.dropdown-toggle::after{
+    display:none;
+}
+.o_menu_toggle{
+    display:inline-grid !important;
+}
+.footer_address a span:hover{
+    background:yellow;
+}
+/*mobile view*/
+@media only screen and (max-width: 600px) {
+    #top_menu_collapse{
+        width:100% !important;
+    }
+    .ob_nav_logo{
+        display:none;
+    }
+    .ob_nav_logo_mob{
+        display:block !important;
+    }
+    .ob_menu_list{
+        height:70vw;
+    }
+    .ob_nav_logo_mob{
+        width:100%;
+    }
+    .footer_address {
+        position: absolute;
+        margin-top: 40px;
+        padding:10px 0px 10px 0px;
+    }
+    .nav_logo_mob_header{
+        width:90%;
+    }
+}

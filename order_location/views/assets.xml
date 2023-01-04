@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="assets_frontend_crust_checkout" name="Ecommerce Website Crust" inherit_id="web.assets_frontend">
+                <xpath expr="." position="inside">
+
+                    <script type="text/javascript" src="/order_location/static/src/js/checkout.js"></script>
+                    <script type="text/javascript" src="/order_location/static/src/js/select_time_location.js"></script>
+                    <script type="text/javascript" src="/order_location/static/src/js/sweet.js"></script>
+<!--                    <script type="text/javascript" src="/order_location/static/src/js/location.js"></script>-->
+                </xpath>
+        </template>
+    </data>
+</odoo>

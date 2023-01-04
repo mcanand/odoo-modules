@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="social_media_twitter" model="social.media.types">
+            <field name="name">Twitter</field>
+            <field name="social_media_types">twitter</field>
+            <field name="description" type="html"><p>Link your Twitter To Odoo</p></field>
+            <field name="image" type="base64" file="social_media_twitter/static/src/img/icons8-twitter.svg"/>
+        </record>
+    </data>
+</odoo>

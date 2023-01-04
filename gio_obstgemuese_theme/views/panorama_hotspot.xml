@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="panorama_hotspot_wizard" model="ir.ui.view">
+        <field name="name">panorama.hotspot.wizard</field>
+        <field name="model">panorama.hotspot.wizard</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <header></header>
+                <h2>for
+                    <field name="name" readonly="True"/>
+                </h2>
+                <script
+                        src="/gio_obstgemuese_theme/static/src/js/panorama_view_config.js"
+                        type="text/javascript"/>
+                <div id="load_panorama_360_view"/>
+                <style>
+                    #load_panorama_360_view {
+                    width: 70vw;
+                    height: 60vh;
+                    }
+                    .plus_icon{
+                    padding:10px;
+                    width:100%;
+                    font-size:20px;
+                    }
+                    .custom-hotspot {
+                    height: 50px;
+                    width: 50px;
+                    background: #f00;
+                    }
+                    .plus_border{
+                    width:max-content;
+                    height:auto;
+                    border-radius:50%;
+                    border:2px solid white;
+                    background:transparent;
+                    }
+                </style>
+                <group>
+                    <div>pitch
+                        <div class="selected_pitch"/>
+                    </div>
+                    <div>yaw
+                        <div class="selected_yaw"/>
+                    </div>
+                </group>
+                <div class="btn btn-primary js_action_done">confirm
+                    <field name="rec_id" readonly="True" class="select_rec_id"/>
+                </div>
+                <footer></footer>
+            </form>
+        </field>
+    </record>
+
+</odoo>

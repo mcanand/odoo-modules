@@ -1,0 +1,247 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="action_social_media_post" model="ir.actions.act_window">
+            <field name="name">Social Media Post</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">social.media.post</field>
+            <field name="view_mode">kanban,form</field>
+        </record>
+
+        <menuitem
+                id="social_media_post_menu"
+                name="Social Media Post"
+                parent="social_media_base.social_media_main_menu"
+                action="action_social_media_post"
+                sequence="30"/>
+        <record id="social_post_view_kanban" model="ir.ui.view">
+            <field name="name">social.media.post.view.kanban</field>
+            <field name="model">social.media.post</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="is_facebook"/>
+                    <field name="is_instagram"/>
+                    <field name="message"/>
+                    <field name="status"/>
+                    <field name="is_failed"/>
+                    <field name="failure_reason"/>
+                    <field name="has_post_errors"/>
+                    <field name="social_media_account_ids"/>
+                    <field name="has_active_accounts"/>
+                    <field name="image_ids"/>
+                    <field name="publish_method"/>
+                    <field name="scheduled_date"/>
+                    <field name="published_date"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_kanban_global_click">
+                                <div class="row mb4">
+                                    <strong class="col-6">
+                                        <h4>POST</h4>
+                                    </strong>
+                                    <strong class="col-6 text-right">
+                                        <i class="fa fa-clock-o" aria-label="Date" role="img" title="Date"/>
+                                        <field name="published_date"/>
+                                    </strong>
+                                </div>
+                                <div class="col-11 text-right">
+                                    <span t-if="record.status.raw_value.length == 5" class="badge badge-muted">Draft
+                                    </span>
+                                    <span t-if="record.status.raw_value.length == 9" class="badge badge-info">
+                                        Scheduled
+                                    </span>
+                                    <span t-if="record.status.raw_value.length == 7" class="badge badge-primary">
+                                        Posting
+                                    </span>
+                                    <span t-if="record.status.raw_value.length == 6" class="badge badge-success">
+                                        Posted
+                                    </span>
+                                </div>
+                                <hr/>
+                                <div t-attf-class="o_social_stream_post_message_text overflow-hidden">
+                                    <p>
+                                        <strong>Caption</strong>
+                                        <field name="message" widget="text_emojis"/>
+                                    </p>
+                                </div>
+
+                                <hr/>
+                                <div>
+                                    <p>Posted On:
+                                        <span t-esc="record.social_media_account_ids.raw_value.length"/>
+                                        Social Media Accounts
+                                    </p>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+        <record id="social_post_view_form" model="ir.ui.view">
+            <field name="name">social.media.post.view.form</field>
+            <field name="model">social.media.post</field>
+            <field name="arch" type="xml">
+                <form string="Social Post" class="o_social_post_view_form">
+                    <header>
+                        <button name="publish" string="Publish" type="object" class="oe_highlight"
+                                attrs="{'invisible': ['|', ('status', '!=', 'draft'), ('publish_method', '=', 'scheduled')]}"/>
+                        <button name="publish" string="Publish Now" type="object"
+                                attrs="{'invisible': [('status', '!=', 'scheduled')]}"/>
+                        <button name="action_schedule" string="Schedule" type="object" class="oe_highlight"
+                                attrs="{'invisible': ['|', ('status', '!=', 'draft'), ('publish_method', '=', 'now')]}"/>
+                        <field name="status" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group string="Post" name="social_media_post_global">
+                                <div>
+                                    <h4 class="text-muted">
+                                        <strong>Select Media Type</strong>
+                                    </h4>
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <field name="is_facebook" context="{'bool_media_type': 'facebook'}"
+                                                           attrs="{'readonly': [('status', 'in', ['posting', 'posted'])]}"/>
+                                                </td>
+                                                <td>
+                                                    <p>Facebook</p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <field name="is_instagram"
+                                                           context="{'bool_media_type': 'instagram'}"
+                                                           attrs="{'readonly': [('status', 'in', ['posting', 'posted'])]}"/>
+                                                </td>
+                                                <td>
+                                                    <p>Instagram</p>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <h4 class="text-muted">
+                                        <strong>Select Accounts To Post</strong>
+                                    </h4>
+                                    <field name="social_media_account_ids"
+                                           attrs="{'readonly': [('status', 'in', ['posting', 'posted'])]}"
+                                           options="{'no_create': True}" string="Accounts To Post"
+                                           widget="many2many_checkboxes"/>
+                                    <h4 class="text-muted">
+                                        <strong>Text</strong>
+                                    </h4>
+                                    <field name="message"
+                                           attrs="{'readonly': [('status', 'in', ['posting', 'posted'])]}"
+                                           widget="text_emojis"/>
+                                    <h4 class="text-muted">
+                                        <strong>Media</strong>
+                                    </h4>
+                                    <field name="image_ids" widget="many2many_binary"
+                                           class="o_social_post_form_attachments"
+                                           attrs="{'readonly': [('status', 'in', ['posting', 'posted'])]}"/>
+                                    <h4 class="text-muted" attrs="{'invisible': [('status', '!=', 'draft')]}">
+                                        <strong>Publish Methods</strong>
+                                    </h4>
+                                    <field name="publish_method" widget="radio"
+                                           attrs="{'invisible': [('status', '!=', 'draft')]}"/>
+                                    <h4 class="text-muted"
+                                        attrs="{'invisible': ['|', ('publish_method', '=', 'now'), ('status', 'in', ['posting', 'posted'])], 'required': [('publish_method', '!=', 'now')]}">
+                                        <strong>Schedule Date</strong>
+                                    </h4>
+                                    <field name="scheduled_date"
+                                           attrs="{'invisible': ['|',('publish_method', '=', 'now'), ('status', 'in', ['posting', 'posted'])], 'required': [('publish_method', '!=', 'now')]}"/>
+                                    <field name="repeat_post" type="object"
+                                           attrs="{'invisible': ['|', ('publish_method', '=', 'now'), ('status', 'in', ['posting', 'posted'])] }"/>
+                                    <div attrs="{'invisible': ['|',('repeat_post', '!=', 'custom'),('publish_method','=','now')]}">
+                                        <label for="interval"/>
+                                        <div class="o_row">
+                                            <field name="interval"/>
+                                            <field name="repeat_type"/>
+                                        </div>
+                                        <group attrs="{'invisible': [('repeat_type', '!=', 'weekly')]}" name="weekdays">
+                                            <div class="d-inline-flex">
+                                                <label for="su" class="mt-1">Sunday</label>
+                                                <field name="su"/>
+                                                <label for="mo" class="mt-1">Monday</label>
+                                                <field name="mo" string="Monday"/>
+                                                <label for="tu" class="mt-1">Tuesday</label>
+                                                <field name="tu"/>
+                                                <label for="we" class="mt-1">Wednesday</label>
+                                                <field name="we"/>
+                                                <label for="th" class="mt-1">Thursday</label>
+                                                <field name="th"/>
+                                                <label for="fr" class="mt-1">Friday</label>
+                                                <field name="fr"/>
+                                                <label for="sa" class="mt-1">Saturday</label>
+                                                <field name="sa"/>
+
+                                            </div>
+                                        </group>
+                                        <group attrs="{'invisible': [('repeat_type', '!=', 'monthly')]}">
+                                            <!--                                            <label string="Day of Month" for="month_by"/>-->
+
+                                            <!--                                                <field name="month_by"/>-->
+                                            <!--                                                <field name="day"-->
+                                            <!--                                                       attrs="{'required': [('repeat_type', '=', 'monthly')]}"/>-->
+                                            <!--                                                <field name="byday" string="The"-->
+                                            <!--                                                       attrs="{'required': [('month_by', '=', 'day'), ('repeat_type', '=', 'monthly')],-->
+                                            <!--                                                            'invisible': [('month_by', '!=', 'day')]}"/>-->
+                                            <!--                                                <field name="weekday" nolabel="1"-->
+                                            <!--                                                       attrs="{'required': [('month_by', '=', 'day'), ('repeat_type', '=', 'monthly')],-->
+                                            <!--                                                            'invisible': [('month_by', '!=', 'day')]}"/>-->
+
+                                        </group>
+
+                                        <label string="Until" for="end_type"/>
+                                        <div class="o_row">
+                                            <field name="end_type"/>
+                                            <field name="count" attrs="{'invisible': [('end_type', '!=', 'count')]}"/>
+                                            <field name="until"
+                                                   attrs="{'invisible': [('end_type', '!=', 'end_date')], 'required': [('end_type', '=', 'end_date')]}"/>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </group>
+                            <group name="previews_placeholder" class="o_social_post_preview_group m-0">
+                                <div class="o_social_post_empty_preview o_view_nocontent bg-100"
+                                     attrs="{'invisible': [ ('message', '!=', False), ('message', '!=', '')]}">
+                                    <div class="o_nocontent_help">
+                                        <p class="o_view_nocontent_smiling_face">
+                                            Preview your post
+                                        </p>
+                                        <p>
+                                            Write a message to see the preview.
+                                        </p>
+                                    </div>
+                                </div>
+                            </group>
+                            <group colspan="2">
+                                <group>
+                                    <div>
+                                        <h3 class="text-muted">
+                                            <strong>Post Details</strong>
+                                        </h3>
+                                    </div>
+                                </group>
+                                <field name="social_media_post_lines">
+                                    <tree create="0" editable="0" readonly="1">
+                                        <field name="social_media_type"/>
+                                        <field name="account_name"/>
+                                        <field name="reason_for_failure"/>
+                                        <field name="status"/>
+                                        <button name="publish_post" string="Retry" type="object" class="oe_highlight"
+                                                attrs="{'invisible': [('status', '=', 'posted')]}"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

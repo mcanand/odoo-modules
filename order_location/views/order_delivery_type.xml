@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="order_delivery" name="Delivery Management">
+        <link rel="stylesheet" href="/order_location/static/src/css/address.css"/>
+        <t t-set="no_footer" t-value="1"/>
+        <t t-call="website.layout">
+            <div id="wrap">
+               <!-- <div class="">
+                    <img class="order_delivery_img" src="/crust_website/static/src/images/contact/b4.jpg"/>
+                    <h1 class="text-white marcellus fz_35 order_delivery_text" style="position: absolute; top: 27%; left: 50%;transform: translate(-50%, -50%);">LOCATION
+                    </h1>
+                </div>-->
+                <section class="parall_banner s_parallax parallax s_parallax_is_fixed bg-black-50 o_half_screen_height" data-scroll-background-ratio="1">
+                <span class="s_parallax_bg oe_img_bg" style="background-image: url('/crust_website/static/src/images/contact/b4.jpg'); background-position: 50% 20%;"/>
+                <div class="o_we_bg_filter bg-black-50"/>
+                <div class="oe_structure oe_empty text-center f_3vw marcellus">LOCATION</div>
+            </section>
+                <div class="container oe_website_sale py-2">
+                    <!--                    website_sale_order-->
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                         style="background-repeat: no-repeat;background-size: cover;padding:1em 0 0 0;">
+                        <p class="cpart opensans" style="font-size: 20px;padding: 20px;"><img
+                                src="/order_location/static/src/images/clock.png" alt=""
+                                style="width: 16px;margin-right: 8px;"/>What time would you like your order?
+                        </p>
+                    </div>
+                    <div class="col-md-12 cpart1" style="">
+                        <div class="col-md-12 cpart5 cpart6" style="padding:0px;border: none;" id="border_line_mobile">
+                            <p class="cpart2" style=" display: flex;">
+<!--                                <img src="/order_location/static/src/images/maps.png" alt=""-->
+<!--                                                   style="width: 18px;margin-right: 8px;"/>-->
+                                <i class="fa fa-address-card-o" style="display: inline !important;padding: 1px;padding-right: 10px;"></i>
+                                <span class="opensans">Ordering for
+                                    <span class="cpart3">
+                                        <a href="/" style="color: #252524;"><t t-esc="website_sale_order.website_delivery_type"/></a>
+                                    </span>
+                                    from
+                                    <span class="cpart3">
+                                        <a href="/" style="color: #252524;" class="opensans"><t t-esc="website_sale_order.company_id.name"/></a>
+                                    </span>
+                                    <!--                                    <a href="/" style="float: right;color: #353535;">Changes</a>-->
+                                </span>
+                            </p>
+<!--                            <p class="cpart3 cpart4" style="border:none;padding: 10px;">-->
+<!--                                <a href="/">Change</a>-->
+<!--                            </p>-->
+                        </div>
+
+                        <div class="col-md-12 cpart6" style="padding:0px;">
+                            <p class="cpart2 opensans" style="display: flex;">
+<!--                                <img src="/order_location/static/src/images/hut.png" alt=""-->
+<!--                                     style="width: 18px;margin-right: 8px;"/>-->
+                                <i class="fa fa-home" style="display: inline !important;display: inline !important;padding-right: 11px;font-size: 18px;"></i>
+                                <t t-esc="website_sale_order.company_id.name"/>
+                                <t t-esc="website_sale_order.company_id.street"/>
+                                <t t-esc="website_sale_order.company_id.city"/>
+                            </p>
+                        </div>
+                    </div>
+                    <input type="hidden" t-att-value="website_sale_order.id" id="sale_order_id_delivery_type"/>
+
+                    <t t-if="website_sale_order.website_delivery_type == 'pickup'">
+                        <div id="order_delivery_type" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                             style="padding:0px;margin-top: 0px;">
+                            <div class="container" style="">
+                                <div class="col-md-12 cpart1" style="">
+                                    <div class="row">
+                                        <div class="col-md-6 p-4" id="cpart10_img" style="text-align:center;">
+                                        <label for="fname" class="cpart8 opensans">Date*</label>
+                                        <div>
+                                            <input id="pickup_date" type="text" value="Today" class="cpart9 opensans"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 p-4" id="cpart11_img" style="text-align:center;">
+                                        <label for="fname" class="cpart8 opensans">Time*</label>
+                                        <div>
+                                            <select id="pickup_time" class="cpart9 opensans"></select>
+                                        </div>
+                                    </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12  cpart1" style="text-align: center;">
+                                    <div class="col-md-12 p-0">
+                                        <button id="save_delivery_type" style="" class="tablinks opensans">Continue Your Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                    <t t-if="website_sale_order.website_delivery_type == 'kerbside'">
+                        <div id="order_delivery_type_kurb" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                             style="padding:0px;margin-top: 65px;">
+                            <div class="container" style="">
+                                <div class="cpart1">
+                                    <div class="col-md-12 " style="">
+                                        <div class="col-md-6" id="cpart10_img" style="text-align:center;">
+                                            <label for="fname" class="cpart8 opensans">Date*</label>
+                                            <div>
+                                                <input id="pickup_date" type="text" value="Today" class="cpart9 opensans"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="cpart11_img" style="text-align:center;">
+                                            <label for="fname" class="cpart8 opensans">Time*</label>
+                                            <div>
+                                                <select id="pickup_time" class="cpart9 opensans"></select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12 " style="">
+                                        <div class="col-md-6" id="cpart10_img" style="text-align:center;">
+                                            <label for="fname" class="cpart8 opensans">Vehicle type*</label>
+                                            <div>
+                                                <select style="margin-right: 15px;" class="curb_select opensans"
+                                                        name="vehicle_type_ids"
+                                                        id="vehicle_type_ids">
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="cpart10_img" style="text-align:center;">
+                                            <label for="fname" class="cpart8 opensans">Vehicle make*</label>
+                                            <div>
+                                                <select class="curb_select opensans" name="vehicle_make_ids"
+                                                        id="vehicle_make_ids">
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 " style="">
+                                        <div class="col-md-6" id="cpart10_img" style="text-align:center;">
+                                            <label for="fname" class="cpart8 opensans">Vehicle Color*</label>
+                                            <div>
+                                                <input id="v_colour" type="text" placeholder="Vehicle Color"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="cpart10_img" style="text-align:center;">
+                                            <label for="fname" class="cpart8 opensans">License Plate Number*</label>
+                                            <div>
+                                                <input id="license_plate_no" type="text" class="opensans"
+                                                       placeholder="License Plate Number"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 " style="text-align: center;">
+                                        <div class="col-md-12">
+                                            <textarea rows="6" name="location_note" id="location_note"
+                                                      placeholder="Location Note..." class="form-control opensans"/>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12 cpart1" style="border: none;padding: 15px;">
+                                        <div class="col-md-12 cpart5 cpart6" style="    padding: 15px;">
+                                            <p class="cpart2 opensans">
+                                                <img src="/order_location/static/src/images/maps.png"
+                                                     alt="" style="width: 18px;margin-right: 8px;"/>
+                                                Location Available For Parking
+                                            </p>
+                                            <!--                                                    <p class="cpart3 cpart4"><a href="/">Changes</a></p>-->
+                                            <select class="curb_select_loc" name="vehicle_location_ids"
+                                                    id="vehicle_location_ids">
+                                                <t t-foreach="website_sale_order.approximate_location_ids" t-as="i">
+
+                                                    <options t-att-value="i.id" class="opensans">
+                                                        <img src="/order_location/static/src/images/maps.png" alt=""
+                                                             style="width: 18px;margin-right: 8px;"/>
+                                                        <t t-esc="i.location_name"/>
+                                                    </options>
+
+
+                                                </t>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 cpart1" style="text-align: center;">
+                                    <div class="col-md-12">
+                                        <button id="save_delivery_type_kurb" style="" class="tablinks opensans">Continue Your
+                                            Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+<t t-if="website_sale_order.website_delivery_type == 'delivery'">
+                        <div id="order_delivery_type_delivery" class="col-lg-12 col-md-12 col-sm-12 col-xs-12"
+                             style="padding:0px;">
+                            <div class="container" style="">
+                                <!--div>
+                                    <label style="margin-top: 25px; float: left;font-size: 15px;font-weight: 500;font-family: system-ui;">Is this a future Order</label>
+                                    <input style="margin-left: 10px;margin-top: 20px;cursor: pointer;outline: 0;display: inline-block;background-color: #ffffff;border: 2px solid #ad823a;width: 24px;height: 24px;vertical-align: middle;line-height: 1;text-align: center;font-size: 20px;color: #ad823a;" type="checkbox" id="future_order"></input>
+                                </div>
+                                <br/-->
+                                <div class="row">
+                                    <div class="col-md-6 advance_date" id="cpart10_img" style="text-align:center;">
+                                        <label for="fname" class="cpart8 opensans">Date*</label>
+                                        <div>
+                                            <input id="pickup_date" type="text" value="Today" class="cpart9 opensans"/>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 advance_time" id="cpart11_img" style="text-align:center;">
+                                        <label for="fname" class="cpart8 opensans">Time*</label>
+                                        <div>
+                                            <select id="pickup_time" class="cpart9 opensans"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="cpart1" style="width: 100%;margin-top: 20px;">
+                                    <div class="col-md-12" style="">
+                                        <div id="map" style="width: 100%;height: 50vh;"></div>
+                                        <script type="text/javascript"
+                                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCP8gcIkivceoSrgmYTq0_XxTHd6l5rNFM&amp;callback=initMap&amp;libraries=&amp;v=weekly"></script>
+
+                                        <input type="hidden" name="user_lat" id="user_lat" readonly="yes"/>
+                                        <input type="hidden" name="user_long" id="user_long" readonly="yes"/>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 cpart1" style="">
+                                    <div class="col-md-12 cpart5 cpart6 " style="    padding: 15px;">
+                                        <p class="cpart2 opensans">
+                                            <img src="/order_location/static/src/images/maps.png"
+                                                 alt="" style="width: 18px;margin-right: 8px;"/>
+                                            Nearest Store For Delivery
+                                        </p>
+                                        <!--                                                    <p class="cpart3 cpart4"><a href="/">Changes</a></p>-->
+                                        <select class="delivery_select_location opensans" name="vehicle_location_ids"
+                                                id="company_location_ids" disabled="disabled">
+                                            <option value="">Select Nearest Stores</option>
+                                        </select>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6" id="cpart10_img" style="text-align:center;">
+                                        <label for="fname" class="cpart8 opensans">Street*</label>
+                                        <div>
+                                            <input id="street1" type="text" class="cpart9 opensans" required="true"/>
+                                        </div>
+                                    </div>
+                                        <div class="col-md-6" id="cpart11_img" style="text-align:center;">
+                                            <label for="fname" class="cpart8 opensans">Street2*</label>
+                                            <div>
+                                               <input id="street2" type="text" class="cpart9 opensans" required="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="cpart10_img" style="text-align:center;">
+                                            <label for="fname" class="cpart8 opensans">City*</label>
+                                            <div>
+                                                <input id="city" type="text" class="cpart9 opensans" required="true"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="cpart11_img" style="text-align:center;">
+                                            <label for="fname" class="cpart8 opensans">Zip*</label>
+                                            <div>
+                                               <input id="zip" type="text" class="cpart9 opensans" required="true"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                        <div class="col-md-12 p-0 mt-4 cpart5 cpart6" style="padding: 15px;">
+                                        <button id="save_delivery_type_delivery" style="" class="tablinks opensans">Continue Your
+                                            Order
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                </div>
+            </div>
+
+
+            <style>
+                #save_delivery_type_delivery{
+                width: 100%;
+                height: 50px;
+                font-family: system-ui;
+                font-size: 19px;
+                background-color: black;
+                color: white;
+                border: 1px solid red;
+                background: red;
+                color: white;
+                font-weight: 700;
+                }
+                #save_delivery_type_delivery{
+                border: 1px solid #be9c79 !important;
+                background:#536956 !important;
+                }
+                #company_location_ids{
+                width: 100%;
+                height: 41px;
+                font-family: system-ui;
+                }
+                .cpart8 {
+                font-size: 16px;
+                font-family: system-ui;
+                color: grey;
+                padding-top: 15px;
+                }
+                #save_delivery_type_kurb{
+                width: 100%;
+                height: 54px;
+                font-family: system-ui;
+                font-size: 19px;
+                background-color: #262626;
+                color: white;
+                border: 1px solid red;
+                background: red;
+                color: white;
+                font-weight: 700;
+                }
+                #save_delivery_type_kurb{
+                border: 1px solid #532513 !important;
+                background: #532513 !important;
+                }
+                .curb_select_loc {
+                width: 100%;
+                height: 50px;
+                font-size: 20px;
+                background: #fffefe;
+                border: 1px solid;
+                font-family: system-ui;
+                }
+                #location_note{
+
+                height: 80px !important;
+                border: 1px solid black !important;
+                margin-top: 16px;
+                font-size: 16px;
+                text-transform: capitalize;
+                }
+
+                .cpart1 {
+                padding: 8px 17px;
+                border: 1.5px solid #eee6e6;
+                border-radius: 5px;
+                display: inline-block;
+                }
+                #license_plate_no {
+                text-align: center;
+                padding: 12px;
+                font-size: 20px;
+                width: 50% !important;
+                border: 1px solid black;
+                border-radius: 5px;
+                width: 100% !important;
+                }
+                #v_colour {
+                text-align: center;
+                padding: 12px;
+                font-size: 20px;
+                margin-right: 15px;
+                width: 50% !important;
+                border: 1px solid black;
+                width: 100% !important;
+                border-radius: 5px;
+                color: black;
+                }
+                #vehicle_make_ids{
+                width: 100%;
+                background-color: white;
+                border-radius: 5px;
+                background-color: white;
+                width: 100% !important;
+                height: 56px;
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
+                background-position: 96%;
+                background-repeat: no-repeat;
+                appearance: none;
+                padding-left: 35px;
+                }
+                #vehicle_type_ids{
+                width: 100%;
+                background-color: white;
+                border-radius: 5px;
+                background-color: white;
+                width: 100% !important;
+                height: 56px;
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
+                background-position: 96%;
+                background-repeat: no-repeat;
+                appearance: none;
+                padding-left: 35px;
+                }
+                #save_delivery_type{
+                    width: 100%;
+                    height: 54px;
+                    font-family: system-ui;
+                    font-size: 19px;
+                    background-color: #536956 !important;
+                    color: white;
+                    border: 0px solid red;
+                    background: red;
+                    color: white;
+                    font-weight: 700;
+                }
+
+                #pickup_date{
+                border-radius:0px;
+                width: 100% !important;
+                }
+                #pickup_time{
+                border-radius:0px;
+                background-color: white;
+                width: 100% !important;
+                height: 56px;
+                background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAUCAMAAACtdX32AAAAdVBMVEUAAAD///8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhMdQaAAAAJ3RSTlMAAAECAwQGBwsOFBwkJTg5RUZ4eYCHkJefpaytrsXGy8zW3+Do8vNn0bsyAAAAYElEQVR42tXROwJDQAAA0Ymw1p9kiT+L5P5HVEi3qJn2lcPjtIuzUIJ/rhIGy762N3XaThqMN1ZPALsZPEzG1x8LrFL77DHBnEMxBewz0fJ6LyFHTPL7xhwzWYrJ9z22AqmQBV757MHfAAAAAElFTkSuQmCC);
+                background-position: 96%;
+                background-repeat: no-repeat;
+                appearance: none;
+                padding-left: 35px;
+                }
+                main {
+                background: white;
+                display: block;
+                }
+
+                .oe_website_sale{
+                padding-top: 15px;
+                }
+                #proceed_payment{
+                width: 100%;
+                height: 38px;
+                font-family: system-ui;
+                font-size: 16px;
+                background-color: #525252;
+                color: white;
+                font-weight: 700;
+                }
+                .panel {
+                -webkit-box-shadow: 0 0px 0px rgb(0 0 0 / 5%)!important;
+                box-shadow: 0 0px 1px rgb(0 0 0 / 5%)!important;
+
+                margin-bottom: 0px!important;
+                }
+                .list-group-item{
+                cursor: pointer;
+                padding: 1rem;
+                position: relative;
+                border-radius: 5px!important;
+
+                }
+                .ho1{
+
+                font-family: math;
+                font-weight: bold;
+                letter-spacing: 1px;
+                font-size: 15px;
+                margin: 0px;
+                line-height: 23px;
+
+                }
+                .ho2{
+                margin-top: 14px;
+                font-size: 19px;
+                /* float: right!important; */
+                position: absolute;
+                right: 22px;
+                top: 0px;
+                }
+                .ho3{
+                margin-top: 10px;
+                font-family: monospace;
+                font-size: 19px;
+                font-weight: 900;
+                margin-bottom: 0px;
+                }
+                .ho4{
+                font-family: monospace;
+                font-size: 14px;
+                font-weight: 600;
+                margin-bottom: 0px;
+                margin-top: 7px;
+                }
+                .ho5{
+                font-family: auto;
+                font-size: 14px;
+                font-weight: 500;
+                margin-bottom: 0px;
+                margin-top: 7px;
+                color: #848181;
+                }
+                .ho6{
+                border-radius: 100px;
+                position: absolute;
+                top: 0.5rem;
+                right: 2.5rem;
+                background-color: #0a8020;
+                border: 1px solid #0a8020;
+                color: #fff;
+                font-weight: 600;
+                padding: 7px 15px 9px;
+                font-size: 12px;
+                }
+                .ho7{
+                font-size: 19px;
+                text-align: center;
+                color: #291dff;
+                letter-spacing: 1px;
+                font-weight: 800;
+                }
+                .ho8{
+                background: #0a8020;
+                padding: 14px 30px 15px;
+                text-align: center;
+                }
+                .ho9{
+                color: white;
+                font-weight: 700;
+                }
+                .ho9:hover{
+                color: white!important;
+                }
+                .ho10{
+                position: absolute;
+                right: 50px;
+                }
+                .ho11{
+                float: right;
+                margin-top: 15px;
+                color: #291dff;
+                font-weight: 600;
+                margin-right: 50px;
+                }
+                .ho12{
+                color: black;
+                font-weight: 400;
+                margin-left: 15px;
+                }
+                .panel-default {
+                border-color: #ddd0!important;
+                }
+                .cpart{
+                margin-bottom: 15px;
+                text-align: center;
+                margin-top: 15px;
+                font-weight: 800;
+                line-height: 20px;
+                }
+                .cpart1{
+                padding: 8px 17px;
+                border: 0px solid #eee6e6;
+                border-radius: 5px;
+                }
+                .cpart2{
+                float: left;
+                font-size: 15px;
+                font-weight: 500;
+                font-family: system-ui;
+                }
+                .cpart3{
+                border-bottom: 2px solid;
+                font-weight: 700;
+                }
+                .cpart4{
+                float: right;
+                font-size: 15px;
+                font-weight: 500;
+                font-family: system-ui;
+                }
+                .cpart4 a {
+                color: #353535;
+                }
+                .cpart5{
+
+                border-bottom: 1.5px solid #eee6e6;
+                }
+                .cpart6{
+                margin-bottom: 9px;
+                margin-top: 9px;
+                }
+                .cpart7{
+                font-size: 20px;
+                font-family: system-ui;
+                font-weight: 700;
+                margin-top: 10px;
+                }
+                .cpart8{
+                font-size: 16px;
+                font-family: system-ui;
+                color: grey;
+                }
+                .cpart9{
+                width: 100%;
+                line-height: 30px;
+                border-radius: 5px;
+                border-color: #000000;
+                }
+                .cpart9 {
+                    width: 100% !important;
+                    border-radius: 0px !important;
+                    border: 1px solid black;
+                    padding: 8px;
+                    font-size: 16px;
+                    outline: none;
+                }
+                .cpart10{
+                width: 22px;
+                margin-right: 8px;
+                position: absolute;
+                right: 50px;
+                top: 25px;
+                }
+                .cpart11{
+                font-size: 15px;
+                font-family: system-ui;
+                font-weight: 500;
+                color: grey;
+                }
+                .cpart12{
+                margin-top: 6px;
+                font-size: 15px;
+                font-family: system-ui;
+                font-weight: 700;
+                color: grey;
+                }
+                .containerzz {
+                display: block;
+                position: relative;
+                padding-left: 35px;
+                margin-bottom: 0px;
+                cursor: pointer;
+                font-size: 18px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                }
+
+                /* Hide the browser's default radio button */
+                .containerzz input {
+                position: absolute;
+                opacity: 0;
+                cursor: pointer;
+                }
+
+                /* Create a custom radio button */
+                .checkmark {
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 25px;
+                width: 25px;
+                background-color: #eee;
+                border-radius: 50%;
+                }
+
+                /* On mouse-over, add a grey background color */
+                .containerzz:hover input ~ .checkmark {
+                background-color: #ccc;
+                }
+
+                /* When the radio button is checked, add a blue background */
+                .containerzz input:checked ~ .checkmark {
+                background-color: #2196F3;
+                }
+
+                /* Create the indicator (the dot/circle - hidden when not checked) */
+                .checkmark:after {
+                content: "";
+                position: absolute;
+                display: none;
+                }
+
+                /* Show the indicator (dot/circle) when checked */
+                .containerzz input:checked ~ .checkmark:after {
+                display: block;
+                }
+
+                /* Style the indicator (dot/circle) */
+                .containerzz .checkmark:after {
+                top: 9px;
+                left: 9px;
+                width: 8px;
+                height: 8px;
+                border-radius: 50%;
+                background: white;
+                }
+                .cpart13{
+                width: 100%;
+                line-height: 30px;
+                border-radius: 5px;
+                border-color: #d8d6d6;
+                }
+                .cpart14{
+                text-align: center;
+                margin-top: 14px;
+                font-size: 15px;
+                font-family: system-ui;
+                font-weight: 700;
+                }
+                .order_delivery_img {
+                width:100%;
+                height:50vw;
+                margin-top:-25vw;
+                }
+                @media only screen and (max-width: 1000px) and (min-width:750px) {
+                    .order_delivery_img{
+                        margin-top:0px !important;
+                    }
+                    .order_delivery_text{
+                        margin-top:-17% !important;
+                    }
+                }
+                @media only screen and (max-width:750px){
+                    img.order_delivery_img {
+                        margin-top: 0px;
+                    }
+                }
+            </style>
+        </t>
+    </template>
+</odoo>

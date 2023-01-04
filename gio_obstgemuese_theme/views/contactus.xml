@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="contact_us_inherit" inherit_id="website.contactus">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <t t-set="company" t-value="request.env.user.company_id"/>
+            <div class="container contact_wrap">
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h1 class="mt-5 pt-5 GT_Pressura_Pro_Mono">Contact</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul
+                                class="list-unstyled mb-0 pl-2 GT_Pressura_Pro_Mono mt-4 color_dim">
+                            <li>
+                                <t t-esc="company.name"/>
+                            </li>
+                            <li>
+                                <i class="fa fa-map-marker fa-fw mr-2"/>
+                                <span class="o_force_ltr">
+                                    <t t-esc="company.street"/>
+                                    <br/>
+                                    <t t-esc="company.city"/>,
+                                    <t t-esc="company.state_id.name"/>,
+                                    (<t t-esc="company.zip"/>),
+                                    <t t-esc="company.country_id.name"/>
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa fa-phone fa-fw mr-2"/>
+                                <span class="o_force_ltr">
+                                    <t
+                                            t-esc="company.phone"/>
+                                </span>
+                            </li>
+                            <li>
+                                <i class="fa fa-1x fa-fw fa-envelope mr-2"/>
+                                <span>
+                                    <t t-esc="company.email"/>
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="g_map"/>
+                        <script
+                                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&amp;callback=initMap&amp;v=weekly"
+                        ></script>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <h1 class="mt-5 GT_Pressura_Pro_Mono">Contact Form</h1>
+                        <p class="GT_Pressura_Pro_Mono">
+                            Do you have any questions or would you like advice?
+                            We're here to help. We will get in touch with you
+                            within the next 24 hours
+                        </p>
+                    </div>
+                </div>
+                <section class="s_website_form" data-vcss="001"
+                         data-snippet="s_website_form">
+                    <div class="container">
+                        <form id="contactus_form" action="/website/form/"
+                              method="post" enctype="multipart/form-data"
+                              class="o_mark_required" data-mark="*"
+                              data-model_name="mail.mail"
+                              data-success-mode="redirect"
+                              data-success-page="/contactus-thank-you"
+                              data-pre-fill="true">
+                            <div class="s_website_form_rows row s_col_no_bgcolor">
+                                <div class="col-md-6 s_website_form_field s_website_form_custom s_website_form_required"
+                                     data-type="char" data-name="Field">
+                                    <div class="form-group s_col_no_resize s_col_no_bgcolor">
+                                        <label
+                                                class="col-form-label s_website_form_label GT_Pressura_Pro_Mono color_dim"
+                                                for="contact1">
+                                            Name
+                                        </label>
+                                        <input id="contact1" type="text"
+                                               class="form-control s_website_form_input log_reg_input GT_Pressura_Pro_Mono"
+                                               name="name" required=""
+                                               data-fill-with="name"/>
+                                    </div>
+                                </div>
+                                <div class=" col-md-6 s_website_form_field s_website_form_required"
+                                     data-type="email" data-name="Field">
+                                    <div class="form-group s_col_no_resize s_col_no_bgcolor">
+                                        <label
+                                                class="col-form-label s_website_form_label GT_Pressura_Pro_Mono color_dim"
+                                                for="contact3">E-mail
+                                        </label>
+
+                                        <input id="contact3"
+                                               type="email"
+                                               class="form-control s_website_form_input log_reg_input GT_Pressura_Pro_Mono"
+                                               name="email_from"
+                                               required=""
+                                               data-fill-with="email"/>
+
+                                    </div>
+                                </div>
+                                <div
+                                        class="col-md-12 s_website_form_field s_website_form_custom s_website_form_required"
+                                        data-type="text" data-name="Field">
+                                    <div class="form-group s_col_no_resize s_col_no_bgcolor">
+                                        <label
+                                                class="col-form-label s_website_form_label GT_Pressura_Pro_Mono color_dim"
+                                                for="contact6">
+                                            Your Question
+                                        </label>
+
+                                        <textarea id="contact6"
+                                                  class="form-control s_website_form_input log_reg_input GT_Pressura_Pro_Mono"
+                                                  name="description"
+                                                  required=""></textarea>
+                                    </div>
+
+                                </div>
+                                <div class=" col-12 s_website_form_field s_website_form_dnone">
+                                    <div class="form-group s_col_no_resize s_col_no_bgcolor">
+                                        <label
+                                                class="col-form-label col-sm-auto s_website_form_label GT_Pressura_Pro_Mono color_dim">
+                                            Email To
+
+                                        </label>
+                                        <div class="col-sm">
+                                            <input id="contact7"
+                                                   type="hidden"
+                                                   class="form-control s_website_form_input log_reg_input GT_Pressura_Pro_Mono"
+                                                   name="email_to"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group col-12 s_website_form_submit"
+                                     data-name="Submit Button">
+                                    <div
+                                            class="s_website_form_label"/>
+                                    <a href="#" role="button"
+                                       class="btn log_reg_btn s_website_form_send">
+                                        Submit
+                                    </a>
+                                    <span id="s_website_form_result"/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+            </div>
+            <div class="row news_letter_row mt-5">
+                <div class="col-md-12 bg_theme_color p-5">
+                    <div class="container">
+                        <h1 class="news_letter_title GT_Pressura_Pro_Mono text-white">
+                            Newsletter
+                        </h1>
+                        <p class="GT_Pressura_Pro_Mono text-white">Would you
+                            like to keep in touch with us? Then
+                            subscribe to our newsletter.
+                            In our newsletter we communicate exciting news, new
+                            products, events or discount campaigns.
+                        </p>
+
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <div class="s_newsletter_subscribe_form ob_js_subscribe"
+                                     data-vxml="001" data-list-id="0"
+                                     data-name="Newsletter Form">
+                                    <div class="d-inline-flex">
+                                        <input type="email" name="email"
+                                               class="js_subscribe_email newsletter_input GT_Pressura_Pro_Mono pl-0 pr-0"
+                                               placeholder="your email..."/>
+                                        <button role="button" href="#"
+                                                class="js_subscribe_btn o_submit newsletter_btn p-2">
+                                            <img class="newsletter_img"
+                                                 src="gio_obstgemuese_theme/static/src/svg/64-check-white.svg"/>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="js_newsletter_message text-white GT_Pressura_Pro_Mono mt-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-5">
+                <h1 class="GT_Pressura_Pro_Mono">Social Media</h1>
+                <p class="GT_Pressura_Pro_Mono color_dim mt-4">Are newsletters
+                    out for you?
+                    Or not your thing? No problem,
+                    we are represented on various social media platforms. We
+                    look forward to talking to you.
+                </p>
+                <div class="row pb-5">
+                    <div class="col-12">
+                        <t t-call="gio_obstgemuese_theme.company_social_links"/>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+    <template id="company_social_links">
+        <t t-set="company" t-value="request.env.user.company_id"/>
+         <div class="s_share text-left" data-snippet="s_share"
+                             data-name="Social Media">
+                            <a t-att-href="company.social_facebook"
+                               class="s_share_facebook" target="_blank">
+                                <i
+                                        class="fa fa-facebook d-block rounded-circle shadow-sm"/>
+                            </a>
+                            <a t-att-href="company.social_twitter"
+                               class="s_share_twitter"  target="_blank">
+                                <i
+                                        class="fa fa-twitter d-block rounded-circle shadow-sm"/>
+                            </a>
+                            <a t-att-href="company.social_linkedin"
+                               class="s_share_linkedin" target="_blank">
+                                <i
+                                        class="fa fa-linkedin d-block rounded-circle shadow-sm"/>
+                            </a>
+                        </div>
+    </template>
+</odoo>

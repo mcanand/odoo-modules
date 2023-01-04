@@ -1,0 +1,458 @@
+.color_dim{
+    color:#666666;
+    font-weight: 100;
+}
+#g_map {
+  height: 400px;
+  width: 100%;
+  filter: grayscale(1);
+}
+.contact_card img{
+    width:100%;
+    height:50vh;
+}
+
+
+h3.o_page_header.mt8 {
+    font-family: "GT Pressura Pro Mono";
+}
+h3.o_page_header.mt16.mb4 {
+    font-family: "GT Pressura Pro Mono";
+}
+.card {
+    background-color: whitesmoke !important;
+    border: none !important;
+    font-family: "GT Pressura Pro Mono";
+}
+.card-body {
+    background-color: whitesmoke !important;
+    color: #212529;
+}
+a.a-submit.btn.btn-secondary.mb-2.btn-block {
+    background: #9b9b9b;
+    padding: 4px;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 15vw;
+    border:2px solid #9b9b9b;
+}
+a.a-submit.btn.btn-secondary.mb-2.btn-block:hover{
+    background: white;
+    border:2px solid #9b9b9b;
+    color:#9b9b9b;
+}
+a.btn.btn-primary.mb32{
+    background: #9b9b9b;
+    padding: 4px;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 15vw;
+    border:2px solid #9b9b9b;
+}
+a.btn.btn-primary.mb32:hover{
+    background: white;
+    border:2px solid #9b9b9b;
+    color:#9b9b9b;
+}
+a.btn,button.btn.btn-primary{
+        background: #9b9b9b;
+    padding: 4px;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    width: 15vw;
+    border:2px solid #9b9b9b;
+}
+a.btn:hover,button.btn.btn-primary:hover{
+    background: white;
+    border:2px solid #9b9b9b;
+    color:#9b9b9b;
+}
+a.btn.btn-link.float-right.p-0.js_edit_address.no-decoration {
+
+    width: auto;
+}
+i.fa.fa-edit {
+    padding: 11px;
+        display: block !important;
+}
+
+
+/*
+
+.cont{
+  height: 100%;
+  left: calc(50% - 350px);
+  padding: 0;
+  margin: 40px auto;
+  position: absolute;
+}
+#nprogress-bar{
+  -webkit-appearance:none;
+  width: 700px;
+  color: #CCC;
+  height: 2px;
+  margin: 0 auto;
+}
+#first, #second, #third,  #fourth{ margin:0px; }
+#step span{
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  border: 3px solid #CCC;
+  background:#CCCCCC;
+  position: absolute;
+  left:0;
+  color:#ffffff;
+  top: -30px;
+  cursor: pointer;
+  transition: all 0.4s ease-in-out;
+}
+#step{ height:100px; width:100%;}
+#step span i{padding:20px; text-align:center; font-size:40px;
+}
+
+ #step .first {  left:-23px;
+}
+
+
+#step  .second{
+  left: 200px;
+}
+#step  .third{
+  left: 420px;
+}
+#step  .fourth{
+  left: 640px;
+}
+.detail{ position:relative;}
+#nprogress-bar::-webkit-progress-value{ */
+/* Changes line color *//*
+
+  background: #049dfe;
+  transition: all 0.4s ease-in-out;
+}
+#nprogress-bar::-webkit-progress-bar{ */
+/* Changes background color *//*
+
+  background: #CCC;
+}
+#step .border-change{
+  border-color:#0077c2;
+  background: #049dfe;
+  transition: all 0.4s ease-in-out;
+}*/
+
+i {
+  margin-right: 10px;
+}
+
+/*------------------------*/
+input:focus,
+button:focus,
+.form-control:focus{
+  outline: none;
+  box-shadow: none;
+}
+.form-control:disabled, .form-control[readonly]{
+  background-color: #fff;
+}
+/*----------step-wizard------------*/
+.d-flex{
+  display: flex;
+}
+.justify-content-center{
+  justify-content: center;
+}
+.align-items-center{
+  align-items: center;
+}
+
+/*---------signup-step-------------*/
+.bg-color{
+  background-color: #333;
+}
+.step-container{
+  padding: 0px 0px;
+  padding-bottom: 60px;
+}
+
+
+
+
+    .wizard .nav-tabs {
+        position: relative;
+        margin-bottom: 0;
+        border-bottom-color: transparent;
+    }
+
+    .wizard > div.wizard-inner {
+            position: relative;
+    margin-bottom: 50px;
+    text-align: center;
+    }
+
+.connecting-line {
+    height: 2px;
+    background: #e0e0e0;
+    position: absolute;
+    width: 75%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 15px;
+    z-index: 1;
+}
+
+.wizard .nav-tabs > li.active > a, .wizard .nav-tabs > li.active > a:hover, .wizard .nav-tabs > li.active > a:focus {
+    color: #555555;
+    cursor: default;
+    border: 0;
+    border-bottom-color: transparent;
+}
+
+span.round-tab {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #fff;
+    z-index: 2;
+    position: absolute;
+    left: 0;
+    text-align: center;
+    font-size: 16px;
+    color: #0e214b;
+    font-weight: 500;
+    border: 1px solid #ddd;
+}
+span.round-tab i{
+    color:#555555;
+}
+.wizard li.active span.round-tab {
+        background: #0db02b;
+    color: #fff;
+    border-color: #0db02b;
+}
+.wizard li.active span.round-tab i{
+    color: #5bc0de;
+}
+.wizard .nav-tabs > li.active > a i{
+  color: #0db02b;
+}
+
+.wizard .nav-tabs > li {
+    width: 25%;
+}
+
+.wizard li:after {
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: red;
+    transition: 0.1s ease-in-out;
+}
+
+
+
+.wizard .nav-tabs > li a {
+    width: 30px;
+    height: 30px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+    background-color: transparent;
+    position: relative;
+    top: 0;
+}
+.wizard .nav-tabs > li a i{
+  position: absolute;
+    top: 45px;
+    font-style: normal;
+    font-weight: 400;
+    white-space: nowrap;
+    left: 50%;
+    transform: translate(-27%, -50%);
+    font-size: 12px;
+    font-weight: 700;
+    color: #000;
+}
+
+    .wizard .nav-tabs > li a:hover {
+        background: transparent;
+    }
+
+.wizard .tab-pane {
+    position: relative;
+    padding-top: 20px;
+}
+
+
+.wizard h3 {
+    margin-top: 0;
+}
+.prev-step,
+.next-step{
+    margin-top: 30px;
+}
+
+.skip-btn{
+  background-color: #cec12d;
+}
+.step-head{
+    font-size: 20px;
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.term-check{
+  font-size: 14px;
+  font-weight: 400;
+}
+.custom-file {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    height: 40px;
+    margin-bottom: 0;
+}
+.custom-file-input {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 40px;
+    margin: 0;
+    opacity: 0;
+}
+.custom-file-label {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1;
+    height: 40px;
+    padding: .375rem .75rem;
+    font-weight: 400;
+    line-height: 2;
+    color: #495057;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+}
+.custom-file-label::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    display: block;
+    height: 38px;
+    padding: .375rem .75rem;
+    line-height: 2;
+    color: #495057;
+    content: "Browse";
+    background-color: #e9ecef;
+    border-left: inherit;
+    border-radius: 0 .25rem .25rem 0;
+}
+/*
+.footer-link{
+  margin-top: 30px;
+}
+.all-info-container{
+
+}
+.list-content{
+  margin-bottom: 10px;
+}
+.list-content a{
+  padding: 10px 15px;
+    width: 100%;
+    display: inline-block;
+    background-color: #f5f5f5;
+    position: relative;
+    color: #565656;
+    font-weight: 400;
+    border-radius: 4px;
+}
+.list-content a[aria-expanded="true"] i{
+  transform: rotate(180deg);
+}
+.list-content a i{
+  text-align: right;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    transition: 0.5s;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    background-color: #fdfdfd;
+}
+.list-box{
+  padding: 10px;
+}
+.signup-logo-header .logo_area{
+  width: 200px;
+}
+.signup-logo-header .nav > li{
+  padding: 0;
+}
+.signup-logo-header .header-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.list-inline li{
+    display: inline-block;
+}
+.pull-right{
+    float: right;
+}
+
+*/
+
+
+
+
+
+@media (max-width: 767px){
+  .sign-content h3{
+    font-size: 40px;
+  }
+  .wizard .nav-tabs > li a i{
+    display: none;
+  }
+  .signup-logo-header .navbar-toggle{
+    margin: 0;
+    margin-top: 8px;
+  }
+  .signup-logo-header .logo_area{
+    margin-top: 0;
+  }
+  .signup-logo-header .header-flex{
+    display: block;
+  }
+}
+.shipping_select{
+    transition:0.4s;
+    cursor:pointer;
+}
+.shipping_selected{
+    border: 2px solid #eeca00;
+    padding:4px;
+    transition:0.4s;
+    border-radius: 5px;
+}
+.shipping_methode_radio:after{
+     background-color: #ffa500;
+}
+.shipping_methode_radio:checked:after {
+     background-color: #ffa500;
+}

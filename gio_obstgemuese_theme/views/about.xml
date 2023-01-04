@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="about_us_obst" name="about us page">
+        <t t-call="portal.frontend_layout">
+            <t t-set="company" t-value="request.env.user.company_id"/>
+            <div class="container">
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h1 class="GT_Pressura_Pro_Mono mt-5">Who are we?</h1>
+                        <h4 class="GT_Pressura_Pro_Mono mt-5">OBST&amp;GEMÜSE
+                            is not afraid of
+                            uncompromising
+                            balancing act and constantly reinventing itself...
+                        </h4>
+                        <p class="GT_Pressura_Pro_Mono mt-5 color_dim">
+                            OBST&amp;GEMÜSE started out in a 3-room apartment in
+                            Kleinbasel. In 2009, the three founders dared to
+                            take the step into self-employment and moved into
+                            the premises of an old printing shop. On their own
+                            initiative and with the active support of friends,
+                            the rear building with the backyard is renovated and
+                            OBST&amp;GEMÜSE is opened. A bit of the living room
+                            atmosphere has remained. With your own laptop, you
+                            can make yourself comfortable in the backyard or on
+                            the sofa with a cup of coffee, and there is WiFi
+                            too.
+                            <br/>
+                            <br/>
+                            At OBST&amp;GEMÜSE, sustainability, functionality
+                            and quality are combined with the desire to do
+                            things.
+                            A young Swiss idea with a lot of potential.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h1 class="GT_Pressura_Pro_Mono mt-3">Who does
+                            what?
+                        </h1>
+                        <p class="GT_Pressura_Pro_Mono  color_dim mt-4">
+                            We offer comprehensive advice and are happy to
+                            answer your questions. The quickest way is by email
+                            to <t t-esc="company.email"/>.
+                        </p>
+                    </div>
+                    <t t-foreach="8" t-as="a">
+                    <div class="col-md-4 col-6 mt-4">
+                        <div class="row contact_card GT_Pressura_Pro_Mono">
+                            <div class="col-12">
+                                <img src="/gio_obstgemuese_theme/static/src/images/wp4686199-spider-man-pc-wallpapers.jpg" width="100" hight="100"></img>
+                            </div>
+                            <div class="col-12">
+                                <h4 class="mt-2">aanad</h4>
+                                <div class="color_dim">s w developer</div>
+                                <div class="color_dim">email</div>
+                            </div>
+                        </div>
+                    </div>
+                    </t>
+                </div>
+            </div>
+            <div class="row news_letter_row mt-5">
+                <div class="col-md-12 bg_theme_color p-5">
+                    <div class="container">
+                        <h1 class="news_letter_title GT_Pressura_Pro_Mono text-white">
+                            Newsletter
+                        </h1>
+                        <p class="GT_Pressura_Pro_Mono text-white">Would you
+                            like to keep in touch with us? Then
+                            subscribe to our newsletter.
+                            In our newsletter we communicate exciting news, new
+                            products, events or discount campaigns.
+                        </p>
+
+                        <div class="row mt-5">
+                            <div class="col-12">
+                                <div class="s_newsletter_subscribe_form ob_js_subscribe"
+                                     data-vxml="001" data-list-id="0"
+                                     data-name="Newsletter Form">
+                                    <div class="d-inline-flex">
+                                        <input type="email" name="email"
+                                               class="js_subscribe_email newsletter_input GT_Pressura_Pro_Mono pl-0 pr-0"
+                                               placeholder="your email..."/>
+                                        <button role="button" href="#"
+                                                class="js_subscribe_btn o_submit newsletter_btn p-2">
+                                            <img class="newsletter_img"
+                                                 src="gio_obstgemuese_theme/static/src/svg/64-check-white.svg"/>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="js_newsletter_message text-white GT_Pressura_Pro_Mono mt-2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="container mt-5">
+                <h1 class="GT_Pressura_Pro_Mono">Social Media</h1>
+                <p class="GT_Pressura_Pro_Mono color_dim mt-4">Are newsletters
+                    out for you?
+                    Or not your thing? No problem,
+                    we are represented on various social media platforms. We
+                    look forward to talking to you.
+                </p>
+                <div class="row pb-5">
+                    <div class="col-12">
+                        <t t-call="gio_obstgemuese_theme.company_social_links"/>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

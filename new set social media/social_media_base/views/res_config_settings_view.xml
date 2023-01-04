@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.inherit.social.media</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block social_media_settings_block" data-string="Social Media" string="Social Media" data-key="social_media_base">
+                    <h2>Social Media</h2>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_social_media_settings" model="ir.actions.act_window">
+        <field name="name">Settings</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.config.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+        <field name="context">{'module':'social_media_base', 'bin_size':False}</field>
+    </record>
+
+    <menuitem id='social_media_settings_menu'
+              name="Settings"
+              parent="social_media_base.social_media_main_menu"
+              action="action_social_media_settings"
+              sequence="50"/>
+</odoo>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="action_obst_360_view_config" model="ir.actions.act_window">
+        <field name="name">Obst 360 view</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">panorama.view.config</field>
+        <field name="view_mode">kanban,form</field>
+    </record>
+
+    <record model="ir.ui.view" id="obst_360_view_config">
+        <field name="name">obst_360_view_config</field>
+        <field name="model">panorama.view.config</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <h1>
+                                <field name="name" string="Name" placeholder="360 view configuration"/>
+                            </h1>
+                            <field name="active"/>
+                            <field name="auto_rotate"/>
+                            <field name="auto_rotate_value"
+                                   attrs="{'invisible':[('auto_rotate','==',False)]}"/>
+                        </group>
+                        <group>
+                            <field name="panorama_image" string=" "
+                                   widget='image'/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Hotspots" name="lines">
+                            <field name="hotspot_ids"
+                                   widget="section_and_note_one2many"
+                                   mode="tree">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="pitch"/>
+                                    <field name="yaw"/>
+                                    <button type="object"
+                                            name="select_pitch_yaw"
+                                            string="select pitch yaw"
+                                            class="btn btn-primary select_pitch_yaw_custom w-100"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_res_uses_kanban" model="ir.ui.view">
+        <field name="name">panorama</field>
+        <field name="model">panorama.view.config</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_mobile" create="1">
+                <field name="name"/>
+                <!--<field name="panorama_image"/>-->
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <field name="panorama_image" widget="image"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <h2>
+                                    <field name="name"/>
+                                </h2>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+    <menuitem name="Landing 360 view configuration"
+              id="obst_360_view_config_menu"
+              action="action_obst_360_view_config"
+              parent="website.menu_website_global_configuration"
+    />
+
+</odoo>

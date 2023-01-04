@@ -1,0 +1,18 @@
+<odoo>
+    <template id="social_media_error_view" name="Social Media Error Template">
+        <t t-call="web.layout">
+            <t t-set="html_data" t-value="{'style': 'height: 100%;'}"/>
+            <t t-set="head">
+                <t t-call-assets="web.assets_frontend" t-js="false"/>
+            </t>
+            <div class="row h-75">
+                <div class="alert alert-danger mw-50 m-auto col-md-4" role="alert">
+                    <h4 class="alert-heading"><b>An error occurred while trying to link your account</b></h4>
+                    <p t-esc="error_message"></p>
+                    <hr/>
+                    <a href="/web#action=social_media_base.action_social_media_types">Go back to Social</a>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

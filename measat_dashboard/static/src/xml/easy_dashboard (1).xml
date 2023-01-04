@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="easy_dashboard">
+        <div class="o_dashboards">
+            <div class="container-fluid o_hr_dashboard">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info_box neworders">
+                            <div class="info-box-content cursor">
+                                <span class="info-box-text">New Orders</span>
+                                <span class="info-box-number">10<t t-esc="widget.login_employee['neworders']"/></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info_box approved_orders">
+                            <div class="info-box-content cursor">
+                                <span class="info-box-text">Approved Orders</span>
+                                <span class="info-box-number"><t t-esc="widget.login_employee['new_orders']"/></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info_box shipped_orders">
+                            <div class="info-box-content cursor">
+                                <span class="info-box-text">Shipped Orders</span>
+                                <span class="info-box-number"><t t-esc="widget.login_employee['new_orders']"/></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info_box approved_pdts">
+
+                            <div class="info-box-content cursor">
+                                <span class="info-box-text">Approved Products</span>
+                                <span class="info-box-number"><t t-esc="widget.login_employee['new_orders']"/></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 col-sm-6 col-xs-12"></div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info_box pending_pdts">
+
+                            <div class="info-box-content cursor">
+                                <span class="info-box-text">Pending Products</span>
+                                <span class="info-box-number"><t t-esc="widget.login_employee['new_orders']"/></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-9 col-sm-6 col-xs-12"></div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info_box rejected_pdts">
+
+                            <div class="info-box-content cursor">
+                                <span class="info-box-text">Rejected Products</span>
+                                <span class="info-box-number"><t t-esc="widget.login_employee['new_orders']"/></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="col-md-9 col-sm-6 col-xs-12"></div>
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                        <div class="info_box payment_requested">
+
+                            <div class="info-box-content cursor">
+                                <span class="info-box-text">Payments Requested</span>
+                                <span class="info-box-number"><t t-esc="widget.login_employee['new_orders']"/></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="o_hr_birthday_reminder"></div>
+        </div>
+    </t>
+
+
+</templates>

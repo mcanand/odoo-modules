@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_whatsapp_template_manager,whatsapp_template_manager,model_whatsapp_template,,1,1,1,1
+
+access_send_whatsapp_sale,send_whatsapp_sale,model_send_whatsapp_sale,,1,1,1,1
+
+access_send_whatsapp_res_users,send.whatsapp.res.users,model_send_whatsapp_res_users,,1,1,1,1
+
+access_send_whatsapp_event_registration,send_whatsapp_event_registration,model_send_whatsapp_event_registration,,1,1,1,1

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cabinet_config_settings" model="ir.ui.view">
+        <field name="name">Order bin Settings</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id"
+               ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]"
+                   position="inside">
+                <div class="app_settings_block" data-string="Order Bin Settings"
+                     data-key="order_bin">
+                    <h2>Order Bin Settings</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label for="parameter_x" string="Order Bin Parameter X"
+                                               class="col-lg-3 o_light_label"/>
+                                        <field name="parameter_x"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <label for="parameter_y" string="Order Bin Parameter Y"
+                                               class="col-lg-3 o_light_label"/>
+                                        <field name="parameter_y"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="content-group">
+                                    <div class="row mt16">
+                                        <p style="color: red !important;">
+                                            If the system already has order bin defined, changing the parameters will
+                                            delete the current order bin records, tracking and will create new cabinet
+                                            distribution based on current parameter values.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

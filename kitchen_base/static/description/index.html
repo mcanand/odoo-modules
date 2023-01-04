@@ -1,0 +1,52 @@
+<div>
+    <h1>Pre Order</h1>
+    <p1>
+        <img style="width: 80vw; margin-bottom: 20px;"
+             src="/kitchen_base/static/description/img/preOrderEnable.png"/>
+        <ul style="list-style-type:disc;">
+            <li>Website orders can be pre-ordered.</li>
+            <li>Use 'Enable Pre-Order' field in Settings > Sales > Quotations &amp; Orders for turning On/Off this feature.</li>
+            <li>If the feature is enabled orders placed will be shown for accepting just before it needs to be done.</li>
+            <li>Website should block completing the pre-order if time remaining to finish order preparation is less
+                than time required to prepare the order.</li>
+        </ul>
+    </p1>
+    <h1>Preparation Time Calculation</h1>
+    <h3>Calculation:</h3>
+    <p3>
+        Time required to prepare the order is the sum of product of preparation time for each product and its quantity.
+        <ul style="list-style-type:disc;">
+            <li>
+                Eg:
+                <ul style="list-style-type:square;">
+                    <li>Preparation time for a product is 10 minutes</li>
+                    <li>Order line quantity is 2</li>
+                    <li>Preparation time for second product is 20 minutes</li>
+                    <li>Order line quantity is 3</li>
+                    <li>
+                        So the total preparation time for the order will be:
+                        <ul style="list-style-type:circle;">
+                            <li>(10 x 2) + (20 x 3) = 80 minutes</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                For preparation time for a product use 'Preparation time in minutes' field in Product Variants if it is greater than 0.
+                <img style="width: 80vw; margin-bottom: 20px;"
+                     src="/kitchen_base/static/description/img/variantPrepTime.png"/>
+            </li>
+            <li>
+                Else use 'Preparation time in minutes' field in Products if it is greater than 0.
+                <img style="width: 80vw; margin-bottom: 20px;"
+                     src="/kitchen_base/static/description/img/productPrepTime.png"/>
+            </li>
+            <li>
+                If both field are zero then last option is to take the default preparation time for products. Use 'Minimum preparation time in minutes'
+                field in Settings > Inventory > Products.
+                <img style="width: 80vw; margin-bottom: 20px;"
+                     src="/kitchen_base/static/description/img/settingsPrepTime.png"/>
+            </li>
+        </ul>
+    </p3>
+</div>

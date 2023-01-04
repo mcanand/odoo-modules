@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_panorama_view_config,panorama.view.config,model_panorama_view_config,,1,1,1,1
+access_panorama_view_hotspot,panorama.view.hotspot,model_panorama_view_hotspot,,1,1,1,1
+access_panorama_hotspot_wizard,panorama.hotspot.wizard,model_panorama_hotspot_wizard,,1,1,1,1

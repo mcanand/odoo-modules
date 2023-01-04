@@ -1,0 +1,610 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="portal_inherit" inherit_id="portal.portal_layout">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="ob_portal_wrap mt-5 pt-5">
+                <div class="ob_portal_wrap_refresh">
+                    <t t-set="user"
+                       t-value="request.env['res.users'].sudo().search([('id','=',request.uid)])"/>
+                    <div class="container">
+                        <t t-set="partner"
+                           t-value="request.env.user.partner_id"/>
+                        <div class="row">
+                            <div class="col-3">
+                                <div class="tab">
+                                    <button class="ob_portal_tab_links"
+                                            value="overview"
+                                            id="defaultOpen">Overview
+                                    </button>
+                                    <button class="ob_portal_tab_links"
+                                            value="order">Order
+                                    </button>
+                                    <button class="ob_portal_tab_links"
+                                            value="bookmarks">Bookmarks
+                                    </button>
+                                    <button class="ob_portal_tab_links"
+                                            value="profile">Profile
+                                    </button>
+                                    <button class="ob_portal_tab_links"
+                                            value="payment_methode">Payment
+                                        Methode
+                                    </button>
+                                    <button class="ob_portal_tab_links"
+                                            value="address">Address
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="col-9">
+                                <t t-call="gio_obstgemuese_theme.portal_overview"/>
+                                <t t-call="gio_obstgemuese_theme.portal_Order"/>
+                                <t t-call="gio_obstgemuese_theme.portal_Bookmarks"/>
+                                <t t-call="gio_obstgemuese_theme.portal_Profile"/>
+                                <t t-call="gio_obstgemuese_theme.portal_Payment_Methode"/>
+                                <t t-call="gio_obstgemuese_theme.portal_Address"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+
+            </script>
+        </xpath>
+    </template>
+    <template id="portal_overview">
+        <div id="overview" class="tab_content">
+
+
+            <h3 class="GT_Pressura_Pro_Mono">Customer Account</h3>
+            <div class="row mt-5">
+                <div class="col">
+                    <p class="GT_Pressura_Pro_Mono">This is your customer
+                        account dashboard, where
+                        you have
+                        the
+                        ability to view your recent account activity and make
+                        changes to your personal information.
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-2 pr-0">
+                    <div t-field="partner.image_1024"
+                         class="profile_image rounded-circle"
+                         t-options='{"widget": "image", "class": " " , "itemprop": "image"}'/>
+
+                </div>
+                <div class="col-10 pl-0">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 class="GT_Pressura_Pro_Mono">
+                                <t t-esc="partner.name"/>
+                            </h2>
+                        </div>
+                        <div class="col-12">
+                            <t t-if="partner.company_name">
+                                <p class="GT_Pressura_Pro_Mono">
+                                    <t t-esc="partner.company_name"/>
+                                </p>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-6 GT_Pressura_Pro_Mono">
+                    <div class="overview_profile p-4">
+                        <h3 class="GT_Pressura_Pro_Mono">Profile</h3>
+                        <div class="pt-2">
+                            <t t-if="partner.title">
+                                <t t-esc="partner.title"/>
+                            </t>
+                            <t t-esc="partner.name"/>
+                        </div>
+                        <div class=""><t t-esc="partner.street"/>,
+                            <t t-esc="partner.city"/>,<t
+                                    t-esc="partner.state_id.name"/>,<t
+                                    t-esc="partner.zip"/>,
+                            <t
+                                    t-esc="partner.country_id.name"/>
+                        </div>
+                        <div class="">
+                            <t t-esc="partner.email"/>
+                        </div>
+                        <button class="log_reg_btn mt-4">Change Profile</button>
+                    </div>
+                </div>
+                <div class="col-md-6 GT_Pressura_Pro_Mono">
+                    <div class="overview_profile p-4">
+                        <h3 class="GT_Pressura_Pro_Mono">Payment Methode</h3>
+                        <div class="pt-2">Debit charge</div>
+                        <div class="">pre-authorized,
+                            Payments are taken directly from the debiting
+                            account...
+                        </div>
+                        <button class="log_reg_btn mt-4"
+                                style="width:80%;">Change Payment
+                            Methode
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 p-3">
+                <div class="col-12 overview_profile p-4">
+                    <h3 class="GT_Pressura_Pro_Mono">Newsletter</h3>
+                    <div class="row GT_Pressura_Pro_Mono mt-4">
+                        <div class="col-1 align-self-center">
+                            <label class="del_add_checkbox GT_Pressura_Pro_Mono font-weight-normal">
+                                <input type="checkbox" name="delivery_address"
+                                       class="js_overview_check_newsletter"/>
+                                <span class='check_cover'/>
+                                <span class="checkmark"/>
+                            </label>
+                        </div>
+                        <div class="col-11">
+                            Yes, I would like to receive the fruit &amp;
+                            vegetable
+                            newsletter for free. You can unsubscribe at any
+                            time!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5 pb-5">
+                <div class="col-md-6 GT_Pressura_Pro_Mono">
+                    <div class="overview_profile p-4">
+                        <h3 class="GT_Pressura_Pro_Mono">Address</h3>
+                        <div class="pt-2">
+                            <t t-esc="partner.name"/>
+                        </div>
+                        <div class=""><t t-esc="partner.street"/>,
+                            <t t-esc="partner.city"/>,
+                            <t t-esc="partner.state_id.name"/>,
+                            <t t-esc="partner.zip"/>,
+                        </div>
+                        <div class="">
+                            <t t-esc="partner.country_id.name"/>
+                        </div>
+                        <button class="log_reg_btn mt-4">Change Address</button>
+                    </div>
+                </div>
+
+                <t t-set="res_partner"
+                   t-value="request.env['res.partner'].sudo().search([('id','=',partner.id)])"/>
+                <t t-if="partner.child_ids">
+
+                    <div class="col-md-6 GT_Pressura_Pro_Mono">
+                        <t t-foreach="res_partner.child_ids"
+                           t-as="partner_child">
+                            <div class="overview_profile p-4">
+                                <h3 class="GT_Pressura_Pro_Mono">shipping
+                                    address
+                                </h3>
+                                <div class="pt-2">
+                                    <t t-esc="partner_child.name"/>
+                                </div>
+                                <div class="">
+                                    <t t-esc="partner_child.street"/>,
+                                    <t t-esc="partner_child.city"/>,
+                                    <t t-esc="partner_child.state_id.name"/>,
+                                    <t t-esc="partner_child.zip"/>,
+                                </div>
+                                <div class="">
+                                    <t t-esc="partner_child.country_id.name"/>
+                                </div>
+                                <button class="log_reg_btn mt-4"
+                                        style="width:80%;">change delivery
+                                    address
+                                </button>
+                            </div>
+                        </t>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </template>
+
+    <template id="portal_Order">
+        <t t-set="orders"
+           t-value="request.env['sale.order'].sudo().search([('partner_id','=',partner.id)])"/>
+        <div id="order" class="tab_content">
+            <h3>order</h3>
+            <t t-if="order == False">
+                <div class="row GT_Pressura_Pro_Mono mt-4">
+                    <div class="col-12">
+                        <p>Here you will find all your orders sorted by date.
+                            You have not placed any orders yet.
+                        </p>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col">
+                        <a href="/shop"
+                           class="log_reg_btn mt-4 text-decoration-none pl-4 pr-4 pt-2 pb-2"
+                           style="background:#eeca00;border:none;width:80%;">
+                            Shop
+                            Now
+                        </a>
+                    </div>
+                </div>
+            </t>
+            <t t-else="">
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <table class="table"
+                        >
+                            <thead>
+                                <tr>
+                                    <th>orders</th>
+                                    <th>Datum</th>
+                                    <th>Amount CHF</th>
+                                    <th>Pay</th>
+                                    <th>Delivery</th>
+                                    <th>Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="orders" t-as="order">
+                                    <tr class="GT_Pressura_Pro_Mono">
+                                        <td>
+                                            <t t-esc="order.name"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="order.date_order"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="order.amount_total"/>
+                                        </td>
+                                        <td>
+                                            <t t-set="pay_tran"
+                                               t-value="request.env['payment.transaction'].sudo().search([('sale_order_ids','=',order.id)],limit=1)"/>
+                                            <t t-esc="pay_tran.state"/>
+                                        </td>
+                                        <td>
+                                            <t t-esc="order.state"/>
+                                        </td>
+                                        <td>
+                                            <a class="js_show_order_line"
+                                               t-attf-id="{{ order.id }}">
+                                                to show
+                                            </a>
+                                        </td>
+                                        <t t-call="gio_obstgemuese_theme.portal_order_lines"/>
+                                    </tr>
+                                </t>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </template>
+
+    <template id="portal_Bookmarks">
+        <div id="bookmarks" class="tab_content">
+            <h3>Bookmarks</h3>
+        </div>
+    </template>
+
+    <template id="portal_Profile">
+        <div id="profile" class="tab_content">
+            <h3 class="GT_Pressura_Pro_Mono">change profile</h3>
+            <div class="row mt-5">
+                <div class="col">
+                    <p class="GT_Pressura_Pro_Mono">Here you will find all your
+                        personal data and you can edit and save
+                        them again if necessary. The fields marked with * must
+                        be filled out.
+
+                    </p>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="GT_Pressura_Pro_Mono">change profile</h3>
+                </div>
+            </div>
+            <div class="row mt-3" id="save_first_last_name_picture">
+
+                <div class="col-md-6">
+                    <div class="form-group field-password">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="password">First Name
+                        </label>
+                        <input type="text" placeholder="First name"
+                               name="first_name" id="first_name"
+                               t-att-value="(partner.name).split(' ')[0]"
+                               t-attf-class="form-control login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               maxlength="4096">
+                        </input>
+                        <div class="validation_error_password"/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group field-password">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="password">Surname
+                        </label>
+                        <input type="text" placeholder="Surname" name="Surname"
+                               id="Surname"
+                               t-att-value="(partner.name).split(' ')[1] or ' '"
+                               t-attf-class="form-control login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               maxlength="4096">
+                        </input>
+                        <div class="validation_error_password"/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="row mt-3">
+                        <div class="col-2">
+                            <div t-field="partner.image_1024"
+                                 t-attf-class="profile_image profile_image_ob_add rounded-circle"
+                                 t-options='{"widget": "image", "class": " " , "itemprop": "image"}'/>
+
+                        </div>
+                        <div class="col-10 align-self-center">
+                            <h5
+                                    class="ml-5 GT_Pressura_Pro_Mono profile_image_ob_add">
+                                change
+                                profile
+                                picture
+                            </h5>
+                            <input type="file" name="myImage"
+                                   class="d-none ob_add_image ob_profile_image"
+                                   accept="image/png, image/gif, image/jpeg"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"/>
+                <div class="col-md-6">
+                    <button
+                            class="log_reg_btn mt-4 save_first_last_name_picture_submit">
+                        Save
+                        Changes
+                    </button>
+                </div>
+            </div>
+            <h3 class="GT_Pressura_Pro_Mono mt-5">your access data</h3>
+            <div class="row mt-4">
+                <div class="col">
+                    <p class="GT_Pressura_Pro_Mono">If you want to make changes,
+                        you must enter your current password
+                        for security reasons in order to be able to save the
+                        changes.
+                    </p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group field-password">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="email">E-mail
+                        </label>
+                        <input type="email" placeholder="email" name="email"
+                               id="email"
+                                t-att-value="user.login"
+                               t-attf-class="form-control login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               maxlength="4096">
+                        </input>
+                        <div class="validation_error_password"/>
+                        <a href="#"
+                           class="nav-link mt-3 p-0 a_underline change_email GT_Pressura_Pro_Mono">change
+                            E-Mail</a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group field-password">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="password">password
+                        </label>
+                        <input type="password" placeholder="password"
+                               name="password" id="password"
+                               t-att-value="user.password"
+                               t-attf-class="form-control login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               maxlength="4096">
+                        </input>
+                        <div class="validation_error_password"/>
+                        <a href="#"
+                           class="nav-link mt-3 a_underline change_password p-0 GT_Pressura_Pro_Mono">Change
+                            Password</a>
+                    </div>
+                </div>
+            </div>
+            <div class="change_email_container">
+                <h3 class="GT_Pressura_Pro_Mono mt-5">Change E-mail</h3>
+                <div class="row pb-5">
+                <div class="col-md-6">
+                    <div class="form-group field-password">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="new_email">E-mail
+                        </label>
+                        <input type="email" placeholder="email" name="new_email"
+                               t-attf-class="form-control new_email login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               maxlength="4096">
+                        </input>
+                        <div class="validation_error_password"/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group field-password">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="password">Confirm new email
+                        </label>
+                        <input type="email" placeholder="confirm email"
+                               name="email"
+                               t-attf-class="form-control conf_new_email login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               maxlength="4096">
+                        </input>
+                        <div class="validation_error_password"/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group field-password">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="password">password
+                        </label>
+                        <input type="password" placeholder="current password"
+                               name="password" id=""
+                               t-attf-class="form-control curr_password_e login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               maxlength="4096">
+                        </input>
+                        <div class="validation_error_password"/>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button class="log_reg_btn email_change_save mt-4">Save
+                        Changes
+                    </button>
+                </div>
+            </div>
+            </div>
+            <div class="change_password_container">
+                <h3 class="GT_Pressura_Pro_Mono mt-5">Change Password</h3>
+                <div class="row pb-5">
+                <div class="col-md-6">
+                    <div class="form-group field-password">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="new_email">Password
+                        </label>
+                        <input type="password" placeholder="new password"
+                               name="paswword"
+                               t-attf-class="form-control new_password login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               maxlength="4096">
+                        </input>
+                        <div class="validation_error_password"/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group field-password">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="password">Confirm new password
+                        </label>
+                        <input type="password" placeholder="Confirm new password"
+                               name="password"
+                               t-attf-class="form-control conf_new_password login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               maxlength="4096">
+                        </input>
+                        <div class="validation_error_password"/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group field-password">
+                        <label class="log_reg_label GT_Pressura_Pro_Mono"
+                               for="password">password
+                        </label>
+                        <input type="password" placeholder="password"
+                               name="password" id="password"
+                               t-attf-class="form-control curr_password_p login_input log_reg_input GT_Pressura_Pro_Mono"
+                               required="required"
+                               maxlength="4096">
+                        </input>
+                        <div class="validation_error_password"/>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button class="log_reg_btn password_change_save mt-4">Save
+                        Changes
+                    </button>
+                </div>
+            </div>
+            </div>
+        </div>
+    </template>
+    <template id="portal_Payment_Methode">
+        <div id="payment_methode" class="tab_content">
+            <h3>Payment Methode</h3>
+        </div>
+    </template>
+    <template id="portal_Address">
+        <div id="address" class="tab_content">
+            <h3>Address</h3>
+        </div>
+    </template>
+    <template id="portal_order_lines">
+        <t t-if="order.order_line">
+            <tbody class="order_lines col-12 table-borderless"
+                   t-attf-id="orderid_{{ order.id }}">
+                <tr>
+                    <th>Product</th>
+                    <th></th>
+                    <th>Amount</th>
+                    <th>Quantity</th>
+                    <th>Total</th>
+                </tr>
+                <t t-foreach="order.order_line" t-as="order_line">
+                    <tr>
+                        <td class="order_line_image">
+                            <div t-field="order_line.product_id.image_1920"
+                                 class=""
+                                 t-options='{"widget": "image", "class": "order_line_img" , "itemprop": "image"}'/>
+                        </td>
+                        <td>
+                            <t t-esc="order_line.product_id.name"/>
+                        </td>
+                        <td>
+                            <t t-esc="order_line.price_unit"/>
+                        </td>
+                        <td>
+                            <t t-esc="order_line.product_uom_qty"/>
+                        </td>
+                        <td>
+                            <t t-esc="order_line.price_subtotal"/>
+                        </td>
+                    </tr>
+                </t>
+                <div class="row">
+                    <div class="col">
+                        <tr>
+                            <td>From</td>
+                            <td></td>
+                            <td>
+                                <t t-esc="order.date_order"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Order Number</td>
+                            <td></td>
+                            <td>
+                                <t t-esc="order.name"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Payment Methode</td>
+                            <td></td>
+                            <td>12414</td>
+                        </tr>
+                        <tr>
+                            <td>Shipping Methode</td>
+                            <td></td>
+                            <td>delivery</td>
+                        </tr>
+                        <tr class="pb-4">
+                            <td>Total</td>
+                            <td></td>
+                            <td>
+                                <t t-esc="order.amount_total"/>
+                            </td>
+                            <td></td>
+                            <td>
+                                <a t-att-id="order.id"
+                                   t-att-href="order.get_portal_url(report_type='pdf', download=True)"
+                                   class="log_reg_btn order_as_pdf text-decoration-none">
+                                    Order as PDF
+                                </a>
+                            </td>
+                        </tr>
+                    </div>
+                </div>
+            </tbody>
+        </t>
+    </template>
+</odoo>

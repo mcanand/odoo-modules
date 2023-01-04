@@ -1,0 +1,1 @@
+from . import social_media_type_inherit, res_config_settings, social_media_account_inherit, social_media_post_inherit

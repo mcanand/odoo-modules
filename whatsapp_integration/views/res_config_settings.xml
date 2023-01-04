@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_whatsapp_config" model="ir.ui.view">
+        <field name="name">Whatsapp</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id"
+               ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]"
+                   position="inside">
+
+                <div class="app_settings_block" data-string="Whatsapp Settings"
+                     data-key="whatsapp_integration">
+                    <h2>Whatsapp</h2>
+                    <div class="row mt16 o_settings_container">
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="app_id"
+                                       class="col-lg-3 o_light_label"/>
+                                <field name="app_id"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="app_secret"
+                                       class="col-lg-3 o_light_label"/>
+                                <field name="app_secret"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="host_url"
+                                       class="col-lg-3 o_light_label"/>
+                                <field name="host_url"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="auth_token"
+                                       class="col-lg-3 o_light_label"/>
+                                <field name="auth_token"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="api_version"
+                                       class="col-lg-3 o_light_label"/>
+                                <field name="api_version"/>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 o_setting_box">
+                            <div class="o_setting_right_pane">
+                                <label for="phone_number"
+                                       class="col-lg-3 o_light_label"/>
+                                <span>
+                                    <field name="phone_number"/>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="event_register_inherit" inherit_id="website_event.registration_attendee_details">
+
+        <xpath expr="//div[hasclass('modal-body')]/div[hasclass('row')]" position="replace">
+            <script type="text/javascript" src="/event_user_creation/static/src/js/country_for_mobile.js"/>
+            <div class="row custom_phone_email">
+                <div class="col-lg my-2">
+                    <label>Name</label>
+                    <input class="form-control" type="text" t-attf-name="#{counter}-name"
+                           required="This field is required"
+                           t-att-value="default_first_attendee.get('name', '') if counter == 1 else ''"/>
+                </div>
+                <div class="col-lg my-2">
+                    <label>country code
+                    </label>
+                    <input type="hidden" t-attf-id="country_id_{{counter}}" class="country_id_new"
+                           t-att-value="country.id"/>
+                    <select class="form-control sel_country" t-attf-name="#{counter}-country_id"
+                            t-attf-id="sel_country_{{counter}}">
+                        <t t-foreach="request.env['res.country'].sudo().search([])" t-as="code">
+                            <option t-att-value="code.id">
+                                <t t-esc="code.name"/>
+                            </option>
+                        </t>
+                    </select>
+                </div>
+                <div class="col-lg my-2">
+                    <label>Mobile Number
+                    </label>
+                    <input class="form-control" type="tel" id="phone" t-attf-name="#{counter}-phone"
+                           t-att-value="default_first_attendee.get('phone', '') if counter == 1 else ''"
+                           required="This field is required"/>
+                </div>
+                <div class="col-lg my-2">
+                    <label>Email(optional)</label>
+                    <input class="form-control" type="email" t-attf-name="#{counter}-email"
+
+                           t-att-value="default_first_attendee.get('email', '') if counter == 1 else ''"/>
+                </div>
+                <input class="d-none" type="text" t-attf-name="#{counter}-event_ticket_id"
+                       t-attf-value="#{ticket['id']}"/>
+            </div>
+
+            <button type="button" t-attf-onclick="address_Function(#{counter}-name)" style="font-size:16px;"
+                    class="btn btn-link">+ Add Address
+            </button>
+
+            <div t-attf-id="address_div_{{counter}}" class="row" style="display:none">
+                <div class="col-md-3 my-2">
+                    <label>Street</label>
+                    <input class="form-control" type="text" t-attf-id="street_{{counter}}"
+                           t-attf-name="#{counter}-street"
+                           t-att-value="default_first_attendee.get('street', '') if counter == 1 else ''"/>
+                </div>
+
+
+                <div class="col-md-3 my-2">
+                    <label>Street 2</label>
+                    <input class="form-control" type="text" t-attf-id="street2_{{counter}}"
+                           t-attf-name="#{counter}-street2"
+                           t-att-value="default_first_attendee.get('street2', '') if counter == 1 else ''"/>
+                </div>
+
+                <div class="col-md-3 my-2">
+                    <label>City</label>
+                    <input class="form-control" type="text" t-attf-id="city_{{counter}}" t-attf-name="#{counter}-city"
+                           t-att-value="default_first_attendee.get('city', '') if counter == 1 else ''"/>
+                </div>
+
+                <div class="col-md-3 my-2">
+                    <label>State</label>
+                    <input class="form-control" type="text" t-attf-id="state_{{counter}}"
+                           t-attf-name="#{counter}-state_id"
+                           t-att-value="default_first_attendee.get('state_id', '') if counter == 1 else ''"/>
+                </div>
+
+                <div class="col-md-3 my-2">
+                    <label>ZIP</label>
+                    <input class="form-control" type="text" t-attf-id="zip_{{counter}}" t-attf-name="#{counter}-zip"
+                           t-att-value="default_first_attendee.get('zip', '') if counter == 1 else ''"/>
+                </div>
+            </div>
+
+
+            <script>
+                function address_Function(counter) {
+                console.log('documenhtfduy', document)
+                console.log('counter', counter)
+                var address = "address_div_" + counter;
+                console.log('address', address)
+                var x = document.querySelector('custom_phone_email');
+                var y = document.getElementById(address);
+                console.log('yyyy', y)
+                console.log('xxxxx', x)
+                if (document.getElementById(address).style.display === 'none') {
+                document.getElementById(address).style.display = 'flex';
+                }else {
+                document.getElementById(address).style.display = 'none';
+                }
+
+                };
+            </script>
+
+        </xpath>
+        <xpath expr="//button[hasclass('js_goto_event')]" position="after">
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" name="1-offer" t-att-value="False" id="receive_offers" onclick="check_change(event)"/>
+                <label class="form-check-label receive_offers" for="receive_offers">Receive Offers</label>
+            </div>
+
+            <div class="form-check">
+                <input type="checkbox" class="form-check-input" t-att-value="False" name="1-newsletter" id="newsletter_sub" onclick="check_change(event)"/>
+                <label class="form-check-label newsletter_sub" for="newsletter_sub">Subscribe To Newsletter</label>
+            </div>
+        </xpath>
+        <xpath expr="//button[hasclass('btn-primary')]" position="replace">
+            <button type="button" class="btn btn-primary" onclick="button_submit()">Continue</button>
+            <script>
+                function button_submit(){
+                    if($('#receive_offers').is(':checked')){
+                        $('#attendee_registration').submit()
+                        }
+                    else{
+                        $('.receive_offers').css({'color':'red'})
+                        $('.newsletter_sub').css({'color':'red'})
+                    }
+                }
+                function check_change(event){
+                    if($(event.target).is(':checked')){
+                        $(event.target).val('True')
+                        $(event.target).siblings('label').css({'color':'black'})
+                    }
+                    else{
+                        $(event.target).val('False')
+                        $(event.target).siblings('label').css({'color':'red'})
+                    }
+                }
+            </script>
+        </xpath>
+    </template>
+</odoo>

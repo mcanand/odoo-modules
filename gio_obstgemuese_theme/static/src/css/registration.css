@@ -1,0 +1,299 @@
+.signup-heading h1{
+    font-family: "GT Pressura Pro Mono";
+	font-size: 2.8125rem;
+	line-height: 3.375rem;
+	letter-spacing: -.003125rem;
+	margin-bottom: 3.125rem;
+	color:  #000;
+}
+
+.registration-title {
+    order: 0 !important;
+    font-size: 1.875rem;
+    padding-bottom: 0.3125rem;
+    color: #000;
+    font-weight: normal;
+    font-family: "GT Pressura Pro Mono";
+    letter-spacing: -.03px;
+}
+
+.oe_signup_form{
+//     max-width:70% !important;
+}
+
+.tick-icon{
+      padding-right: 25px;
+      background: url("/gio_obstgemuese_website/static/src/images/icons8-done-64.png") no-repeat right;
+      background-size: 20px;
+}
+.is-invalid{
+    font-family:'GT Pressura Regular';
+    color: #eeca00;
+    font-size: .875rem;
+    font-weight: normal;
+}
+
+.is-valid{
+    display:none;
+}
+
+
+
+#reg-container{
+    margin-left:25%
+}
+@media screen and (max-width:998px) {
+#reg-container { margin-left:1%}
+}
+#reg-container .oe_login_form{
+    max-width:100% !important;
+}
+#reg-container .oe_signup_form{
+    max-width:100% !important;
+}
+#reg-container .form-control{
+    color: #000;
+    border-radius: 0;
+    font-size: .9375rem;
+    border: 1px solid #9b9b9b;
+    height: calc(1.334em + 1.125rem + 2px);
+    padding: 0.5625rem 1.5625rem 0.5625rem 0.5625rem;
+    font-family:'GT Pressura Regular'
+
+}
+.close-icon{
+    padding-right: 25px;
+    background:#fff url("/gio_obstgemuese_website/static/src/images/icons8-close-50.png") no-repeat right;
+    background-size: 20px;
+}
+.tick-icon{
+    padding-right: 25px;
+    background: url("/gio_obstgemuese_website/static/src/images/icons8-close-50.png") no-repeat right;
+    background-size: 20px;
+}
+#reg-container .form-control:focus:placeholder-shown {
+//     color: #495057;
+    background-color: rgba(0, 0, 0, 0.37);
+    border-color: #eeca00;
+    outline: 0;
+    box-shadow:none;
+    padding-right: 25px;
+    background: url("/gio_obstgemuese_website/static/src/images/65-cross2.svg") no-repeat right;
+    background-size: 20px;
+//     box-shadow: 0 0 0 0.1rem rgb(56 56 59 / 25%);
+}
+#reg-container .form-control:focus:not(:placeholder-shown){
+    border-color: #000;
+    outline: 0;
+    box-shadow:none;
+    padding-right: 25px;
+    background: url("/gio_obstgemuese_website/static/src/images/64-check.svg") no-repeat right;
+    background-size: 20px;
+}
+
+#reg-container .form-control:blur {
+    color: #000;
+    background-color: #FFFFFF;
+    border-color: #000;
+    outline: 0;
+    box-shadow:none;
+}
+#reg-container select {
+  /* for Firefox */
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+}
+
+/* For IE10 */
+#reg-container select::-ms-expand {
+  display: none;
+}
+.form-label{
+    font-size: 0.75rem;
+    font-family: 'GT Pressura Regular';
+    color: #9b9b9b;
+}
+
+// .reg-btn{
+//     border-radius:25px;
+//     width:175px;
+//     height:50px;
+// }
+
+#reg-container .btn{
+    font-weight: normal;
+    font-weight: normal;
+    overflow: hidden;
+    font-family: 'GT Pressura Regular';
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0.375rem 1.5625rem 0.375rem 1.5625rem;
+    border-width: 2px;
+    border-radius: 1.875rem;
+    letter-spacing: .5px;
+}
+#resetPassword .btn{
+    font-weight: normal;
+    font-weight: normal;
+    overflow: hidden;
+    font-family: 'GT Pressura Regular';
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 1.25rem;
+    line-height: 1;
+    padding: 0.375rem 1.5625rem 0.375rem 1.5625rem;
+    border-width: 2px;
+    border-radius: 1.875rem;
+    letter-spacing: .5px;
+}
+.signup-heading p {
+	font-family: "GT Pressura Regular";
+	font-size: 1.25rem;
+	letter-spacing: .00375rem;
+	line-height: 1.8125rem;
+	font-weight: normal;
+	color: #4a4a4a;
+	width: 75%;
+}
+#resetPassword .btn-primary{
+    color: #fff;
+    background-color: #9b9b9b;
+    border-color: #9b9b9b;
+}
+#resetPassword .btn-primary:hover{
+    color: #212529;
+    background-color: #fff;
+    border-color: #9b9b9b;
+}
+#resetPassword a{
+    font-size: medium;
+    font-family: 'GT Pressura Regular';
+    color: #000;
+}
+#resetPassword a:hover{
+    background-color:#eeca00;
+}
+#resetpwdform .form-control{
+    color: #000;
+    border-radius: 0;
+    font-size: .9375rem;
+    border: 1px solid #9b9b9b;
+    height: calc(1.334em + 1.125rem + 2px);
+    padding: 0.5625rem 1.5625rem 0.5625rem 0.5625rem;
+    font-family:'GT Pressura Regular'
+
+}
+#resetpwdform .form-control:focus {
+    color: #495057;
+    background-color: #FFFFFF;
+    border-color: #eeca00;
+    outline: 0;
+    box-shadow:none;
+//     box-shadow: 0 0 0 0.1rem rgb(56 56 59 / 25%);
+}
+
+
+#reg-container .btn-primary{
+    color: #fff;
+    background-color: #9b9b9b;
+    border-color: #9b9b9b;
+}
+#reg-container .btn-primary:hover{
+    color: #212529;
+    background-color: #fff;
+    border-color: #9b9b9b;
+}
+#reg-container a{
+    font-size: medium;
+    font-family: 'GT Pressura Regular';
+    color: #000;
+}
+#reg-container a:hover{
+    background-color:#eeca00;
+}
+
+input[type=checkbox] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+// input {
+// 	font-size: 1rem;
+// 	line-height: 1.5;
+// 	padding: 11px 23px;
+// 	border: 1px solid rgba(0, 0, 0, .15);
+// 	border-radius: 0;
+// 	outline: 0;
+// 	background-color: transparent;
+// }
+
+.checkbox-button {
+	margin-right: 3rem;
+	color: #000;
+	font-family: 'GT Pressura Regular';
+	font-size: medium;
+	font-weight:normal !important;
+}
+
+.checkbox-button__input {
+	opacity: 0;
+	position: absolute;
+}
+
+.checkbox-button__control {
+	position: relative;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	margin-right: 1px;
+	vertical-align: middle;
+	background-color: inherit;
+	color: #ffff;
+	border: 2px solid #000;
+}
+
+
+.checkbox-button__input:checked+.checkbox-button__control:after {
+	content: "";
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 12px;
+    height: 12px;
+    background-color: #eeca00;
+}
+
+.checkbox-button__input:checked+.checkbox-button__control {
+	border-color: #000;
+}
+
+.checkbox-button__control {
+	transform: scale(0.75);
+}
+
+#salutation{
+    color: #9b9b9b !important;
+    width:30%;
+}
+#shippingSalutation{
+    color: #9b9b9b !important;
+}
+#country{
+    color: #9b9b9b !important;
+}
+#shippingcountry{
+    color: #9b9b9b !important;
+}
+.condition{
+    color: #000;
+    font-family:'GT Pressura Regular';
+    font-size:large;
+}
+
+.hide-shipping{
+    display:none;
+}

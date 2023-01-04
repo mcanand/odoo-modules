@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="website_form_inherit" model="ir.ui.view">
+        <field name="name">website.form.inherit</field>
+        <field name="model">website</field>
+        <field name="inherit_id" ref="website.view_website_form"/>
+        <field name="arch" type="xml">
+            <field name="default_lang_id" position="after">
+                <field name="is_pickup"/>
+                <field name="is_delivery"/>
+            </field>
+            <xpath expr="//page" position="after">
+                <page string="Delivery Time" attrs="{'invisible':[('is_delivery','==',False)]}">
+                    <group>
+                        <group>
+                            <label for="time_from_delivery_sunday" string="Sunday"/>
+                            <field class="time_from_delivery_sunday" type="time" name="time_from_delivery_sunday"
+                                   string="From" widget="float_time"/>
+                        </group>
+                        <group>
+                            <label for="time_to_delivery_sunday" string="Sunday"/>
+                            <field class="time_to_delivery_sunday" type="time" name="time_to_delivery_sunday"
+                                   string="To" widget="float_time"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <label for="time_from_delivery_monday" string="monday"/>
+                            <field class="time_from_delivery_monday" type="time" name="time_from_delivery_monday"
+                                   string="From" widget="float_time"/>
+                        </group>
+                        <group>
+                            <label for="time_to_delivery_monday" string="monday"/>
+                            <field class="time_to_delivery_monday" type="time" name="time_to_delivery_monday"
+                                   string="To" widget="float_time"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <label for="time_from_delivery_tuesday" string="tuesday"/>
+                            <field class="time_from_delivery_tuesday" type="time" name="time_from_delivery_tuesday"
+                                   string="From" widget="float_time"/>
+                        </group>
+                        <group>
+                            <label for="time_to_delivery_tuesday" string="tuesday"/>
+                            <field class="time_to_delivery_tuesday" type="time" name="time_to_delivery_tuesday"
+                                   string="To" widget="float_time"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <label for="time_from_delivery_wednesday" string="wednesday"/>
+                            <field class="time_from_delivery_wednesday" type="time" name="time_from_delivery_wednesday"
+                                   string="From" widget="float_time"/>
+                        </group>
+                        <group>
+                            <label for="time_to_delivery_wednesday" string="wednesday"/>
+                            <field class="time_to_delivery_wednesday" type="time" name="time_to_delivery_wednesday"
+                                   string="To" widget="float_time"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <label for="time_from_delivery_thursday" string="thursday"/>
+                            <field class="time_from_delivery_thursday" type="time" name="time_from_delivery_thursday"
+                                   string="From" widget="float_time"/>
+                        </group>
+                        <group>
+                            <label for="time_to_delivery_thursday" string="thursday"/>
+                            <field class="time_to_delivery_thursday" type="time" name="time_to_delivery_thursday"
+                                   string="To" widget="float_time"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <label for="time_from_delivery_friday" string="friday"/>
+                            <field class="time_from_delivery_friday" type="time" name="time_from_delivery_friday"
+                                   string="From" widget="float_time"/>
+                        </group>
+                        <group>
+                            <label for="time_to_delivery_friday" string="friday"/>
+                            <field class="time_to_delivery_friday" type="time" name="time_to_delivery_friday"
+                                   string="To" widget="float_time"/>
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <label for="time_from_delivery_saturday" string="saturday"/>
+                            <field class="time_from_delivery_saturday" type="time" name="time_from_delivery_saturday"
+                                   string="From" widget="float_time"/>
+                        </group>
+                        <group>
+                            <label for="time_to_delivery_saturday" string="saturday"/>
+                            <field class="time_to_delivery_saturday" type="time" name="time_to_delivery_saturday"
+                                   string="To" widget="float_time"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>

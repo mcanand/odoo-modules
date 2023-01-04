@@ -1,0 +1,30 @@
+<odoo>
+    <!--    <data>-->
+    <record id="action_view_students" model="ir.actions.client">
+        <field name="name">Home Dashboard</field>
+        <field name="tag">hr_dashboard_tag</field>
+    </record>
+
+    <!--<menuitem id="menu_hrms_dashboard"-->
+    <!--name="Dashboard"-->
+    <!--action="hr_action_dashboard"-->
+    <!--parent="hr.menu_hr_root"-->
+    <!--sequence="-1"/>-->
+
+    <!--        <menuitem id="Easy_dashboard" name="Dashboard"  web_icon="easy_home_dashboard,static/src/description/icon.png" action="action_view_students"/>-->
+    <menuitem id="menu_measat_dashboard" name="Dashboard" parent="measat.menu_measat"/>
+    <menuitem id="menu_measat_sales_dashboard" name="Sales Dashboard" parent="menu_measat_dashboard"
+              action="action_view_students"/>
+    <!--    </data>-->
+    <template id="assets_backend" name="Dashboard assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+            <script type="text/javascript" src="/measat_dashboard/static/src/js/easy_dashboard.js"/>
+            <script type="text/javascript" src="/measat_dashboard/static/src/lib/utils.js"/>
+            <script type="text/javascript" src="/measat_dashboard/static/src/lib/Chart.bundle.js"/>
+            <script type="text/javascript" src="/measat_dashboard/static/src/lib/Chart.js"/>
+<!--            <script type="text/javascript" src="/easy_home_dashboard/static/src/lib/d3.min.js"/>-->
+
+            <link rel="stylesheet" href="/measat_dashboard/static/src/css/easy_dashboard.css"/>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="impressum_page" name="Impressum">
+        <t t-call="website.layout">
+            <main>
+                <section class="impressum pb-5">
+                    <div class="block-text">
+                        <div class="block-container">
+                            <div class="block-container-row row">
+                                <div class="col-12">
+                                    <div class="impressum-text">
+                                        <h1>Impressum</h1>
+                                        <h2>Address</h2>
+                                        <p>
+                                            OBSTGEMÜSEjam GmbH;
+                                            <br/>
+                                            Kasernenstrasse 32;
+                                            <br/>
+                                            4058 Basel;
+                                            <br/>
+                                        </p>
+                                        <p>
+                                            <a href="#">T +41 61 683 07 80</a>
+                                            <br/>
+                                            <a href="#">hello[at]obstundgemuese.ch</a>
+
+                                        </p>
+                                        <p>UID: CHE-114.749.116</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="impressum-newsletter">
+                    <div class="block-newsletter" id="newsletter-subscribe">
+                        <div class="block-container">
+                            <div class="block-container-row row">
+                                <div class="newsletter-block">
+                                    <div class="newsletter-headline">
+                                        <h1>NewsLetter</h1>
+                                    </div>
+                                    <div class="newsletter-info">
+                                        <p>
+                                            Möchtest Du mit uns in Kontakt bleiben? Dann abonniere unseren
+                                            Newsletter. Du erhältst spannende News sowie Informationen zu neuen
+                                            Produkten, Events oder Rabattaktionen.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <div class="row">
+                                            <div class="col-10">
+                                                <div class="float-left">
+                                                    <label class="checkbox-button">
+                                                        <input type="checkbox" class="checkbox-button__input"
+                                                               id="hasCargoBike">
+                                                            <span class="checkbox-button__control"/>
+                                                            <span class="checkbox-button__label">Cargobike</span>
+                                                        </input>
+                                                    </label>
+                                                </div>
+                                                <div class="float-left">
+                                                    <label class="checkbox-button">
+                                                        <input type="checkbox" class="checkbox-button__input"
+                                                               id="hasPerfomance">
+                                                            <span class="checkbox-button__control"/>
+                                                            <span class="checkbox-button__label">Perfomance</span>
+                                                        </input>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-8 col-sm-4">
+                                                <div class="news-letter-email">
+                                                    <div class="input-group js_subscribe" data-list-id="0"
+                                                         id="newsletterobs">
+                                                        <input type="email" name="email"
+                                                               class="js_subscribe_email form-control shadow-none"
+                                                               placeholder="your email..." id="newsletteremail"/>
+                                                        <span class="input-group-append">
+                                                            <button role="button"
+                                                                    class="btn btn-inverse btn-lg btn-newsletter js_subscribe_mymail">
+                                                                <span>
+                                                                    <i class="fa fa-check"/>
+                                                                </span>
+                                                            </button>
+                                                            <button role="button"
+                                                                    class="btn btn-success js_subscribed_btn d-none"
+                                                                    disabled="disabled">Thanks
+                                                            </button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="block-newsletter pt-4 d-none" id="thanks-for-subscribing">
+                        <div class="block-container">
+                            <div class="block-container-row row">
+                                <div class="newsletter-block">
+                                    <div class="newsletter-headline" style="width:70%">
+                                        <h1>
+                                            <font style="vertical-align: inherit;">
+                                                <font style="vertical-align: inherit;">
+                                                    You always want to be informed?
+                                                </font>
+                                                <font style="vertical-align: inherit;">No problem with our newsletter
+                                                </font>
+                                            </font>
+                                        </h1>
+                                    </div>
+                                    <div class="newsletter-info">
+                                        <p>
+                                            <p>Thank you for subscribing to our newsletter.</p>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="impressum-social-media">
+                    <div class="block-social">
+                        <div class="block-container">
+                            <div class="block-container-row row">
+                                <div class="social-media-block">
+                                    <div class="social-media-headline">
+                                        <h1>social media</h1>
+                                    </div>
+                                    <div class="social-media-info">
+                                        <p>
+                                            Newsletter sind für Dich out? Oder nicht Dein Ding? Kein Problem! Wir
+                                            sind auf verschiedenen Kanälen aktiv. Wir freuen uns, mit Dir ins
+                                            Gespräch zu kommen.
+                                        </p>
+                                    </div>
+                                    <div class="social-media-icons pt-5">
+                                        <ul>
+                                            <li>
+                                                <a href="">
+                                                    <span>
+                                                        <i class="fa fa-instagram fa-2x"/>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span>
+                                                        <i class="fa fa-facebook fa-2x"/>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span>
+                                                        <i class="fa fa fa-github fa-2x"/>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="">
+                                                    <span>
+                                                        <i class="fa fa fa-google fa-2x"/>
+                                                    </span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </t>
+    </template>
+</odoo>

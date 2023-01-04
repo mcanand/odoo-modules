@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+ <template id="assets_frontend_inherit" name="im assets" inherit_id="web.assets_frontend">
+        <xpath expr="." position="inside">
+            <link rel="stylesheet" type="text/scss" href="/event_management_ui/static/src/css/snippents_syle.css"/>
+            <link rel="stylesheet" type="text/scss" href="/event_management_ui/static/src/css/popup.css"/>
+            <link rel="stylesheet" type="text/scss" href="/event_management_ui/static/src/css/location.css"/>
+            <script type="text/javascript" src="/event_management_ui/static/src/js/pickup.js"/>
+            <script type="text/javascript" src="/event_management_ui/static/src/js/location_delivery.js"/>
+            <script type="text/javascript" src="/event_management_ui/static/src/js/ev_carousal.js"/>
+            <script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=default"/>
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&amp;callback=initMap&amp;v=weekly"></script>
+        </xpath>
+ </template>
+</odoo>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="social_media_facebook" model="social.media.types">
+            <field name="name">Facebook</field>
+            <field name="social_media_types">facebook</field>
+            <field name="description" type="html"><p>Link your Facebook To Odoo</p></field>
+            <field name="image" type="base64" file="social_media_facebook/static/src/img/icons8-facebook.svg"/>
+        </record>
+        <record id="social_media_instagram" model="social.media.types">
+            <field name="name">Instagram</field>
+            <field name="social_media_types">instagram</field>
+            <field name="description" type="html"><p>Link your Instagram To Odoo</p></field>
+            <field name="image" type="base64" file="social_media_facebook/static/src/img/icons8-instagram.svg"/>
+        </record>
+    </data>
+</odoo>

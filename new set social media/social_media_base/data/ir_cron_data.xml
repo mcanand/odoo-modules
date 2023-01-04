@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="social_media_email_ids" model="ir.cron">
+        <field name="name">social media Post schedule</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">minutes</field>
+        <field name="numbercall">-1</field>
+        <field name="doall" eval="False"/>
+        <field name="active" eval="True"/>
+        <field name="model_id" ref="model_social_media_post_lines"/>
+        <field name="code">model.cron_schedule()</field>
+        <field name="state">code</field>
+        <field name="activity_user_type">generic</field>
+    </record>
+
+</odoo>

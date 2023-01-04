@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="product_template_form_view_package" model="ir.ui.view">
+            <field name="name">product.template.package</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <label for="sale_ok" position="after">
+                    <div>
+                        <field name="is_product_pack"/>
+                        <label for="is_product_pack"/>
+                    </div>
+                </label>
+            </field>
+        </record>
+        <record id="product_template_form_view_pack_ids" model="ir.ui.view">
+            <field name="name">product.template.pack</field>
+            <field name="model">product.template</field>
+            <field name="priority">5</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <page name="inventory" position="after">
+                    <page string="Pack" name="pack" attrs="{'invisible' : [('is_product_pack', '=', False)]}">
+                        <group name="packs">
+                                <field name="pack_product_ids"/>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="view_pack_product_tree" model="ir.ui.view">
+            <field name="name">pack.product.tree</field>
+            <field name="model">product.pack</field>
+            <field name="arch" type="xml">
+                <tree default_order="sequence asc">
+                    <field name="sequence" widget="handle"/>
+                    <field name="product_id" widget="many2many_tags"/>
+                    <field name="qty"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_pack_product_form" model="ir.ui.view">
+            <field name="name">pack.product.form</field>
+            <field name="model">product.pack</field>
+            <field name="arch" type="xml">
+                <form string="Pack Product">
+                    <sheet>
+                        <group>
+                           <field name="product_id" widget="many2many_tags"/>
+                            <field name="qty"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

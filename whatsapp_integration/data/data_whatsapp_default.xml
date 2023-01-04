@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_sale_text">
+            <field name="name">Sale/Quotation Text</field>
+            <field name="template_messege">Info the *{company}*
+                For *Client*: {name}
+
+                *Hi Dear*
+                Next, details of your document, #{document_name}
+
+                {item_product}
+
+                If you have any questions, please feel free to contact us by whatsapp.
+                *Regards*
+                *Note:* Remember that this message is informative, request your formal document
+                {website}
+            </field>
+            <field name="category">sale</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_sale_link">
+            <field name="name">Sale/Quotation Link</field>
+            <field name="template_messege">Info the *{company}*
+                For *Client*: {name}
+
+                *Hi Dear*
+                Next, details of your document, #{document_name}
+
+                {link_preview}
+
+                If you have any questions, please feel free to contact us by whatsapp.
+                *Regards*
+                *Note:* Remember that this message is informative, request your formal document
+                {website}
+            </field>
+            <field name="category">sale</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_invoice_text">
+            <field name="name">Invoice Text</field>
+            <field name="template_messege">Info the *{company}*
+                For *Client*: {name}
+
+                *Hi Dear*
+                Next, details of your Invoice {document_name}
+
+                {item_product}
+                If you have any questions, please feel free to contact us by whatsapp.
+                *Regards*
+
+                *Note:* Remember that this message is informative, request your formal document
+                {website}
+            </field>
+            <field name="category">invoice</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_invoice_link">
+            <field name="name">Invoice Link</field>
+            <field name="template_messege">Info the *{company}*
+                For *Client*: {name}
+
+                *Hi Dear*
+                Next, details of your Invoice {document_name}
+
+                {link_preview}
+
+                If you have any questions, please feel free to contact us by whatsapp.
+                *Regards*
+
+                *Note:* Remember that this message is informative, request your formal document
+                {website}
+            </field>
+            <field name="category">invoice</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_marketing">
+            <field name="name">Opening dialogue</field>
+            <field name="template_messege">Info the *{company}*
+                For *Friend*: {name}
+
+                *Hi Dear*
+
+                We have received your request through our website, that you would like to know about our product and
+                services.
+
+                *My name:* {sales_person}
+                Please feel free to contact me through this channel if you have any questions.
+                *Regards*
+                {website}
+            </field>
+            <field name="category">lead</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_default_invoice">
+            <field name="name">Payment request</field>
+            <field name="template_messege">Hi {name}, for my services I kindly request the following payment</field>
+            <field name="category">invoice</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_default_provider">
+            <field name="name">Supplier price list</field>
+            <field name="template_messege">We would be grateful if you would send us your price list / rates / fees.
+            </field>
+            <field name="category">purchase</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_default_sale">
+            <field name="name">Promotion, increase sales</field>
+            <field name="template_messege">Hi {name}, We would like to inform you of the following promotion</field>
+            <field name="category">sale</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_partner">
+            <field name="name">Contact</field>
+            <field name="template_messege">Hello {name}, I am writing to you about the *{company}*, if you like, I would
+                love to tell you about ...
+            </field>
+            <field name="category">partner</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_delivery">
+            <field name="name">Order delivery status, shipped</field>
+            <field name="template_messege">Hi {name}, your order has shipped. Click here to find out when it will arrive
+                (link to postal service tracking page)
+            </field>
+            <field name="category">delivery</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_offert">
+            <field name="name">Product sales</field>
+            <field name="template_messege">Hi {name}, Ready to save big? All clearance items are 50-70&#37; off until
+                &#40;deadline date&#41;. Head over to the store before you miss out {website}
+            </field>
+            <field name="category">sale</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_sale_special">
+            <field name="name">Special occasion offers and sales announcements</field>
+            <field name="template_messege">Happy Birthday {name}! As an extra-special thank you for being a loyal
+                customer, here&#39;s descount cupon &#40;code&#41; on us. Use it toward any of your favorite products.
+                {website}
+            </field>
+            <field name="category">sale</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_default_price_list">
+            <field name="name">Price List</field>
+            <field name="template_messege">Info the *{company}*
+
+                Opening text for your price list
+                You can use emoticons 😁🏷️📝🚀👍🏼🤗
+
+                {price_list}
+                {website}
+            </field>
+            <field name="category">other</field>
+        </record>
+
+         <record model="whatsapp.template" id="whatsapp_integration.data_whatsapp_sign_up_url">
+            <field name="name">sign up url</field>
+            <field name="template_messege">
+                *{company}*
+            here is your password reset link of {website}
+            {sign_up_url}
+            </field>
+            <field name="category">resuser</field>
+        </record>
+
+        <record model="whatsapp.template" id="whatsapp_integration.whatsapp_event_confirmation">
+             <field name="name">event confirm</field>
+            <field name="template_messege">
+                Hello {name},
+                We are happy to confirm your
+                registration to the event {event.name}
+                for attendee {name}.
+                See you soon,
+                {company}
+                --------------------------------------------
+                date  - {event.date_begin}
+                --------------------------------------------
+                venue - {event.address_id.name},{event.address_id.street},
+                        {event.address_id.street2},{event.address_id.city},
+                        {event.address_id.country_id.name}
+                --------------------------------------------
+                Questions about this event?
+                Please contact the organizer:
+                - {company.name}
+                - {company.mobile}
+                - {company.email}
+            </field>
+            <field name="category">events</field>
+        </record>
+
+    </data>
+</odoo>

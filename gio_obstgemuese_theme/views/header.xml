@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="hamburger_header_new_replace" inherit_id="website.layout">
+        <xpath expr="//header" position="replace">
+            <t t-call="website.navbar">
+                <t t-set="_navbar_expand_class" t-value="''"/>
+                <div id="top_menu_container" class="d-inline-flex w-100 GT_Pressura_Pro_Mono">
+                    <!-- Brand -->
+                    <t t-call="website.placeholder_header_brand">
+                        <t t-set="_link_class"
+                           t-valuef="mr-lg-auto mx-auto mr-0 ob_nav_logo"/>
+                    </t>
+                    <ul class="nav navbar-nav navbar-expand">
+                        <li class="nav-item pl-3 pr-3">
+                            <a class="nav-link">
+                                <img src="/gio_obstgemuese_theme/static/src/svg/56-magnifier.svg"
+                                     class="ob_icon ob_nav_search"/>
+                            </a>
+                            <div class="ob_search_overlay">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <img src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"
+                                             class="close_icon ob_search_close float-right mr-2 mt-2"/>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="container">
+                                            <div class="$('.ob_product_card').remove() row">
+                                                <div class="col-md-12 ">
+                                                    <div class="search_box_input">
+                                                        <p>Search anything and hit enter</p>
+                                                        <input type="text" id="ob_search_input" class="ob_search_input"
+                                                               value="" placeholder="Search"/>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="row search_product_show">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Sign In -->
+                        <t t-call="gio_obstgemuese_theme.custom_user_sign_in"/>
+                        <!-- User Dropdown -->
+                        <t t-call="portal.user_dropdown">
+                            <t t-set="_icon" t-value="true"/>
+                            <t t-set="_item_class"
+                               t-valuef="nav-item GT_Pressura_Pro_Mono dropdown pl-3 pr-3"/>
+                            <t t-set="_link_class" t-valuef="nav-link GT_Pressura_Pro_Mono"/>
+                            <t t-set="_dropdown_menu_class" t-valuef="position-absolute dropdown-menu-right"/>
+                        </t>
+                        <li class="nav-item pl-3 pr-3">
+                            <a class="nav-link ob_cart">
+                                <img src="/gio_obstgemuese_theme/static/src/svg/04-bag3.svg" class="ob_icon"/>
+                            </a>
+                        </li>
+                        <t t-call="gio_obstgemuese_theme.ob_cart_pop_up"/>
+                        <li class="nav-item pl-3 pr-3">
+                            <a class="nav-link">
+                                <img src="/gio_obstgemuese_theme/static/src/svg/03-bubble-lines.svg" class="ob_icon"/>
+                            </a>
+                        </li>
+                    </ul>
+                    <!-- Navbar Toggler -->
+                    <t t-call="gio_obstgemuese_theme.ob_navbar_toggler">
+                        <t t-set="_toggler_class" t-valuef="order-first mr-auto"/>
+                    </t>
+                    <!-- Language Selector -->
+                    <t t-call="website.placeholder_header_language_selector">
+                        <t t-set="_div_classes" t-valuef="ml-2 d-none d-sm-block"/>
+                    </t>
+                    <!-- Navbar Collapse -->
+                    <div class="overlay">
+                        <div id="top_menu_collapse" class="d-block collapse ob_top_menu_collapse navbar-collapse">
+                            <div class="oe_structure oe_structure_solo" id="oe_structure_header_hamburger_2"/>
+                            <t t-call="website.navbar_nav">
+                                <!-- Menu -->
+                                <div class="row">
+                                    <div class="col">
+                                        <img src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"
+                                             class="close_icon ob_icon ml-3 mt-3"/>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-12 text-center">
+                                        <t t-call="website.placeholder_header_brand">
+                                            <t t-set="_link_class"
+                                               t-valuef="mr-lg-auto GT_Pressura_Pro_Mono mt-3 mr-0 p-3 nav_logo_mob_header"/>
+                                        </t>
+                                    </div>
+                                </div>
+                                <div class="ob_menu_list GT_Pressura_Pro_Mono">
+                                    <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                        <t t-call="website.submenu">
+                                            <t t-set="item_class" t-valuef="nav-item GT_Pressura_Pro_Mono text-dark"/>
+                                            <t t-set="link_class" t-valuef="nav-link GT_Pressura_Pro_Mono text-dark"/>
+                                        </t>
+                                    </t>
+                                </div>
+                                <div class="row pt-5">
+                                    <div class="col text-center"/>
+                                    <t t-call="website.s_share"/>
+                                    <div class="col text-center"/>
+                                </div>
+                            </t>
+                            <div class="oe_structure oe_structure_solo" id="oe_structure_header_hamburger_3"/>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+    <template id="ob_navbar_toggler" name="Navbar Toggler">
+        <button type="button" t-attf-class="navbar-toggler #{_toggler_class}"
+                data-target="#top_menu_collapse">
+            <span class=" o_not_editable">
+                <img class="ob_icon" src="/gio_obstgemuese_theme/static/src/svg/60-menu.svg"/>
+            </span>
+        </button>
+    </template>
+    <template id="custom_user_sign_in" name="User Sign In" inherit_id="portal.placeholder_user_sign_in">
+        <xpath expr="." position="replace">
+            <li groups="base.group_public" t-attf-class="#{_item_class} nav-item o_no_autohide_item pr-2 pl-2">
+                <a t-attf-href="/web/login" t-attf-class="#{_link_class} nav-link">
+                    <img class="ob_icon" src="/gio_obstgemuese_theme/static/src/svg/21-user.svg"/>
+                </a>
+            </li>
+        </xpath>
+    </template>
+    <template id="user_inherit" inherit_id="portal.user_dropdown">
+        <xpath expr="//li" position="replace">
+            <li t-if="is_connected" t-attf-class="#{_item_class} o_no_autohide_item">
+                <a href="#" role="button" data-toggle="dropdown" t-attf-class="dropdown-toggle #{_link_class}">
+                    <t t-if="_avatar">
+                        <t t-set="avatar_source" t-value="image_data_uri(user_id.avatar_256)"/>
+                        <img t-att-src="avatar_source" t-attf-class="rounded-circle o_object_fit_cover #{_avatar_class}"
+                             width="24" height="24" alt="" loading="eager"/>
+                    </t>
+                    <span t-if="_icon">
+                        <img src="/gio_obstgemuese_theme/static/src/svg/21-user.svg" class="ob_icon"/>
+                    </span>
+                    <span t-if="_user_name" t-attf-class="#{_user_name_class}"
+                          t-esc="user_id.name[:23] + '...' if user_id.name and len(user_id.name) &gt; 25 else user_id.name"/>
+                </a>
+                <div t-attf-class="dropdown-menu js_usermenu #{_dropdown_menu_class}" role="menu">
+                    <a href="/my/home" class="dropdown-item">My Account</a>
+                    <div id="o_logout_divider" class="dropdown-divider"/>
+                    <a t-attf-href="/web/session/logout?redirect=/" role="menuitem" id="o_logout" class="dropdown-item">
+                        Logout
+                    </a>
+                </div>
+            </li>
+        </xpath>
+    </template>
+    <template id="ob_cart_pop_up" name="obstgemuse cart page">
+        <div class="cart_container">
+            <div class="row p-3 cart">
+                <div class="col-9">
+                    <h1 class="GT_Pressura_Pro_Mono">Shopping Cart</h1>
+                </div>
+                <div class="col-3">
+                    <img src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg" class="cart_close p-2"/>
+                </div>
+                <div class="col-12">
+                    <p class="item_count">0 items</p>
+                </div>
+            </div>
+            <div class="row p-3 order_line">
+            </div>
+            <div class=" proceed_link">
+                <div class="">
+                    <a role="button" class="btn checkout_button w-100" href="/process/checkout/page">
+                        <span class="">Process Checkout</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </template>
+</odoo>

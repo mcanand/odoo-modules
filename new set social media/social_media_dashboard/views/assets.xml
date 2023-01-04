@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="open_socialmedia_dashboard" model="ir.actions.client">
+            <field name="name">Home Dashboard</field>
+            <field name="tag">dashboard_tag</field>
+        </record>
+        <menuitem id="menu_sm_dashboard" name="Dashboard" parent="social_media_base.social_media_main_menu"
+                  action="open_socialmedia_dashboard"/>
+
+
+
+        <template id="dashboard_assets" name="dashboard assets" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/social_media_dashboard/static/src/scss/kanban_style.css"/>
+                <script type="text/javascript" src="/social_media_dashboard/static/src/js/easy_dashboard.js"/>
+                <!--                <link rel="stylesheet" type="text/scss" href="/social_media_dashboard/static/src/scss/template_view.scss"/>-->
+            </xpath>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template id="inherit_address" inherit_id="website_sale.address">
+        <xpath expr="//input[@name='phone']" position="replace">
+                <input type="tel" name="phone" t-attf-class="phone_code_number form-control #{error.get('phone') and 'is-invalid' or ''}" t-att-value="'phone' in checkout and checkout['phone']" />
+        </xpath>
+    </template>
+</odoo>

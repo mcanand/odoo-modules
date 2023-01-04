@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="obst_res_company_inherit_ew" model="ir.ui.view">
+        <field name="name">res.company.inherit.form.obst</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <field name="favicon" position="after">
+                <field name="copyright_year"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="easy_dashboard">
+        <div class="o_dashboards">
+            <div class="container-fluid o_hr_dashboard"></div>
+            <div class="o_hr_birthday_reminder"></div>
+        </div>
+    </t>
+
+    <t t-name="ManagerDashboard"></t>
+    <t t-name="LoginEmployeeDetails">
+        <link rel="stylesheet" href="/dashboard_measat/static/src/css/hrms_dashboard.css"/>
+        <div class="row main-section">
+            <div class="col-md-4 col-sm-6 pos_order_today oh-payslip" style="width:33.33%;">
+                <div class="oh-card" style="width:280px;">
+                    <div class="oh-card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon" style="background:#5bcbd0; width:100%;"><i class="fa fa-money"/></div>
+                            <div class="stat-content">
+                                <div class="stat-head" style="font-size:25px; font-weight:bold;"><center>THIS MONTH SALES</center></div>
+                                <div class="stat_count" style="font-size:22px;"><center>RM <t
+                                        t-esc="widget.login_employee['this_month_sales']"/></center></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="col-md-4 col-sm-6 pos_order_today oh-payslip" style="width:33%;">
+                <div class="oh-card" style="width:280px;">
+                    <div class="oh-card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon" style="background:#5bcbd0; width:100%;"><i class="fa fa-life-ring"/></div>
+                            <div class="stat-content">
+                                <div class="stat-head" style="font-size:28px; font-weight:bold;"><center>SALES DASHBOARD</center></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+            <div class="col-md-4 col-sm-6 pos_order_today oh-payslip" style="width:33%;">
+                <div class="oh-card" style="width:280px;">
+                    <div class="oh-card-body">
+                        <div class="stat-widget-one">
+                            <div class="stat-icon" style="background:#5bcbd0; width:100%;"><i class="fa fa-list-ol"/></div>
+                            <div class="stat-content">
+                                <div class="stat-head" style="font-size:25px; font-weight:bold;"><center>PENDING ORDER CONFIRMATION</center></div>
+                                <div class="stat_count" style="font-size:22px;"><center><t t-esc="widget.login_employee['pending_orders_count']"/></center></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row main-section">
+                 <div class="hr_notification" style="background: #fff;transition: transform 0.2s ease, box-shadow 0.2s ease;will-change: transform, box-shadow;box-shadow: 0 10px 40px 0 rgba(62,57,107,0.07), 0 2px 9px 0 rgba(62,57,107,0.06);
+                height: 316px;overflow-y: auto;margin-bottom: 15px;">
+                      <div class="hr_notification_head"
+                         style="font-size: 17px;text-align: center;padding: 12px 0;color: #fff;font-weight: 300;background: #de6a5e;margin-bottom: 9px;">
+LATEST 5 JOBS COMPLETED                    </div>
+
+             <table class="table-striped table-bordered oe_import_grid bg-white" style="width:100%;">
+                            <tr>
+                                <thead>
+                                    <th>Job Id</th>
+                                    <th>CME ID</th>
+                                    <th>Date</th>
+                                    <th>Distributor</th>
+                                </thead>
+                            </tr>
+                 <tr>
+                                <tbody>
+                                    <t t-foreach="widget.login_employee['latest_jobs']" t-as="jobs">
+                                        <tr>
+                                            <td><t t-esc="jobs['job_id']"/></td>
+                                            <td><t t-esc="jobs['cme_id']"/></td>
+                                            <td><t t-esc="jobs['date']"/></td>
+                                            <td><t t-esc="jobs['distributor']"/></td>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </tr>
+                        </table>
+        </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-lg-12 col-md-12">
+            <div class="row" style="margin:0px;">
+                <div class="col sm-6 col-lg-6 product top_customer_graph_view">
+                    <div class="oh-card-text-color">
+                        <div class="oh-card-body pb-0">
+                            <h4 class="mb-0">
+
+                            </h4>
+                        </div>
+                        <canvas id="myBarChartManager" width="200" height="120"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <center><h3><b>PENDING ORDER CONFIRMATION</b></h3></center><br />
+
+        <div class="row main-section">
+            <t t-foreach="widget.login_employee['distributor']" t-as="d">
+
+
+                 <div class="oh-card">
+                     <div class="oh-card-body" style="width:30%">
+
+                      <table class="table table-bordered">
+                            <tr>
+                                <td>
+                                  <strong><center><t t-esc="d['name']"/></center></strong>
+                                </td>
+                            </tr>
+                           <tr>
+                                 <td>Sale order</td>
+                                <td>Plan</td>
+                                <td>Qty</td>
+                                <td>Value(RM)</td>
+                                <td>Discount</td>
+                                <td>Total</td>
+                            </tr>
+                            <tbody>
+                                 <t t-foreach="widget.login_employee['orders']" t-as="o">
+                                    <t t-if="d['name'] == o['p_name']">
+                                        <tr>
+                                             <td><t t-esc="o['so']"/></td>
+                                            <td><t t-esc="o['voucher_plan']"/></td>
+                                            <td><t t-esc="o['qty']"/></td>
+                                            <td><t t-esc="o['value']"/></td>
+                                            <td><t t-esc="o['discount']"/></td>
+                                            <td><t t-esc="o['total']"/></td>
+                                        </tr>
+                                 </t>
+                                 </t>
+                             </tbody>
+                      </table>
+                     </div>
+                 </div>
+            </t>
+        </div>
+    </t>
+</templates>

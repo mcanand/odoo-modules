@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="assets_backend" name="social_backend_assets" inherit_id="web.assets_backend">
+        <xpath expr="." position="inside">
+<!--            <script type="text/javascript" src="/social_media_base/static/src/js/post_kanban_view.js"/>-->
+            <link rel="stylesheet" type="text/scss" href="/social_media_base/static/description/src/scss/social_media.scss"/>
+        </xpath>
+    </template>
+</odoo>

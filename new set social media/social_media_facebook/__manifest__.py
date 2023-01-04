@@ -1,0 +1,26 @@
+{
+    'name': 'Social Media Facebook',
+    'version': '14.0.1.0.0',
+    'category': 'Extra Tools',
+    'author': 'SIGB',
+    'website': 'https://www.sociusus.com',
+    'license': '',
+    'summary': 'Social Media Facebook Module',
+    'description': 'Social Media Facebook Module',
+
+    'depends': ['social_media_base'],
+    'license': 'AGPL-3',
+    'data': [
+        # 'security/ir.model.access.csv',
+        'data/social_media_facebook_data.xml',
+        'views/assets.xml',
+        'views/social_media_post_inherit.xml',
+        'views/social_media_facebook_preview.xml',
+        'views/social_media_instagram_preview.xml',
+        'views/res_config_settings_view.xml',
+    ],
+    'demo': [],
+    'installable': True,
+    'application': True,
+    'auto_install': True,
+}

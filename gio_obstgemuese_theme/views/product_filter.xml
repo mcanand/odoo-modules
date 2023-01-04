@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="product_filter" inherit_id="website_sale.products">
+        <xpath expr="//div[hasclass('oe_website_sale')]" position="before">
+            <div class="obst_mob_dots">
+                <i class="fa fa-ellipsis-h d-block"/>
+            </div>
+            <div class="row obst_product_filter pt-5">
+                <form class="js_attributes d-inline-flex mx-auto mb-2" method="get">
+                    <input t-if="category" type="hidden" name="category" t-att-value="category.id"/>
+                    <input type="hidden" name="search" t-att-value="search"/>
+                    <div class="col-md-12 mob_filter_close_div">
+                        <img src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"
+                             class="ob_icon mob_filter_close filter_use"/>
+                    </div>
+                    <div class="col">
+                        <li style="list-style-type: none;">
+                            <select class="filter_select_category GT_Pressura_Pro_Mono filter_select mx-auto mb-2"
+                                    name="">
+                                <option>All Products</option>
+                                <t t-foreach="categories" t-as="c">
+                                    <option t-att-value="c.id" t-att-name="c.name" t-esc="c.name"/>
+                                </t>
+                            </select>
+                        </li>
+                    </div>
+                    <t t-foreach="attributes" t-as="a">
+                        <div class="col ">
+                            <div class="mb-2">
+                                <select class="filter_select GT_Pressura_Pro_Mono mx-auto" name="attrib">
+                                    <option value="" t-esc="a.name"/>
+                                    <t t-foreach="a.value_ids" t-as="v">
+                                        <option t-att-value="'%s-%s' % (a.id,v.id)" t-esc="v.name"
+                                                t-att-selected="v.id in attrib_set"/>
+                                    </t>
+                                </select>
+                            </div>
+                        </div>
+                    </t>
+                    <div class="col ">
+                        <a class="nav-link text-center filter_use">use</a>
+                    </div>
+                </form>
+            </div>
+        </xpath>
+    </template>
+</odoo>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="obst_home_page" inherit_id="website.homepage">
+        <xpath expr="//div[@id='wrap']" position="replace">
+            <div id="wrap" class="obst_wrap">
+                <t t-call="gio_obstgemuese_theme.obst_panorama_view_landing"/>
+            </div>
+        </xpath>
+    </template>
+    <template id="obst_panorama_view_landing">
+        <div class="obst_landing_main">
+            <div id="panorama-360-view" width="100">
+                <img class="pano_image"
+                     src="gio_obstgemuese_theme/static/src/images/home/Sublogos_Cargobike_Normal.png"/>
+            </div>
+        </div>
+        <a href="#cargo_performance" class="mob_go_down">
+            <img
+                    src="/gio_obstgemuese_theme/static/src/svg/69-chevron-down.svg"/>
+        </a>
+        <div class="panorama_popup">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <img class="panorama_popup_close mr-3 mt-3"
+                         src="/gio_obstgemuese_theme/static/src/svg/65-cross2.svg"/>
+                </div>
+            </div>
+            <div class="pano_vals"/>
+        </div>
+        <div class="row m-0 cargo_performance" id="cargo_performance">
+            <div class="col-md-6 p-0">
+                <a href="#">
+                    <img class="cargo_bike"
+                         src="/gio_obstgemuese_theme/static/src/images/home/cargo.jpg"/>
+                </a>
+                <a href="#" class="obst_home_range GT_Pressura_Pro_Mono">cargo
+                    bike range
+                </a>
+                <a href="#" class="obst_to_shop GT_Pressura_Pro_Mono">further to
+                    the shop
+                </a>
+            </div>
+            <div class="col-md-6 p-0">
+                <a href="#">
+                    <img class="cargo_bike"
+                         src="gio_obstgemuese_theme/static/src/images/home/performance.jpg"/>
+                </a>
+                <a href="#"
+                   class="GT_Pressura_Pro_Mono obst_home_range">cargo bike range
+                </a>
+                <a href="#" class="GT_Pressura_Pro_Mono obst_to_shop">further
+                    to the shop
+                </a>
+            </div>
+        </div>
+        <div class="home_product_view container pt-5 pb-5">
+            <div class="row">
+                <t t-set="product"
+                   t-value="request.env['product.product'].sudo().search([])"/>
+                <t t-foreach="8" t-as="a">
+                    <div class="col-3 text-center">
+                        <div class="home_product_img">
+                            <div t-field="product[a].image_1920"
+
+                                 t-options='{"widget": "image", "preview_image": "image_1920","class":"prod_img_home", "itemprop": "image"}'/>
+                        </div>
+
+                        <h4
+                                class="GT_Pressura_Pro_Mono">
+                            <t
+                                    t-esc="product[a].name"/>
+                        </h4>
+                        <h5 class="GT_Pressura_Pro_Mono">
+                            <t
+                                    t-esc="product[a].list_price"/>
+                        </h5>
+                    </div>
+                </t>
+            </div>
+            <div class="row">
+                <div class="col text-center">
+                    <a href="/shop" class="GT_Pressura_Pro_Mono nav-link">go
+                        to shop</a>
+                </div>
+            </div>
+        </div>
+        <div class="row news_letter_row m-0">
+            <div class="col-md-6 bg_theme_color p-5">
+                <h1 class="news_letter_title GT_Pressura_Pro_Mono text-white">
+                    You always want to be informed? No problem with our
+                    newsletter :
+                </h1>
+                <div class="row mt-5">
+                    <div class="col">
+                        <label
+                                class="news_letter_check text-white GT_Pressura_Pro_Mono font-weight-normal">
+                            Cargobike
+                            <input type="checkbox"
+                                   name="cargobike"
+                                   class="cargobike_check"/>
+                            <span class='check_cover'/>
+                            <span class="checkmark"/>
+                        </label>
+                    </div>
+                    <div class="col">
+                        <label
+                                class="news_letter_check text-white GT_Pressura_Pro_Mono font-weight-normal">
+                            Performance
+                            <input type="checkbox" name="performance"
+                                   class="performance_check"/>
+                            <span class='check_cover'/>
+                            <span class="checkmark"/>
+                        </label>
+                    </div>
+                    <div class="col"/>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <div class="s_newsletter_subscribe_form ob_js_subscribe"
+                             data-vxml="001" data-list-id="0"
+                             data-name="Newsletter Form">
+                            <div class="d-inline-flex">
+                                <input type="email" name="email"
+                                       class="js_subscribe_email newsletter_input GT_Pressura_Pro_Mono pl-0 pr-0"
+                                       placeholder="your email..."/>
+                                <button role="button" href="#"
+                                        class="js_subscribe_btn o_submit newsletter_btn p-2">
+                                    <img class="newsletter_img"
+                                         src="gio_obstgemuese_theme/static/src/svg/64-check-white.svg"/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div  class="js_newsletter_message text-white GT_Pressura_Pro_Mono mt-2"/>
+            </div>
+
+            <t t-set="feed"
+               t-value="request.env['mailing.mailing'].sudo().search([])"/>
+            <t t-foreach="feed" t-as="feed">
+                <div class="col-lg-3 col-sm-6 col-6 p-0 height_70">
+                    <img class="cargo_bike"
+                         src="gio_obstgemuese_theme/static/src/images/home/cargo.jpg"/>
+                    <a href="#"
+                       class="GT_Pressura_Pro_Mono obst_home_range">
+                        <t
+                                t-esc="feed.calendar_date"/>
+                        .story
+                        <div>
+                            <t t-esc="feed.subject"/>
+                        </div>
+                    </a>
+                    <a href="#" class="GT_Pressura_Pro_Mono obst_to_shop">Continue reading
+
+                    </a>
+                </div>
+            </t>
+        </div>
+    </template>
+</odoo>
