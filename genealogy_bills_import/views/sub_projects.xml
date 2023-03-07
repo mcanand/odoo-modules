@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sub_projects_tree" model="ir.ui.view">
+        <field name="name">project.sub.project.tree</field>
+        <field name="model">project.sub.project</field>
+        <field name="arch" type="xml">
+            <tree string="Sub Projects" create="True">
+                <field name="name"/>
+                <field name="label_tasks"/>
+                <field name="partner_id"/>
+                <field name="company_id"/>
+                <field name="user_id"/>
+            </tree>
+        </field>
+    </record>
+    <record id="sub_projects_form" model="ir.ui.view">
+        <field name="name">sub.projects.form</field>
+        <field name="model">project.sub.project</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" required="True"/>
+                            <field name="project_id"/>
+                            <field name="label_tasks" string="Name of the tasks"/>
+                            <field name="partner_id" widget="res_partner_many2one"
+                                   />
+                            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"
+                                   />
+                            <field name="company_id" modifiers="{'required': true}" can_create="true" can_write="true"/>
+                        </group>
+                        <group>
+                            <field name="user_id" string="Project Manager" widget="many2one_avatar_user"
+                                   />
+                            <label for="date_start" string="Planned Date"/>
+                            <div name="dates" class="o_row">
+                                <field name="date_start" widget="daterange"
+                                       options="{'related_end_date': 'date'}"/>
+                                                                <field name="date" widget="daterange"
+                                       options="{'related_start_date': 'date_start'}"/>
+                            </div>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="sub_projects_action" model="ir.actions.act_window">
+        <field name="name">Sub Projects</field>
+        <field name="res_model">project.sub.project</field>
+        <field name="view_mode">tree,form</field>
+        <!--<field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+
+            </p>
+        </field>-->
+    </record>
+    <menuitem id="sub_projects_action_menu" name="Sub Projects"
+              action="sub_projects_action" parent="project.menu_project_config"
+              sequence="10"/>
+</odoo>

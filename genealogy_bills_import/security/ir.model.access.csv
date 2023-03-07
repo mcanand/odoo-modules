@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_excel_import_custom,excel.import.custom,model_excel_import_custom,,1,1,1,1
+access_sale_data_entries,sale.data.entries,model_sale_data_entries,,1,1,1,1
+access_excel_upload,excel.upload,model_excel_upload,,1,1,1,1
+access_project_sub_project,project.sub.project,model_project_sub_project,,1,1,1,1

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="sale_data_entries_tree" model="ir.ui.view">
+        <field name="name">sale.data.entries.tree</field>
+        <field name="model">sale.data.entries</field>
+        <field name="arch" type="xml">
+            <tree editable="top" decoration-success="state=='done'" decoration-muted="state=='draft'">
+                <field name="sl_no" class="text-center"/>
+                <field name="file_name" class="text-center"/>
+                <field name="vendor_id"/>
+                <field name="psn"/>
+                <field name="payable" class="text-center"/>
+                <field name="agent_score" class="text-center"/>
+                <field name="agent_rate" class="text-center"/>
+                <field name="claimed" class="text-center"/>
+                <field name="amount" sum="Total Amount"/>
+                <field name="difference" class="text-center"/>
+                <field name="reason"/>
+                <field name="state" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+    <record id="sale_data_entries_form" model="ir.ui.view">
+        <field name="name">sale data entries.form</field>
+        <field name="model">sale.data.entries</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="file_name"/>
+                            <field name="payable"/>
+                            <field name="agent_rate"/>
+                            <field name="amount"/>
+                            <field name="reason"/>
+                        </group>
+                        <group>
+                            <field name="vendor_id"/>
+                            <field name="psn"/>
+                            <field name="agent_score"/>
+                            <field name="claimed"/>
+                            <field name="difference"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="sale_data_entries_action" model="ir.actions.act_window">
+        <field name="name">Data Entries</field>
+        <field name="res_model">sale.data.entries</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+            </p>
+        </field>
+    </record>
+    <menuitem id="sale_data_entries_action_menu" name="Imported entries"
+              action="sale_data_entries_action" parent="genealogy_bills_import.excel_custom_import_menu"
+              sequence="10"/>
+</odoo>

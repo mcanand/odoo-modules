@@ -1,0 +1,30 @@
+# -*- coding: utf-8 -*-
+{
+    'name': 'Genealogy Bills Import',
+    'version': '16.0.1.0',
+    'summary': 'Custom Genealogy Bills Import from xlsx',
+    'description':"""xlsx format to import
+                    file_name,psn,payable,agent_score,claimed""",
+    'author': 'Xime-infosolutions',
+    'website': 'https://www.ximeinfosolutions.com',
+    'category':'Uncategorized',
+    'depends': ['account',
+                'project',
+                'purchase',
+                'base'],
+    'data': [
+        'security/ir.model.access.csv',
+        'views/excel_import_custom.xml',
+        'views/data_entries.xml',
+        'views/purchase_order.xml',
+        'views/res_partner.xml',
+        'views/product_supplierinfo.xml',
+        'views/sub_projects.xml',
+        'views/account_move.xml',
+        'views/projects.xml',
+        'wizard/excel_upload.xml',
+    ],
+    'installable': True,
+    'application': True,
+    'license': 'LGPL-3',
+}

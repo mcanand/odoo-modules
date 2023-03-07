@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="purchase_order_inherit_form" model="ir.ui.view">
+        <field name="name">purchase.order.inherit.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="file_name" optional="hide"/>
+                <field name="reason" optional="hide"/>
+                <field name="agent_claimed" optional="hide"/>
+                <field name="difference" optional="hide"/>
+                <field name="agent_score" optional="hide"/>
+            </field>
+            <field name="partner_id" position="after">
+                <field name="is_csv" attrs="{'invisible': [('is_csv', '!=', True)]}"/>
+                <field name="csv_reference" attrs="{'invisible': [('is_csv', '!=', True)]}"/>
+                <field name="project_id" attrs="{'invisible': [('is_csv', '!=', True)]}"/>
+                <field name="sub_project_id" attrs="{'invisible': [('is_csv', '!=', True)]}"/>
+            </field>
+        </field>
+    </record>
+</odoo>

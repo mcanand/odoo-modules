@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="excel_custom_import_form" model="ir.ui.view">
+        <field name="name">excel import custom</field>
+        <field name="model">excel.import.custom</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="import_excel" type="object" string="import" class="oe_highlight"
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+                    <!--<button name="delete_record" type="object" string="Delete" class=""
+                            attrs="{'invisible': [('state', '!=', 'draft')]}"/>-->
+                    <button name="validate" type="object" string="Validate" class="oe_highlight"
+                            attrs="{'invisible': [('state', '!=', 'ready')]}"/>
+                    <button name="cancel_entries" type="object" string="Cancel Entries" class=""
+                            attrs="{'invisible': [('state', '!=', 'ready')]}"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,ready,done" readonly="1"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="get_purchase_orders"
+                                icon="fa-credit-card">
+                            <field string="Purchase Orders" name="purchase_order_count" widget="statinfo"/>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="analytic_distribution" widget="analytic_distribution"/>
+                            <field name="project_id" string="Project"/>
+                            <field name="sub_project_id" string="Sub Project"/>
+                            <field name="product_id"/>
+                        </group>
+                        <group>
+                            <field name="create_date"/>
+                            <field name="total_payable_record"/>
+                            <field name="total_claimed_record"/>
+                            <field name="total_amount" widget="monetary"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Entries">
+                            <field name="sale_data_entry_ids" widget="one2many"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="excel_custom_import_tree" model="ir.ui.view">
+        <field name="name">excel.import.custom.tree</field>
+        <field name="model">excel.import.custom</field>
+        <field name="arch" type="xml">
+            <tree decoration-success="state=='done'" default_order="id desc">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="sub_project_id"/>
+                <field name="total_payable_record"/>
+                <field name="total_amount"/>
+                <field name="state" invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="excel_custom_import_action" model="ir.actions.act_window">
+        <field name="name">Genealogy Bills Import</field>
+        <field name="res_model">excel.import.custom</field>
+        <field name="view_mode">tree,form</field>
+        <!--<field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+
+            </p>
+        </field>-->
+    </record>
+
+    <menuitem id="excel_custom_import_menu" name="Genealogy Bills Import"
+              web_icon="genealogy_bills_import,static/description/icon.png"
+              sequence="1">
+        <menuitem id="bills_import_menu"
+                  name="Import Bills"
+                  action="excel_custom_import_action"
+                  sequence="1"/>
+    </menuitem>
+</odoo>
